@@ -87,12 +87,12 @@
     "aliases":["MP4200","MP 4200","MP-4200","4200","Bematech 4200","4200 TH"],
     "categoria":"termica",
     "categoriaLabel":"Térmica",
-    "papel":["80 mm"],
-    "interfaces":["USB"],
-    "status":"em-breve",
-    "url":"",
-    "descricao":"Uma das impressoras térmicas mais comuns em automação comercial no Brasil.",
-    "ultimaVerificacao":null,
+    "papel":["80 mm","76 mm","58 mm"],
+    "interfaces":["USB","Serial opcional","Ethernet opcional","Wi-Fi opcional"],
+    "status":"publicado",
+    "url":"/tutoriais/impressoras-termicas/bematech/mp-4200-th/",
+    "descricao":"Driver Spooler, instalação USB, COM virtual, rede/IP, autoteste e solução de problemas da MP-4200 TH original.",
+    "ultimaVerificacao":"2026-09-14",
     "afiliados":{"mercadoLivre":null}
   },
   {
