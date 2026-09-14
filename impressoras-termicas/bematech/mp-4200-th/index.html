@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bematech MP-4200 TH: driver e como instalar no Windows</title>
+<meta name="description" content="Baixe o driver da Bematech MP-4200 TH e veja como instalar por USB, configurar porta COM ou rede/IP, fazer autoteste e resolver problemas comuns.">
+<link rel="canonical" href="https://alekseymajeski.github.io/tutoriais/impressoras-termicas/bematech/mp-4200-th/">
+<link rel="stylesheet" href="../../../assets/styles.css">
+<link rel="stylesheet" href="../../../assets/ux-v2.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Como instalar a Bematech MP-4200 TH no Windows","description":"Instalação da Bematech MP-4200 TH pelo spooler do Windows, com USB, rede e teste de impressão.","dateModified":"2026-09-14","step":[{"@type":"HowToStep","name":"Confirme que é MP-4200 TH"},{"@type":"HowToStep","name":"Baixe o driver Spooler"},{"@type":"HowToStep","name":"Execute o instalador"},{"@type":"HowToStep","name":"Selecione a conexão"},{"@type":"HowToStep","name":"Imprima uma página de teste"}]}</script>
+</head>
+<body class="model-page">
+<a class="skip-link" href="#download">Pular para o download</a>
+<header class="topbar"><div class="wrap"><a class="brand" href="../../../">Guia de Impressoras</a><nav class="nav" aria-label="Navegação do tutorial"><a href="../../../impressoras-termicas/">Térmicas</a><a href="#download">Driver</a><a href="#instalacao">Instalar</a><a href="#rede">Rede / IP</a><a href="#problemas">Problemas</a></nav></div></header>
+<main>
+<div class="wrap breadcrumbs"><a href="../../../">Início</a> › <a href="../../../impressoras-termicas/">Impressoras térmicas</a> › Bematech › MP-4200 TH</div>
+
+<section class="guide-hero"><div class="wrap guide-grid"><div>
+<span class="eyebrow">Bematech • impressora térmica de automação comercial</span>
+<h1>Bematech MP-4200 TH</h1>
+<p class="lead">Tutorial da MP-4200 TH original. Baixe o driver do spooler, instale por USB e, se sua unidade tiver módulo de rede, configure o IP sem misturar com a MP-4200 HS.</p>
+<div class="chips"><span class="chip">🧾 80 / 76 / 58 mm</span><span class="chip">🔌 USB</span><span class="chip">🌐 Ethernet opcional</span><span class="chip">🔗 Serial opcional</span><span class="chip">✂️ Guilhotina</span></div>
+<div class="buttons"><a class="btn primary" rel="noopener" href="https://baseg.com.br/download/723/">⬇️ Baixar Spooler 5.0.0.4</a><a class="btn soft" href="#instalacao">Como instalar</a></div>
+<div class="model-trust"><span class="trust-item">Driver Bematech v5.0.0.4</span><span class="trust-item">MD5 59a417d102651d132fb379bb2bc4550e</span><span class="trust-item">Verificado em 14/09/2026</span></div>
+<div class="connection-nav"><strong>Como sua MP-4200 TH está conectada?</strong><div class="connection-links"><a href="#instalacao">🔌 USB / Spooler</a><a href="#rede">🌐 Rede / Ethernet</a><a href="#com">🔗 COM virtual</a><a href="#problemas">⚠ Problemas</a></div></div>
+</div><div class="hero-card"><div><div class="printer-art"><div class="paper"></div><div class="body"></div><div class="slot"></div><div class="led"></div></div><strong>Bematech MP-4200 TH</strong><br><small>Não confundir com MP-4200 TH ADV ou MP-4200 HS.</small></div></div></section>
+
+<div class="wrap"><div class="notice warn"><strong>Confira a etiqueta:</strong> este guia é da <b>MP-4200 TH original</b>. A MP-4200 TH ADV e a MP-4200 HS são revisões diferentes. A HS, vendida atualmente pela Elgin, usa pacote de driver diferente.</div></div>
+
+<section class="section" id="download"><div class="wrap"><div class="quick-download">
+<div class="quick-download-head"><div><span class="eyebrow">⚡ Download rápido</span><h2>Driver principal: Spooler Bematech</h2><p>Para instalar como impressora normal do Windows, use o driver de spooler. O pacote abaixo é um espelho independente porque o site atual da Elgin/Bematech não expõe uma URL direta estável do binário legado da TH.</p></div></div>
+<div class="quick-download-grid">
+<div class="download-card"><small>DRIVER PRINCIPAL • WINDOWS</small><strong>Spooler Bematech v5.0.0.4</strong><div class="download-meta"><span>ZIP</span><span>24,85 MB</span><span>MP-4200 TH</span><span>32/64 bits no pacote</span></div><p>Pacote usado para criar a MP-4200 TH no spooler do Windows.</p><a class="btn primary" rel="noopener" href="https://baseg.com.br/download/723/">⬇️ Download direto do driver</a><p class="license-note">Espelho: Base G. MD5 informado pelo repositório: 59a417d102651d132fb379bb2bc4550e.</p></div>
+<div class="download-card"><small>USB / COM • OPCIONAL</small><strong>Driver USB Bematech v4.0.2</strong><div class="download-meta"><span>ZIP</span><span>3,45 MB</span><span>USB / COM virtual</span></div><p>Útil para comunicação direta pela USB/porta COM emulada, principalmente em sistemas de automação que não usam o spooler.</p><a class="btn soft" rel="noopener" href="https://baseg.com.br/download/736/">⬇️ Download direto USB</a></div>
+</div>
+<div class="quick-download-grid" style="margin-top:12px">
+<div class="download-card"><small>CONFIGURAÇÃO • REDE / TESTES</small><strong>Bematech User Software 2.10.5</strong><div class="download-meta"><span>ZIP</span><span>17,58 MB</span><span>Configuração</span></div><p>Utilitário para localizar/configurar a impressora, testar comunicação e ajustar parâmetros. É especialmente útil em unidades com interface Ethernet.</p><a class="btn soft" rel="noopener" href="https://baseg.com.br/download/729/">⬇️ Download direto User Software</a></div>
+<div class="download-card"><small>SUPORTE DO FABRICANTE</small><strong>Elgin / Bematech</strong><p>A marca Bematech passou a integrar a linha de automação da Elgin. Use o suporte atual da Elgin para assistência e materiais oficiais quando necessário.</p><a class="btn soft" target="_blank" rel="noopener" href="https://www.elgin.com.br/automacao/developers/suporte-tecnico">Abrir suporte Elgin</a></div>
+</div>
+<p class="license-note">Os arquivos não são hospedados por este site. Os downloads diretos acima apontam para um repositório independente de drivers. Sempre prefira o suporte atual do fabricante quando houver um pacote oficial equivalente disponível.</p>
+</div><aside class="ad-slot" data-ad-position="after-download" aria-label="Publicidade"></aside></div></section>
+
+<section class="section"><div class="wrap"><div class="section-head"><div><h2>Ficha rápida</h2><p>A MP-4200 TH foi muito usada em PDVs e restaurantes. A interface padrão é USB e podia receber segunda interface modular em algumas configurações.</p></div></div><div class="spec-grid"><div class="spec"><small>Método</small><b>Térmico direto</b></div><div class="spec"><small>Velocidade</small><b>até 250 mm/s</b></div><div class="spec"><small>Papel</small><b>58 a 82,5 mm</b></div><div class="spec"><small>Uso comum</small><b>80 mm</b></div><div class="spec"><small>Interface padrão</small><b>USB</b></div><div class="spec"><small>Opcional</small><b>Serial / Ethernet / Wi‑Fi*</b></div><div class="spec"><small>Guilhotina</small><b>automática</b></div><div class="spec"><small>Gaveta</small><b>RJ-12</b></div></div><p class="muted" style="font-size:13px">* Depende da placa/interface instalada na unidade. Confira fisicamente a traseira da impressora.</p></div></section>
+
+<section class="section" id="instalacao"><div class="wrap"><div class="section-head"><div><h2>Instalação principal por USB no Windows</h2><p>Para a maioria dos técnicos, este é o caminho: baixar o spooler, executar, escolher MP-4200 TH, selecionar USB e testar.</p></div></div><div class="panel install-fast">
+<div class="fast-row"><div class="fast-num">1</div><div><h3>Confirme o modelo</h3><p>Veja a etiqueta e confirme <b>MP-4200 TH</b>. Se estiver escrito <b>ADV</b> ou <b>HS</b>, não siga este tutorial como se fosse a mesma revisão.</p></div></div>
+<div class="fast-row"><div class="fast-num">2</div><div><h3>Baixe o Spooler 5.0.0.4</h3><p>Baixe e extraia o pacote. Em Windows 64 bits, execute o instalador x64; em Windows 32 bits, use o x86.</p></div></div>
+<div class="fast-row"><div class="fast-num">3</div><div><h3>Execute como administrador</h3><p>Abra o instalador e mantenha marcada a opção de instalar o driver de spooler quando ela aparecer.</p></div></div>
+<div class="fast-row"><div class="fast-num">4</div><div><h3>Escolha MP-4200 TH e USB</h3><p>Selecione o modelo <b>MP-4200 TH</b>. Para a instalação comum, escolha USB e a porta detectada pelo instalador.</p></div></div>
+<div class="fast-row"><div class="fast-num">5</div><div><h3>Imprima uma página de teste</h3><p>Depois da instalação, abra <b>Impressoras e scanners → MP-4200 TH → Propriedades da impressora</b> e mande imprimir uma página de teste.</p></div></div>
+</div>
+<div class="advanced-box"><details><summary>Avançado: tamanho de papel e cupons muito longos</summary><p>Instalações antigas do spooler podem precisar de um formulário personalizado quando o cupom ultrapassa o tamanho padrão do Windows. Uma configuração historicamente usada para a MP-4200 TH é largura de 7,36 cm e altura de 95 cm, selecionando depois esse formulário nas propriedades da impressora. Só altere isso se o cupom estiver sendo cortado antes do final.</p></details></div>
+<aside class="ad-slot" data-ad-position="after-installation" aria-label="Publicidade"></aside>
+</div></section>
+
+<section class="section" id="com"><div class="wrap"><div class="section-head"><div><h2>USB como porta COM virtual</h2><p>Alguns sistemas de automação enviam comandos diretamente para uma porta COM em vez de imprimir pelo spooler.</p></div></div><div class="panel"><p>Nesse cenário, instale o driver USB/COM, conecte a MP-4200 TH e veja no <b>Gerenciador de Dispositivos → Portas (COM e LPT)</b> qual COM foi criada.</p><p>Depois configure essa mesma porta no sistema. Em aplicações ESC/POS/Bematech, não misture <b>RAW do spooler</b> e <b>COM virtual</b> ao mesmo tempo sem saber qual modo o software espera.</p></div></div></section>
+
+<section class="section" id="rede"><div class="wrap"><div class="section-head"><div><h2>MP-4200 TH com Ethernet: localizar e configurar o IP</h2><p>Use esta parte somente se sua unidade tiver placa de rede RJ45 instalada.</p></div></div><div class="steps">
+<article class="step"><div class="step-num">1</div><div><h3>Conecte a Ethernet</h3><p>Ligue o cabo RJ45 ao roteador/switch e deixe a impressora ligada.</p></div></article>
+<article class="step"><div class="step-num">2</div><div><h3>Abra o Bematech User Software</h3><p>Selecione comunicação <b>Ethernet</b> e use a função de procurar/localizar impressoras na rede.</p><p><a class="btn soft" rel="noopener" href="https://baseg.com.br/download/729/">⬇️ Baixar User Software</a></p></div></article>
+<article class="step"><div class="step-num">3</div><div><h3>Confira ou defina o IP</h3><p>Selecione a impressora encontrada e configure um endereço compatível com a rede. Para PDV, prefira um IP estável para evitar que a porta do Windows pare de apontar para o equipamento.</p></div></article>
+<article class="step"><div class="step-num">4</div><div><h3>Teste a comunicação</h3><p>No Windows, use <b>ping 192.168.x.x</b> substituindo pelo IP da impressora. Se responder, o computador alcança o equipamento na rede.</p></div></article>
+<article class="step"><div class="step-num">5</div><div><h3>Instale o spooler usando o IP</h3><p>No instalador Bematech, escolha a MP-4200 TH e a opção de rede/TCP-IP quando disponível, informando o endereço configurado. Finalize com página de teste.</p></div></article>
+</div></div></section>
+
+<section class="section"><div class="wrap"><div class="section-head"><div><h2>Autoteste sem computador</h2><p>Serve para separar problema físico da impressora de problema de Windows, driver ou rede.</p></div></div><div class="steps"><article class="step"><div class="step-num">1</div><div><h3>Desligue</h3><p>Deixe bobina instalada e tampa fechada.</p></div></article><article class="step"><div class="step-num">2</div><div><h3>Segure AVANÇO/FEED e ligue</h3><p>Mantenha o botão de avanço pressionado ao ligar até o equipamento iniciar o menu/autoteste.</p></div></article><article class="step"><div class="step-num">3</div><div><h3>Confira a impressão</h3><p>Se o autoteste imprime normalmente, concentre o diagnóstico em driver, porta, IP ou software.</p></div></article></div></div></section>
+
+<section class="section" id="problemas"><div class="wrap"><div class="section-head"><div><h2>Problemas comuns</h2><p>Comece pelo sintoma.</p></div></div><div class="faq">
+<details open><summary>Instalei o driver, mas não imprime</summary><p>Confirme se o sistema está enviando para a mesma impressora/porta criada pelo spooler. Se o software trabalha por COM, não basta criar somente a impressora do Windows.</p></details>
+<details><summary>A USB criou uma porta COM</summary><p>Isso pode ser normal quando o driver USB virtual está sendo usado. Confira no Gerenciador de Dispositivos qual número COM foi atribuído e configure o sistema com o mesmo número.</p></details>
+<details><summary>O cupom é cortado antes do final</summary><p>Se o problema acontece somente em cupons longos, revise o tamanho/formulário do papel no spooler do Windows. Instalações antigas da MP-4200 TH podem precisar de um formulário personalizado.</p></details>
+<details><summary>A impressora de rede parou depois de reiniciar o roteador</summary><p>Descubra o IP atual no User Software. Se o endereço mudou por DHCP, ajuste a porta do Windows e depois reserve ou configure um IP estável.</p></details>
+<details><summary>Caracteres ou acentos saem errados</summary><p>Em comunicação direta ESC/POS/Bematech, verifique a página de código configurada no software e na impressora. Não tente corrigir somente trocando fonte do Windows.</p></details>
+<details><summary>Tenho uma MP-4200 HS. Posso usar este driver?</summary><p>Não trate HS como TH. A MP-4200 HS é uma revisão posterior e a própria documentação independente de drivers orienta usar o driver Elgin correspondente à HS.</p></details>
+</div><aside class="ad-slot" data-ad-position="after-troubleshooting" aria-label="Publicidade"></aside></div></section>
+
+<section class="section"><div class="wrap"><div class="buy-box"><div><h3>Onde comprar</h3><p>Esta área ficará reservada para ofertas e links de afiliado quando configurarmos o Mercado Livre.</p></div><span class="btn soft disabled">Ofertas — em breve</span></div></div></section>
+
+<section class="section"><div class="wrap"><h2>Fontes e downloads</h2><ul class="source-list"><li><a target="_blank" rel="noopener" href="https://www.elgin.com.br/automacao/developers/suporte-tecnico">Elgin — suporte técnico atual de automação comercial</a></li><li><a target="_blank" rel="noopener" href="https://www.projetoacbr.com.br/forum/topic/40311-homologa%C3%A7%C3%A3o-bematech-mp-4200-th-n%C3%A3o-fiscal/">Projeto ACBr — homologação e procedimento da MP-4200 TH</a></li><li><a target="_blank" rel="noopener" href="https://baseg.com.br/722/driver-spooler-impressoras-termicas-bematech/">Base G — Spooler 5.0.0.4, USB e User Software</a></li></ul><p class="muted" style="font-size:13px">Última revisão técnica: 14/09/2026. O driver direto é fornecido por espelho independente porque não foi encontrada uma URL direta estável do pacote legado TH no suporte atual da Elgin/Bematech.</p></div></section>
+</main>
+<footer class="footer"><div class="wrap footer-grid"><div><strong>Guia de Impressoras</strong><br><small>Tutorial independente. Bematech e Elgin são marcas de seus respectivos proprietários.</small></div><div><a href="../../../impressoras-termicas/">Outras impressoras térmicas</a> · <a href="../../../">Início</a></div></div></footer>
+<div class="mobile-actions" aria-label="Ações rápidas"><a class="primary-mobile" href="#download">⬇ Driver</a><a href="#instalacao">🔧 Instalar</a><a href="#problemas">⚠ Problemas</a></div>
+</body></html>
