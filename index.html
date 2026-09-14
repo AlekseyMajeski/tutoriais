@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Guia de Impressoras — Drivers, instalação e solução de problemas</title>
-  <meta name="description" content="Encontre sua impressora, baixe drivers oficiais e veja tutoriais de instalação, configuração e solução de problemas.">
+  <meta name="description" content="Encontre sua impressora, escolha Windows, macOS ou Linux, baixe drivers oficiais e veja tutoriais de instalação e solução de problemas.">
   <link rel="canonical" href="https://alekseymajeski.github.io/tutoriais/">
   <link rel="stylesheet" href="./assets/styles.css">
   <link rel="stylesheet" href="./assets/ux-v2.css">
@@ -19,11 +19,11 @@
       <div>
         <span class="eyebrow">🖨️ Drivers oficiais + tutoriais práticos</span>
         <h1>Qual é a sua impressora?</h1>
-        <p class="lead">Digite a marca ou o modelo. Você pode pesquisar do jeito que conhece: <b>TM-T20</b>, <b>TMT20</b>, <b>MP4200</b>, <b>Bematech 4200</b> ou <b>HP 2516</b>.</p>
+        <p class="lead">Digite a marca ou o modelo e, quando disponível, escolha também o sistema operacional: <b>Windows</b>, <b>macOS</b> ou <b>Linux</b>.</p>
         <div class="search-panel hero-search" id="catalogo">
           <label class="search-label" for="printer-search">Pesquisar impressora</label>
-          <div class="search-row"><input id="printer-search" class="search-box" data-search type="search" inputmode="search" autocomplete="off" placeholder="Ex.: Epson TM-T20, MP4200, Elgin i9..." aria-describedby="search-help"><a class="btn dark" href="./impressoras-termicas/">Só térmicas</a></div>
-          <div id="search-help" class="search-help">A busca aceita variações de nome, espaços e hífens.</div>
+          <div class="search-row"><input id="printer-search" class="search-box" data-search type="search" inputmode="search" autocomplete="off" placeholder="Ex.: Epson TM-T20, MP4200, Linux..." aria-describedby="search-help"><a class="btn dark" href="./impressoras-termicas/">Só térmicas</a></div>
+          <div id="search-help" class="search-help">A busca aceita variações de nome, espaços, hífens e sistema operacional.</div>
           <div class="filters" aria-label="Filtrar catálogo">
             <button class="filter" data-filter="todos" aria-pressed="true">Todas</button>
             <button class="filter" data-filter="termica" aria-pressed="false">Térmicas</button>
@@ -32,11 +32,14 @@
             <button class="filter" data-filter="elgin" aria-pressed="false">Elgin</button>
             <button class="filter" data-filter="controlid" aria-pressed="false">Control iD</button>
             <button class="filter" data-filter="hp" aria-pressed="false">HP</button>
+            <button class="filter" data-filter="windows" aria-pressed="false">🪟 Windows</button>
+            <button class="filter" data-filter="macos" aria-pressed="false">🍎 macOS</button>
+            <button class="filter" data-filter="linux" aria-pressed="false">🐧 Linux</button>
           </div>
         </div>
       </div>
       <div class="hero-card" aria-label="Ilustração de impressora térmica">
-        <div><div class="printer-art"><div class="paper"></div><div class="body"></div><div class="slot"></div><div class="led"></div></div><strong>Encontre. Baixe. Instale.</strong><br><small>Sem caça ao driver e sem misturar modelos parecidos.</small></div>
+        <div><div class="printer-art"><div class="paper"></div><div class="body"></div><div class="slot"></div><div class="led"></div></div><strong>Encontre. Escolha o sistema. Instale.</strong><br><small>Sem misturar modelos ou baixar o driver da plataforma errada.</small></div>
       </div>
     </section>
 
@@ -46,10 +49,10 @@
     </section>
 
     <section class="section"><div class="wrap">
-      <div class="section-head"><div><h2>Feito para dois tipos de uso</h2><p>Quem já é técnico chega ao download rapidamente. Quem não sabe instalar continua no passo a passo do mesmo modelo.</p></div></div>
+      <div class="section-head"><div><h2>Feito para dois tipos de uso</h2><p>Quem já é técnico chega ao download rapidamente. Quem não sabe instalar continua no passo a passo do mesmo modelo e sistema.</p></div></div>
       <div class="two-col">
-        <div class="panel"><h3>⚡ Quero só o driver</h3><p>As páginas de modelo destacam primeiro o arquivo oficial, versão, sistema compatível e origem do download.</p></div>
-        <div class="panel"><h3>🧭 Preciso de ajuda</h3><p>Os tutoriais separam USB, rede/IP e outras interfaces quando existirem, além de autoteste e problemas comuns.</p></div>
+        <div class="panel"><h3>⚡ Quero só o driver</h3><p>As páginas destacam arquivo oficial, versão, sistema compatível e origem do download.</p></div>
+        <div class="panel"><h3>🧭 Preciso de ajuda</h3><p>Os tutoriais separam sistema operacional e depois USB, rede/IP e outras interfaces quando existirem.</p></div>
       </div>
     </section>
 
