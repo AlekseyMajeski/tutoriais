@@ -137,10 +137,10 @@
     "categoriaLabel":"Térmica",
     "papel":["80 mm"],
     "interfaces":["USB","Ethernet"],
-    "status":"em-breve",
-    "url":"",
-    "descricao":"Modelo atual de automação comercial que entrará na próxima leva de tutoriais.",
-    "ultimaVerificacao":null,
+    "status":"publicado",
+    "url":"/tutoriais/impressoras-termicas/c3tech/it-100/",
+    "descricao":"Download oficial, instalação USB, Ethernet/IP, ESC/POS, página de teste e solução de problemas da C3Tech IT-100.",
+    "ultimaVerificacao":"2026-09-14",
     "afiliados":{"mercadoLivre":null}
   }
 ]
