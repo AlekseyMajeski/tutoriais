@@ -40,11 +40,11 @@
     "categoria":"termica",
     "categoriaLabel":"Térmica",
     "papel":["80 mm","58 mm"],
-    "interfaces":["USB"],
-    "status":"em-breve",
-    "url":"",
-    "descricao":"Tutorial completo em preparação.",
-    "ultimaVerificacao":null,
+    "interfaces":["USB","Serial em versões","Ethernet em versões específicas","Bluetooth/Wi-Fi em versões"],
+    "status":"publicado",
+    "url":"/tutoriais/impressoras-termicas/epson/tm-t20ii/",
+    "descricao":"Download oficial do APD 5.13, instalação USB, variantes de conexão, autoteste, papel 80/58 mm e problemas comuns.",
+    "ultimaVerificacao":"2026-09-14",
     "afiliados":{"mercadoLivre":null}
   },
   {
