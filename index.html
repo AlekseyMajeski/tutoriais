@@ -4,55 +4,55 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Guia de Impressoras — Drivers, instalação e solução de problemas</title>
-  <meta name="description" content="Encontre sua impressora e veja tutoriais de instalação, drivers oficiais, configuração e solução de problemas. Começando por impressoras térmicas de automação comercial.">
+  <meta name="description" content="Encontre sua impressora, baixe drivers oficiais e veja tutoriais de instalação, configuração e solução de problemas.">
   <link rel="canonical" href="https://alekseymajeski.github.io/tutoriais/">
   <link rel="stylesheet" href="./assets/styles.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Guia de Impressoras","url":"https://alekseymajeski.github.io/tutoriais/","potentialAction":{"@type":"SearchAction","target":"https://alekseymajeski.github.io/tutoriais/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
 </head>
 <body data-catalog="./data/impressoras.json" data-category="todos">
-  <header class="topbar"><div class="wrap"><a class="brand" href="./">Guia de Impressoras</a><nav class="nav"><a href="./impressoras-termicas/">Impressoras térmicas</a><a href="#catalogo">Catálogo</a><a href="#sobre">Sobre</a></nav></div></header>
+  <a class="skip-link" href="#catalogo">Pular para a pesquisa</a>
+  <header class="topbar"><div class="wrap"><a class="brand" href="./">Guia de Impressoras</a><nav class="nav" aria-label="Navegação principal"><a href="./impressoras-termicas/">Impressoras térmicas</a><a href="#catalogo">Pesquisar</a><a href="#sobre">Sobre</a></nav></div></header>
 
   <main>
-    <section class="hero"><div class="wrap hero-grid">
+    <section class="hero home-hero"><div class="wrap hero-grid">
       <div>
-        <span class="eyebrow">🖨️ Tutoriais práticos e drivers oficiais</span>
-        <h1>Encontre sua impressora e instale sem complicação.</h1>
-        <p class="lead">Guias em português para instalar, configurar e resolver problemas de impressoras. O foco inicial são modelos térmicos usados em restaurantes, PDVs, lojas e automação comercial.</p>
-        <div class="buttons"><a class="btn primary" href="#catalogo">🔎 Procurar impressora</a><a class="btn soft" href="./impressoras-termicas/">Ver térmicas</a></div>
+        <span class="eyebrow">🖨️ Drivers oficiais + tutoriais práticos</span>
+        <h1>Qual é a sua impressora?</h1>
+        <p class="lead">Digite a marca ou o modelo. Você pode pesquisar do jeito que conhece: <b>TM-T20</b>, <b>TMT20</b>, <b>MP4200</b>, <b>Bematech 4200</b> ou <b>HP 2516</b>.</p>
+        <div class="search-panel hero-search" id="catalogo">
+          <label class="search-label" for="printer-search">Pesquisar impressora</label>
+          <div class="search-row"><input id="printer-search" class="search-box" data-search type="search" inputmode="search" autocomplete="off" placeholder="Ex.: Epson TM-T20, MP4200, Elgin i9..." aria-describedby="search-help"><a class="btn dark" href="./impressoras-termicas/">Só térmicas</a></div>
+          <div id="search-help" class="search-help">A busca aceita variações de nome, espaços e hífens.</div>
+          <div class="filters" aria-label="Filtrar catálogo">
+            <button class="filter" data-filter="todos" aria-pressed="true">Todas</button>
+            <button class="filter" data-filter="termica" aria-pressed="false">Térmicas</button>
+            <button class="filter" data-filter="epson" aria-pressed="false">Epson</button>
+            <button class="filter" data-filter="bematech" aria-pressed="false">Bematech</button>
+            <button class="filter" data-filter="elgin" aria-pressed="false">Elgin</button>
+            <button class="filter" data-filter="controlid" aria-pressed="false">Control iD</button>
+            <button class="filter" data-filter="hp" aria-pressed="false">HP</button>
+          </div>
+        </div>
       </div>
       <div class="hero-card" aria-label="Ilustração de impressora térmica">
-        <div><div class="printer-art"><div class="paper"></div><div class="body"></div><div class="slot"></div><div class="led"></div></div><strong>Um catálogo que cresce com novos modelos</strong><br><small>Drivers oficiais • USB • rede • ESC/POS • solução de problemas</small></div>
+        <div><div class="printer-art"><div class="paper"></div><div class="body"></div><div class="slot"></div><div class="led"></div></div><strong>Encontre. Baixe. Instale.</strong><br><small>Sem caça ao driver e sem misturar modelos parecidos.</small></div>
       </div>
     </section>
 
-    <section class="wrap" id="catalogo">
-      <div class="search-panel">
-        <div class="search-row"><input class="search-box" data-search type="search" placeholder="Digite marca ou modelo: TM-T20, Bematech, Elgin..." aria-label="Pesquisar impressora"><a class="btn dark" href="./impressoras-termicas/">Térmicas</a></div>
-        <div class="filters" aria-label="Filtros do catálogo">
-          <button class="filter active" data-filter="todos">Todas</button>
-          <button class="filter" data-filter="termica">Térmicas</button>
-          <button class="filter" data-filter="epson">Epson</button>
-          <button class="filter" data-filter="bematech">Bematech</button>
-          <button class="filter" data-filter="elgin">Elgin</button>
-          <button class="filter" data-filter="controlid">Control iD</button>
-          <button class="filter" data-filter="hp">HP</button>
-        </div>
-      </div>
-
-      <div class="section-head"><div><h2>Catálogo de impressoras</h2><p>Modelos publicados aparecem com acesso ao tutorial. Os demais já estão cadastrados para as próximas etapas do projeto.</p></div></div>
-      <div class="grid" data-catalog-root></div>
-      <div class="empty" data-empty>Nenhuma impressora encontrada. Tente pesquisar por outro nome ou modelo.</div>
+    <section class="wrap catalog-results" aria-label="Resultados da pesquisa">
+      <div data-catalog-root></div>
+      <div class="empty" data-empty hidden>Nenhuma impressora encontrada. Tente pesquisar por outro nome ou modelo.</div>
     </section>
 
     <section class="section"><div class="wrap">
-      <div class="section-head"><div><h2>Começamos pelas impressoras térmicas</h2><p>Além do driver, os tutoriais explicam conexão USB/rede, teste de impressão, autoteste, largura de bobina, guilhotina, gaveta e problemas comuns quando isso se aplica ao modelo.</p></div></div>
+      <div class="section-head"><div><h2>Feito para dois tipos de uso</h2><p>Quem já é técnico chega ao download rapidamente. Quem não sabe instalar continua no passo a passo do mesmo modelo.</p></div></div>
       <div class="two-col">
-        <div class="panel"><h3>Para quem está instalando</h3><p>Passo a passo simples, com indicação de qual software oficial baixar e como conferir se a impressora ficou corretamente instalada no Windows.</p></div>
-        <div class="panel"><h3>Para suporte e automação comercial</h3><p>Informações práticas sobre portas, ESC/POS, spooler, impressão de teste e particularidades que normalmente aparecem em PDVs e sistemas de restaurante.</p></div>
+        <div class="panel"><h3>⚡ Quero só o driver</h3><p>As páginas de modelo destacam primeiro o arquivo oficial, versão, sistema compatível e origem do download.</p></div>
+        <div class="panel"><h3>🧭 Preciso de ajuda</h3><p>Os tutoriais separam USB, rede/IP e outras interfaces quando existirem, além de autoteste e problemas comuns.</p></div>
       </div>
     </section>
 
-    <section class="section" id="sobre"><div class="wrap"><div class="notice"><strong>Fontes:</strong> sempre priorizamos páginas de suporte, drivers e manuais dos próprios fabricantes. Não hospedamos executáveis de driver no site; indicamos a origem oficial e explicamos qual arquivo usar.</div></div></section>
+    <section class="section" id="sobre"><div class="wrap"><div class="notice"><strong>Fontes oficiais:</strong> priorizamos suporte, drivers e manuais dos fabricantes. Os executáveis não são hospedados por este site; os downloads apontam para a origem oficial quando ela disponibiliza um link direto.</div></div></section>
   </main>
 
   <footer class="footer"><div class="wrap footer-grid"><div><strong>Guia de Impressoras</strong><br><small>Tutoriais, drivers oficiais e suporte prático.</small></div><div><a href="./impressoras-termicas/">Impressoras térmicas</a> · <a href="https://github.com/AlekseyMajeski/tutoriais">GitHub</a></div></div></footer>
