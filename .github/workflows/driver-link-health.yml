@@ -1,0 +1,114 @@
+name: Driver link health
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '15 11 * * 1'
+  push:
+    paths:
+      - 'impressoras-termicas/**/index.html'
+      - 'scripts/check-driver-links.mjs'
+      - '.github/workflows/driver-link-health.yml'
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Check driver and support URLs
+        id: links
+        continue-on-error: true
+        run: node scripts/check-driver-links.mjs
+
+      - name: Add report to job summary
+        if: always()
+        run: |
+          if [ -f drivers/health/latest.md ]; then
+            cat drivers/health/latest.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload health report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: driver-link-health
+          path: |
+            drivers/health/latest.json
+            drivers/health/latest.md
+          retention-days: 90
+
+      - name: Open, update or close monitoring issue
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = 'drivers/health/latest.json';
+            if (!fs.existsSync(path)) {
+              core.setFailed('Relatório de saúde não foi gerado.');
+              return;
+            }
+            const report = JSON.parse(fs.readFileSync(path, 'utf8'));
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const title = '[monitor] Links de drivers com falha';
+            const issues = await github.paginate(github.rest.issues.listForRepo, {
+              owner, repo, state: 'open', per_page: 100
+            });
+            const existing = issues.find(i => !i.pull_request && i.title === title);
+
+            if (report.hardFailures.length === 0) {
+              if (existing) {
+                await github.rest.issues.createComment({
+                  owner, repo, issue_number: existing.number,
+                  body: `✅ Verificação de ${report.checkedAt}: nenhuma falha crítica encontrada. Encerrando automaticamente.`
+                });
+                await github.rest.issues.update({ owner, repo, issue_number: existing.number, state: 'closed' });
+              }
+              return;
+            }
+
+            const rows = report.hardFailures.slice(0, 30).map(r => {
+              const used = r.usedBy.map(x => `${x.brand}/${x.model}`).join(', ');
+              return `- **${r.reason}** — ${r.url}\n  - usado em: ${used}`;
+            });
+            const warningNote = report.warnings.length
+              ? `\n\nHá também ${report.warnings.length} aviso(s) de bloqueio/anti-bot ou resposta inesperada no artefato do workflow.`
+              : '';
+            const body = [
+              'O monitor automático encontrou links de driver/suporte que precisam de revisão.',
+              '',
+              `Verificação: ${report.checkedAt}`,
+              `Falhas: ${report.hardFailures.length}`,
+              '',
+              ...rows,
+              warningNote,
+              '',
+              'O relatório completo está no artefato **driver-link-health** do workflow.'
+            ].join('\n');
+
+            if (existing) {
+              await github.rest.issues.update({ owner, repo, issue_number: existing.number, body });
+              await github.rest.issues.createComment({
+                owner, repo, issue_number: existing.number,
+                body: `🔁 Nova verificação automática: ${report.hardFailures.length} falha(s) crítica(s).`
+              });
+            } else {
+              await github.rest.issues.create({ owner, repo, title, body });
+            }
+
+      - name: Fail workflow on broken links
+        if: steps.links.outcome == 'failure'
+        run: exit 1
