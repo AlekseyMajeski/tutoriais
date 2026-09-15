@@ -43,6 +43,7 @@ for (const file of htmlFiles) {
   if (isModel) {
     if (!has(/<meta\s+name=["']robots["']/i, html)) warnings.push(`${r}: tutorial sem meta robots explícito`);
     if (!has(/application\/ld\+json/i, html)) warnings.push(`${r}: tutorial sem JSON-LD`);
+    if (!html.includes('BreadcrumbList')) warnings.push(`${r}: tutorial sem BreadcrumbList no JSON-LD`);
     if (!html.includes('house-ads.js')) errors.push(`${r}: tutorial sem house-ads.js`);
     if (!has(/data-ad-position=["']after-download["']/i, html)) warnings.push(`${r}: sem slot after-download`);
     if (!has(/data-ad-position=["']after-troubleshooting["']/i, html)) warnings.push(`${r}: sem slot after-troubleshooting`);
@@ -103,7 +104,7 @@ for (const file of modelPages) {
   if (!seenUrls.has(url)) errors.push(`${r}: página de modelo fora dos catálogos (${url})`);
 }
 
-console.log(`SEO audit: ${htmlFiles.length} HTMLs, ${catalog.length} itens de catálogo.`);
+console.log(`SEO audit: ${htmlFiles.length} HTMLs, ${catalog.length} itens de catálogo, ${modelPages.length} páginas de modelo.`);
 if (warnings.length) {
   console.log(`\nAVISOS (${warnings.length})`);
   warnings.forEach(x => console.log(`- ${x}`));
