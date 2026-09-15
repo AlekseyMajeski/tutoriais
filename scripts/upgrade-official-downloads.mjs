@@ -52,4 +52,28 @@ changed += replaceAllChecked('impressoras-termicas/tanca/tp-550/index.html', [
   ['<span class="trust-item">✓ Sem link de binário não verificado</span>', '<span class="trust-item">✓ Download direto no domínio Tanca</span>'],
 ]);
 
+const elginRepoBase = 'https://raw.githubusercontent.com/ElginDeveloperCommunity/Impressoras/master/Impressoras%20de%20Etiqueta/Elgin';
+const l42ProFullProduct = 'https://www.elgin.com.br/impressora-termica-eti-elgin-l42pro-full/p';
+const l42ProFullWindows = `${elginRepoBase}/L42PRO%20FULL/Drivers/L42PRO%20FULL_Windows_driver_2022.1.exe`;
+const l42ProFullLinux = `${elginRepoBase}/L42PRO%20FULL/Drivers/L42PRO%20FULL_linux_driver_v1.0.1.zip`;
+const l42ProFullMac = `${elginRepoBase}/L42PRO%20FULL/Drivers/L42PRO%20FULL_mac_driver_v1.0.1.pkg`;
+changed += replaceAllChecked('impressoras-termicas/elgin/l42-pro-full/index.html', [
+  [`<a class="btn primary" rel="noopener" href="${l42ProFullProduct}">Suporte oficial Elgin</a>`, `<a class="btn primary" rel="noopener" href="${l42ProFullWindows}">⬇️ Baixar driver Windows</a>`],
+  ['<strong>Download seguro:</strong> a Elgin oferece Download Center em sua estrutura de suporte, mas este guia não publica um executável direto sem validar um endereço estável específico para a L42 Pro Full. Use o suporte oficial para obter o pacote correspondente ao seu sistema.', '<strong>Downloads verificados:</strong> o repositório técnico oficial ElginDeveloperCommunity possui uma pasta específica da <b>L42PRO FULL</b>, com drivers para Windows, Linux e macOS. Os links abaixo apontam diretamente para esses arquivos.'],
+  [`<a class="btn primary" rel="noopener" href="${l42ProFullProduct}">Abrir página oficial Elgin</a>`, `<div class="buttons"><a class="btn primary" rel="noopener" href="${l42ProFullWindows}">⬇️ Windows 2022.1</a><a class="btn soft" rel="noopener" href="${l42ProFullLinux}">⬇️ Linux 1.0.1</a><a class="btn soft" rel="noopener" href="${l42ProFullMac}">⬇️ macOS 1.0.1</a><a class="btn soft" target="_blank" rel="noopener" href="${l42ProFullProduct}">Página do produto</a></div>`],
+  ['<p>Entre no suporte oficial Elgin e selecione o material da L42 Pro Full para seu sistema.</p>', '<p>Use o driver específico da L42 Pro Full acima: Windows 2022.1, Linux 1.0.1 ou macOS 1.0.1.</p>'],
+  [`<li><a target="_blank" rel="noopener" href="${l42ProFullProduct}">Elgin — página oficial L42 Pro Full</a></li>`, `<li><a target="_blank" rel="noopener" href="${l42ProFullProduct}">Elgin — página oficial L42 Pro Full</a></li><li><a target="_blank" rel="noopener" href="https://github.com/ElginDeveloperCommunity/Impressoras/tree/master/Impressoras%20de%20Etiqueta/Elgin/L42PRO%20FULL/Drivers">ElginDeveloperCommunity — drivers L42PRO FULL</a></li>`],
+]);
+
+const l42DtProduct = 'https://www.elgin.com.br/impressora-de-etiquetas-termica-elgin-direta-l42dt/p';
+const l42DtWindows = `${elginRepoBase}/L42DT/Drivers/Windows_DriverL42DT_7.4.3_M-5.exe`;
+const l42DtLinux = `${elginRepoBase}/L42DT/Drivers/Linux_DriverL42DT_V1.0.0.rar`;
+changed += replaceAllChecked('impressoras-termicas/elgin/l42dt/index.html', [
+  [`<a class="btn primary" target="_blank" rel="noopener" href="${l42DtProduct}">Suporte oficial Elgin</a>`, `<a class="btn primary" rel="noopener" href="${l42DtWindows}">⬇️ Baixar driver Windows</a>`],
+  ['<strong>Download seguro:</strong> a página oficial atual da Elgin oferece acesso ao Download Center, mas nesta verificação não foi possível confirmar um URL estável de binário específico da L42DT. Por isso este guia não inventa nem espelha um executável.', '<strong>Downloads verificados:</strong> a área técnica oficial ElginDeveloperCommunity mantém drivers específicos da <b>L42DT</b> para Windows e Linux. Os botões abaixo apontam diretamente para esses arquivos.'],
+  [`<p><a class="btn primary" target="_blank" rel="noopener" href="${l42DtProduct}">Abrir página oficial da L42DT</a></p>`, `<div class="buttons"><a class="btn primary" rel="noopener" href="${l42DtWindows}">⬇️ Windows 7.4.3 M-5</a><a class="btn soft" rel="noopener" href="${l42DtLinux}">⬇️ Linux 1.0.0</a><a class="btn soft" target="_blank" rel="noopener" href="${l42DtProduct}">Página do produto</a></div>`],
+  ['<p>Acesse a página Elgin acima e siga para o Download Center/manual correspondente ao modelo e ao sistema operacional.</p>', '<p>Baixe acima o pacote específico da L42DT para Windows ou Linux e mantenha a página oficial do produto como referência de suporte.</p>'],
+  [`<li><a target="_blank" rel="noopener" href="${l42DtProduct}">Elgin — L42DT, página oficial do produto e suporte</a></li>`, `<li><a target="_blank" rel="noopener" href="${l42DtProduct}">Elgin — L42DT, página oficial do produto e suporte</a></li><li><a target="_blank" rel="noopener" href="https://github.com/ElginDeveloperCommunity/Impressoras/tree/master/Impressoras%20de%20Etiqueta/Elgin/L42DT/Drivers">ElginDeveloperCommunity — drivers L42DT</a></li>`],
+]);
+
 console.log(`Official download upgrade: ${changed} página(s) alterada(s).`);
