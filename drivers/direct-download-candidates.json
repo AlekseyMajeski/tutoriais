@@ -65,6 +65,42 @@
       "version": "6.12",
       "url": "https://ftp.epson.com/drivers/pos/APD_612_T88VII_WM.exe",
       "evidence": "official-support-filename"
+    },
+    {
+      "id": "epson-tm-m50-windows",
+      "brand": "Epson",
+      "model": "TM-m50",
+      "os": "Windows",
+      "version": "6.10",
+      "url": "https://download3.ebz.epson.net/dsc/f/03/00/17/34/72/b1cc41a4caf05d80d6125bd45b12efaf9e5e7f8d/APD_610_m50_WM.zip",
+      "evidence": "official-setup-navi-download-link"
+    },
+    {
+      "id": "epson-tm-m50ii-windows",
+      "brand": "Epson",
+      "model": "TM-m50II",
+      "os": "Windows",
+      "version": "6.07R2",
+      "url": "https://download3.ebz.epson.net/dsc/f/03/00/15/49/26/c14dade9449c41cd59778c2a7caeb6c6e55f00b4/APD_607R2_m50II_WM_e.zip",
+      "evidence": "official-setup-navi-download-link"
+    },
+    {
+      "id": "epson-tm-t81iii-windows",
+      "brand": "Epson",
+      "model": "TM-T81III",
+      "os": "Windows",
+      "version": "6.04",
+      "url": "https://download3.ebz.epson.net/dsc/f/03/00/15/50/62/e1d1cac3c95db0288cc2a0b8d3bf7e08e57798a1/APD_604_T81III_WM.zip",
+      "evidence": "official-setup-navi-download-link"
+    },
+    {
+      "id": "epson-tm-t82iii-windows",
+      "brand": "Epson",
+      "model": "TM-T82III",
+      "os": "Windows",
+      "version": "6.04",
+      "url": "https://download3.ebz.epson.net/dsc/f/03/00/15/50/72/221873016a4003459505594bf719f6a8284d1ff9/APD_604_T82III_WM_e.zip",
+      "evidence": "official-setup-navi-download-link"
     }
   ]
 }
