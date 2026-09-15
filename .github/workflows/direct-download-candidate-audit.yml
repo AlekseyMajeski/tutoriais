@@ -1,0 +1,44 @@
+name: Direct download candidate audit
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'drivers/direct-download-candidates.json'
+      - 'scripts/probe-direct-download-candidates.mjs'
+      - '.github/workflows/direct-download-candidate-audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Probe official direct downloads
+        run: node scripts/probe-direct-download-candidates.mjs
+
+      - name: Add report to summary
+        if: always()
+        run: |
+          if [ -f drivers/audit/direct-download-candidates.md ]; then
+            cat drivers/audit/direct-download-candidates.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: direct-download-candidate-audit
+          path: |
+            drivers/audit/direct-download-candidates.json
+            drivers/audit/direct-download-candidates.md
+          retention-days: 30
