@@ -1,0 +1,40 @@
+name: Upgrade official download sources
+
+on:
+  push:
+    paths:
+      - '.github/workflows/upgrade-official-downloads.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  upgrade:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Upgrade official sources
+        run: node scripts/upgrade-official-downloads.mjs
+      - name: Audit SEO
+        env:
+          STRICT_SEO: '1'
+        run: node scripts/audit-seo.mjs
+      - name: Commit upgrades
+        run: |
+          if git diff --quiet; then
+            echo 'No changes to commit.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add impressoras-termicas
+          git commit -m 'downloads: troca MP-4200 TH por fonte oficial'
+          git push origin HEAD:main
