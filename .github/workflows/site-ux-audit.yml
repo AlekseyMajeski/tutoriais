@@ -29,6 +29,8 @@ on:
       - 'assets/hub-v3.css'
       - 'assets/support-v3.css'
       - 'assets/hybrid-v3.css'
+      - 'assets/ux-v2.css'
+      - 'assets/model-page.js'
       - 'assets/house-ads.js'
       - 'assets/site.js'
       - 'scripts/audit-site-ux.mjs'
