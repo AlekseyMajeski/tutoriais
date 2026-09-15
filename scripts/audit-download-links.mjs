@@ -11,14 +11,14 @@ const officialHosts = {
   daruma: ['daruma.com.br'],
   dimep: ['dimep.com.br'],
   elgin: ['elgin.com.br'],
-  epson: ['epson.com.br', 'epson.com', 'epson-biz.com'],
+  epson: ['epson.com.br', 'epson.com', 'epson-biz.com', 'epson.net'],
   sweda: ['sweda.com.br'],
   tanca: ['tanca.com.br'],
   waytec: ['waytec.com.br'],
 };
 
 const directFile = /\.(?:exe|msi|zip|7z|rar|dmg|pkg|deb|rpm|run|tar\.gz)(?:[?#].*)?$/i;
-const candidateText = /\b(?:driver|drivers|download|baixar|software|spooler|instalador|installer|utility|utilitário|utilitario|apd|vcom|com virtual)\b/i;
+const candidateText = /\b(?:driver|drivers|download|baixar|software|spooler|instalador|installer|utility|utilitário|utilitario|apd|vcom|com virtual|suporte|support|microsoft)\b/i;
 
 function stripTags(s) {
   return s.replace(/<[^>]*>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
