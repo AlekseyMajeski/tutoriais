@@ -76,4 +76,12 @@ changed += replaceAllChecked('impressoras-termicas/elgin/l42dt/index.html', [
   [`<li><a target="_blank" rel="noopener" href="${l42DtProduct}">Elgin — L42DT, página oficial do produto e suporte</a></li>`, `<li><a target="_blank" rel="noopener" href="${l42DtProduct}">Elgin — L42DT, página oficial do produto e suporte</a></li><li><a target="_blank" rel="noopener" href="https://github.com/ElginDeveloperCommunity/Impressoras/tree/master/Impressoras%20de%20Etiqueta/Elgin/L42DT/Drivers">ElginDeveloperCommunity — drivers L42DT</a></li>`],
 ]);
 
+const m30iiSupport = 'https://epson.com.br/Suporte/Ponto-de-venda/Impressoras-t%C3%A9rmicas/Epson-TM-m30II-Series/s/SPT_C31CJ27022';
+changed += replaceAllChecked('impressoras-termicas/epson/tm-m30ii/index.html', [
+  ['<strong>Drivers por sistema operacional</strong><p>Selecione seu sistema na página oficial da série TM-m30II.</p>', '<strong>Windows: Advanced Printer Driver 6 v6.12</strong><p>A Epson lista o APD 6 v6.12, de 07/05/2026, para a TM-m30II. O pacote informado é <b>APD_612_m30II_WM.exe</b> e inclui Windows 11 entre os sistemas compatíveis.</p>'],
+  [`<a class="btn primary" href="${m30iiSupport}" target="_blank" rel="noopener">Abrir downloads</a>`, `<a class="btn primary" href="${m30iiSupport}" target="_blank" rel="noopener">Abrir APD 6.12 na Epson</a>`],
+  ['<h3>Escolha o driver oficial</h3><p>Selecione o sistema operacional na página Epson.</p>', '<h3>No Windows, procure o APD 6.12</h3><p>Na área oficial da Epson, selecione Windows e procure <b>Advanced Printer Driver 6 v6.12</b> / <b>APD_612_m30II_WM.exe</b>. Não use um endereço de EXE deduzido: deixe a página oficial entregar o arquivo atual.</p>'],
+  ['<span class="trust-item">✓ Technical Reference Guide</span>', '<span class="trust-item">✓ APD 6.12 confirmado em 07/05/2026</span>'],
+]);
+
 console.log(`Official download upgrade: ${changed} página(s) alterada(s).`);
