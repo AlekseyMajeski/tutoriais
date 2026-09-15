@@ -5,6 +5,7 @@ on:
     paths:
       - 'impressoras-termicas/**/index.html'
       - 'scripts/audit-download-links.mjs'
+      - 'scripts/audit-download-ux.mjs'
       - '.github/workflows/download-audit.yml'
   workflow_dispatch:
   workflow_run:
@@ -28,5 +29,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
-      - name: Classify driver links
+      - name: Classify model driver links
         run: node scripts/audit-download-links.mjs
+      - name: Audit download UX across thermal guides
+        run: node scripts/audit-download-ux.mjs
