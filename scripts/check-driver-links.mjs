@@ -84,6 +84,10 @@ async function request(url, method) {
   }
 }
 
+function directLooksHtml(result, item) {
+  return item.direct && /text\/html/i.test(result.contentType || '') && !/[?&]wpdmdl=/i.test(item.url);
+}
+
 function classify(result, direct) {
   if (result.error) return { level: 'WARN', reason: `erro de rede: ${result.error}` };
   const status = result.status;
@@ -104,11 +108,13 @@ async function checkOne(item) {
   try {
     const head = await request(item.url, 'HEAD');
     attempts.push({ method: 'HEAD', ...head });
-    if (head.status >= 200 && head.status < 400 && !(item.direct && /text\/html/i.test(head.contentType || '') && !/[?&]wpdmdl=/i.test(item.url))) {
+    if (head.status >= 200 && head.status < 400 && !directLooksHtml(head, item)) {
       const cls = classify(head, item.direct);
       return { ...item, ...cls, attempts, checkedAt: new Date().toISOString() };
     }
-    if (![401, 403, 405, 429].includes(head.status) && head.status < 500 && head.status !== 404 && head.status !== 410) {
+    // Arquivos de alguns fabricantes (ex.: Tanca) respondem HTML/metadata errada em HEAD.
+    // Para downloads diretos, sempre confirme com GET-range antes de classificar esse caso.
+    if (!item.direct && ![401, 403, 405, 429].includes(head.status) && head.status < 500 && head.status !== 404 && head.status !== 410) {
       const cls = classify(head, item.direct);
       return { ...item, ...cls, attempts, checkedAt: new Date().toISOString() };
     }
