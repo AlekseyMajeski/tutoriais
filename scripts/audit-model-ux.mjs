@@ -58,6 +58,8 @@ for (const file of walk(BASE)) {
   const adSlots = (html.match(/data-ad-position=/gi) || []).length;
   const hasMiddleAd = has(/data-ad-position=["']after-installation["']/i, html);
   const effectiveAds = sharedUx && hasMiddleAd ? Math.max(0, adSlots - 1) : adSlots;
+  const staticFastInstall = has(/class=["'][^"']*install-fast/i, html);
+  const runtimeFastInstall = sharedUx && installAt >= 0 && has(/class=["'][^"']*steps[^"']*["']/i, html.slice(installAt));
 
   const checks = {
     h1: has(/<h1>[^<]+<\/h1>/i, html),
@@ -70,7 +72,7 @@ for (const file of walk(BASE)) {
     problemsSection: problemsAt >= 0,
     mobileActions: has(/class=["'][^"']*mobile-actions/i, html) || (sharedUx && downloadAt >= 0 && problemsAt >= 0),
     mobilePrimary: has(/class=["'][^"']*primary-mobile/i, html) || (sharedUx && downloadAt >= 0),
-    fastInstall: has(/class=["'][^"']*install-fast/i, html),
+    fastInstall: staticFastInstall || runtimeFastInstall,
     downloadBeforeInstall: downloadAt >= 0 && installAt >= 0 && downloadAt < installAt,
     installBeforeProblems: installAt >= 0 && problemsAt >= 0 && installAt < problemsAt,
     networkAfterInstall: networkAt < 0 || (installAt >= 0 && installAt < networkAt),
@@ -81,7 +83,7 @@ for (const file of walk(BASE)) {
   const critical = ['hero', 'heroPrimaryCta', 'downloadSection', 'installationSection', 'problemsSection', 'mobileActions', 'downloadBeforeInstall', 'installBeforeProblems', 'sharedUxLoader'];
   const issues = critical.filter(k => !checks[k]);
   const enhancements = ['trust', 'connectionNav', 'mobilePrimary', 'fastInstall', 'adDensity'].filter(k => !checks[k]);
-  const normalizedAtRuntime = sharedUx && (!staticHeroPrimary || staticDownloadAt < 0 || (staticInstallAt < 0 && staticConfigAt < 0) || !has(/class=["'][^"']*mobile-actions/i, html) || !has(/class=["'][^"']*connection-nav/i, html) || !has(/class=["'][^"']*model-trust/i, html) || hasMiddleAd);
+  const normalizedAtRuntime = sharedUx && (!staticHeroPrimary || staticDownloadAt < 0 || (staticInstallAt < 0 && staticConfigAt < 0) || !has(/class=["'][^"']*mobile-actions/i, html) || !has(/class=["'][^"']*connection-nav/i, html) || !has(/class=["'][^"']*model-trust/i, html) || !staticFastInstall || hasMiddleAd);
   pages.push({ path: rel, checks, issues, enhancements, normalizedAtRuntime, adSlots, effectiveAds });
 }
 
