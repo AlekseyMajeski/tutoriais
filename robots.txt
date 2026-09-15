@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap.xml
+Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap-guides.xml
