@@ -119,6 +119,23 @@
     "afiliados":{"mercadoLivre":null}
   },
   {
+    "id":"elgin-i8",
+    "marca":"Elgin",
+    "marcaSlug":"elgin",
+    "modelo":"i8",
+    "aliases":["Elgin I8","I 8","i8 Elgin","Elgin i8 Full"],
+    "categoria":"termica",
+    "categoriaLabel":"Térmica",
+    "papel":["80 mm"],
+    "interfaces":["USB","Ethernet","Serial"],
+    "sistemas":["Windows","Linux","macOS a validar"],
+    "status":"publicado",
+    "url":"/tutoriais/impressoras-termicas/elgin/i8/",
+    "descricao":"Drivers oficiais diretos para Windows e Linux, USB, Ethernet/IP, Serial, ESC/POS e solução de problemas.",
+    "ultimaVerificacao":"2026-09-14",
+    "afiliados":{"mercadoLivre":null}
+  },
+  {
     "id":"elgin-i9",
     "marca":"Elgin",
     "marcaSlug":"elgin",
