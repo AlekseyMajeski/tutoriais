@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-15",
+  "policy": "Candidatos so podem virar CTA publico apos responderem como arquivo binario no dominio oficial do fabricante.",
+  "candidates": [
+    {
+      "id": "epson-tm-m30-windows",
+      "brand": "Epson",
+      "model": "TM-m30",
+      "os": "Windows",
+      "version": "5.13",
+      "url": "https://ftp.epson.com/drivers/pos/APD_513_m30_EWM.zip",
+      "evidence": "official-support-filename"
+    },
+    {
+      "id": "epson-tm-m30ii-windows",
+      "brand": "Epson",
+      "model": "TM-m30II",
+      "os": "Windows",
+      "version": "6.12",
+      "url": "https://ftp.epson.com/drivers/pos/APD_612_m30II_WM.exe",
+      "evidence": "official-support-filename"
+    },
+    {
+      "id": "epson-tm-p20ii-windows",
+      "brand": "Epson",
+      "model": "TM-P20II",
+      "os": "Windows",
+      "version": "6.12",
+      "url": "https://ftp.epson.com/drivers/pos/APD_612_P20II_WM.exe",
+      "evidence": "official-support-filename"
+    },
+    {
+      "id": "epson-tm-p60ii-windows",
+      "brand": "Epson",
+      "model": "TM-P60II",
+      "os": "Windows",
+      "version": "5.13R1",
+      "url": "https://ftp.epson.com/drivers/pos/APD_513R1_P60II_EWM_e.exe",
+      "evidence": "official-download-link"
+    },
+    {
+      "id": "epson-tm-p80ii-windows",
+      "brand": "Epson",
+      "model": "TM-P80II",
+      "os": "Windows",
+      "version": "6.12",
+      "url": "https://ftp.epson.com/drivers/pos/APD_612_P80II_WM.exe",
+      "evidence": "official-support-filename"
+    },
+    {
+      "id": "epson-tm-t88v-windows",
+      "brand": "Epson",
+      "model": "TM-T88V",
+      "os": "Windows",
+      "version": "5.13",
+      "url": "https://ftp.epson.com/drivers/pos/APD_513_T88V_EWM.zip",
+      "evidence": "official-download-link"
+    },
+    {
+      "id": "epson-tm-t88vii-windows",
+      "brand": "Epson",
+      "model": "TM-T88VII",
+      "os": "Windows",
+      "version": "6.12",
+      "url": "https://ftp.epson.com/drivers/pos/APD_612_T88VII_WM.exe",
+      "evidence": "official-support-filename"
+    }
+  ]
+}
