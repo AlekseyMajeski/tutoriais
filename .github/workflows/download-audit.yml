@@ -7,12 +7,18 @@ on:
       - 'scripts/audit-download-links.mjs'
       - '.github/workflows/download-audit.yml'
   workflow_dispatch:
+  workflow_run:
+    workflows:
+      - 'Upgrade official download sources'
+    types:
+      - completed
 
 permissions:
   contents: read
 
 jobs:
   audit:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
