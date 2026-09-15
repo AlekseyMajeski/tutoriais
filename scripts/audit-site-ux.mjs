@@ -27,6 +27,7 @@ for(const brand of ['epson','bematech','elgin','tanca','sweda']){
   add(`hub:${brand}`,'CSS compartilhado',/assets\/hub-v3\.css/.test(html));
   add(`hub:${brand}`,'busca local',/assets\/hub-page\.js/.test(html));
   add(`hub:${brand}`,'seção modelos',/id="modelos"/.test(html));
+  add(`hub:${brand}`,'no máximo 1 publicidade no hub',(html.match(/data-ad-position=/g)||[]).length<=1);
 }
 
 const support=['nao-imprime','offline','usb-nao-reconhece','imprime-em-branco','impressao-fraca','nao-corta-papel','descobrir-ip','configurar-rede','driver-windows-11','58mm-vs-80mm'];
@@ -37,15 +38,35 @@ for(const slug of support){
   add(`support:${slug}`,'loader compartilhado',/assets\/house-ads\.js/.test(html));
   add(`support:${slug}`,'hero',/guide-hero/.test(html));
   add(`support:${slug}`,'conteúdo principal',/<main[\s>]/.test(html));
+  add(`support:${slug}`,'no máximo 1 publicidade',(html.match(/data-ad-position=/g)||[]).length<=1);
 }
 
 for(const slug of ['genericas','pos-58','pos-80','xprinter-driver']){
   const p=`impressoras-termicas/${slug}/index.html`,html=read(p);
   add(`hybrid:${slug}`,'loader compartilhado',/assets\/house-ads\.js/.test(html));
   add(`hybrid:${slug}`,'hero',/guide-hero/.test(html));
+  add(`hybrid:${slug}`,'publicidade contida',(html.match(/data-ad-position=/g)||[]).length<=2);
 }
 
-for(const asset of ['assets/home-v3.css','assets/hub-v3.css','assets/support-v3.css','assets/hybrid-v3.css','assets/model-page.js']) add('assets',asset,exists(asset));
+for(const asset of ['assets/home-v3.css','assets/hub-v3.css','assets/support-v3.css','assets/hybrid-v3.css','assets/model-page.js','assets/ux-v2.css']) add('assets',asset,exists(asset));
+
+const homeCss=read('assets/home-v3.css');
+const hubCss=read('assets/hub-v3.css');
+const supportCss=read('assets/support-v3.css');
+const hybridCss=read('assets/hybrid-v3.css');
+const uxCss=read('assets/ux-v2.css');
+add('responsive','home tablet',/@media\(max-width:900px\)/.test(homeCss));
+add('responsive','home mobile',/@media\(max-width:620px\)/.test(homeCss));
+add('responsive','hubs tablet',/@media\(max-width:900px\)/.test(hubCss));
+add('responsive','hubs mobile',/@media\(max-width:620px\)/.test(hubCss));
+add('responsive','suporte desktop amplo',/@media\(min-width:1200px\)/.test(supportCss));
+add('responsive','suporte mobile',/@media\(max-width:620px\)/.test(supportCss));
+add('responsive','híbridas tablet',/@media\(max-width:900px\)/.test(hybridCss));
+add('responsive','híbridas mobile',/@media\(max-width:700px\)/.test(hybridCss));
+add('responsive','modelos desktop amplo',/@media\(min-width:1440px\)[\s\S]*?\.model-page/.test(uxCss));
+add('responsive','modelos mobile',/@media\(max-width:700px\)[\s\S]*?\.model-page/.test(uxCss));
+add('publicidade','layout desktop dedicado',/@media\(min-width:1000px\)[\s\S]*?\.house-ad--visual/.test(uxCss));
+add('publicidade','limite de largura em monitor grande',/@media\(min-width:1440px\)\{\.house-ad\{max-width:1040px/.test(uxCss));
 
 const failed=checks.filter(c=>!c.ok);
 const byPage=new Map();
