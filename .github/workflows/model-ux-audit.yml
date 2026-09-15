@@ -1,0 +1,48 @@
+name: Model UX audit
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'impressoras-termicas/**/index.html'
+      - 'assets/styles.css'
+      - 'assets/ux-v2.css'
+      - 'assets/epson-os.css'
+      - 'scripts/audit-model-ux.mjs'
+      - '.github/workflows/model-ux-audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Audit model UX
+        id: audit
+        continue-on-error: true
+        run: node scripts/audit-model-ux.mjs
+      - name: Add report to summary
+        if: always()
+        run: |
+          if [ -f artifacts/model-ux-audit.md ]; then
+            cat artifacts/model-ux-audit.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-ux-audit
+          path: |
+            artifacts/model-ux-audit.json
+            artifacts/model-ux-audit.md
+          retention-days: 30
+      - name: Fail on critical UX gaps
+        if: steps.audit.outcome == 'failure'
+        run: exit 1
