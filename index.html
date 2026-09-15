@@ -12,60 +12,82 @@
   <link rel="stylesheet" href="./assets/ux-v2.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://alekseymajeski.github.io/tutoriais/#website","name":"Guia de Impressoras","url":"https://alekseymajeski.github.io/tutoriais/","inLanguage":"pt-BR","publisher":{"@id":"https://alekseymajeski.github.io/tutoriais/#publisher"},"potentialAction":{"@type":"SearchAction","target":"https://alekseymajeski.github.io/tutoriais/?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"Organization","@id":"https://alekseymajeski.github.io/tutoriais/#publisher","name":"Facity Sistemas","url":"https://www.facity.com.br/"}]}</script>
 </head>
-<body data-catalog="./data/impressoras.json" data-category="todos">
+<body class="home-page" data-catalog="./data/impressoras.json" data-category="todos">
   <a class="skip-link" href="#catalogo">Pular para a pesquisa</a>
-  <header class="topbar"><div class="wrap"><a class="brand" href="./">Guia de Impressoras</a><nav class="nav" aria-label="Navegação principal"><a href="./impressoras-termicas/">Impressoras térmicas</a><a href="#catalogo">Pesquisar</a><a href="./sobre/">Sobre</a></nav></div></header>
+  <header class="topbar home-topbar"><div class="wrap"><a class="brand" href="./">Guia de Impressoras</a><nav class="nav" aria-label="Navegação principal"><a href="./impressoras-termicas/">Impressoras térmicas</a><a href="#marcas">Marcas</a><a href="./sobre/">Sobre</a></nav></div></header>
 
   <main>
-    <section class="hero home-hero"><div class="wrap hero-grid">
-      <div>
-        <span class="eyebrow">🖨️ Drivers oficiais + tutoriais práticos</span>
-        <h1>Qual é a sua impressora?</h1>
-        <p class="lead">Digite a marca ou o modelo e encontre o driver, instalação e solução de problemas. Quando disponível, escolha também <b>Windows</b>, <b>macOS</b> ou <b>Linux</b>.</p>
-        <div class="search-panel hero-search" id="catalogo">
-          <label class="search-label" for="printer-search">Pesquisar impressora</label>
-          <div class="search-row"><input id="printer-search" class="search-box" data-search type="search" inputmode="search" autocomplete="off" placeholder="Ex.: Epson TM-T20, Bematech MP-4200, Elgin i9..." aria-describedby="search-help"><a class="btn dark" href="./impressoras-termicas/">Só térmicas</a></div>
-          <div id="search-help" class="search-help">A busca aceita variações de nome, espaços, hífens e sistema operacional.</div>
-          <div class="filters" aria-label="Filtrar catálogo">
-            <button class="filter" data-filter="todos" aria-pressed="true">Todas</button>
+    <section class="home-search-hero">
+      <div class="wrap home-search-wrap">
+        <div class="home-intro">
+          <span class="eyebrow">Drivers oficiais • instalação passo a passo</span>
+          <h1>Encontre o driver da sua impressora</h1>
+          <p class="lead">Digite a <b>marca ou o modelo</b>. Nós mostramos o download correto, como instalar e como configurar USB, rede/IP ou Serial quando existir.</p>
+        </div>
+
+        <div class="search-panel hero-search home-search-panel" id="catalogo">
+          <label class="search-label" for="printer-search">Qual impressora você tem?</label>
+          <div class="home-search-field">
+            <span class="home-search-icon" aria-hidden="true">⌕</span>
+            <input id="printer-search" class="search-box" data-search type="search" inputmode="search" autocomplete="off" placeholder="Ex.: Epson TM-T20, Bematech MP-4200, Elgin i9..." aria-describedby="search-help">
+          </div>
+          <div id="search-help" class="search-help">Você pode pesquisar com ou sem hífen: <b>TM-T20</b>, <b>TMT20</b>, <b>MP4200</b>, <b>i9</b>…</div>
+          <div class="filters home-filters" aria-label="Filtrar catálogo">
+            <button class="filter" data-filter="todos" aria-pressed="true">Todos</button>
             <button class="filter" data-filter="termica" aria-pressed="false">Térmicas</button>
             <button class="filter" data-filter="epson" aria-pressed="false">Epson</button>
             <button class="filter" data-filter="bematech" aria-pressed="false">Bematech</button>
             <button class="filter" data-filter="elgin" aria-pressed="false">Elgin</button>
-            <button class="filter" data-filter="controlid" aria-pressed="false">Control iD</button>
-            <button class="filter" data-filter="hp" aria-pressed="false">HP</button>
-            <button class="filter" data-filter="windows" aria-pressed="false">🪟 Windows</button>
-            <button class="filter" data-filter="macos" aria-pressed="false">🍎 macOS</button>
-            <button class="filter" data-filter="linux" aria-pressed="false">🐧 Linux</button>
+            <button class="filter" data-filter="windows" aria-pressed="false">Windows</button>
           </div>
         </div>
-      </div>
-      <div class="hero-card" aria-label="Ilustração de impressora térmica">
-        <div><div class="printer-art"><div class="paper"></div><div class="body"></div><div class="slot"></div><div class="led"></div></div><strong>Encontre. Escolha o sistema. Instale.</strong><br><small>Sem misturar modelos ou baixar o driver da plataforma errada.</small></div>
+
+        <div class="home-confidence" aria-label="Como o Guia funciona">
+          <span>✓ Links oficiais priorizados</span>
+          <span>✓ Modelo e sistema separados</span>
+          <span>✓ Tutorial depois do download</span>
+        </div>
       </div>
     </section>
 
-    <section class="section"><div class="wrap"><div class="section-head"><div><span class="eyebrow">Acesso rápido</span><h2>Drivers de impressoras mais procurados</h2><p>Atalhos para famílias muito usadas em automação comercial no Brasil.</p></div></div><div class="grid">
-      <article class="panel"><h3><a href="./impressoras-termicas/bematech/mp-4200-th/">Bematech MP-4200 TH</a></h3><p>Driver, USB/COM, rede/IP, autoteste e diagnóstico.</p></article>
-      <article class="panel"><h3><a href="./impressoras-termicas/epson/tm-t20/">Epson TM-T20</a></h3><p>Windows, macOS/Linux legado, USB, rede e instalação.</p></article>
-      <article class="panel"><h3><a href="./impressoras-termicas/epson/tm-t20x/">Epson TM-T20X</a></h3><p>Versões USB/Serial e Ethernet, IP e driver oficial.</p></article>
-      <article class="panel"><h3><a href="./impressoras-termicas/epson/tm-t20ii/">Epson TM-T20II</a></h3><p>APD, instalação e diferenças de interface.</p></article>
-      <article class="panel"><h3><a href="./impressoras-termicas/epson/tm-t20iii/">Epson TM-T20III</a></h3><p>Drivers atuais, USB, Ethernet e solução de problemas.</p></article>
-      <article class="panel"><h3><a href="./impressoras-termicas/elgin/i9/">Elgin i9</a></h3><p>Windows/Linux, USB, Ethernet, Serial e Utility.</p></article>
+    <section class="wrap catalog-results home-live-results" aria-label="Resultados da pesquisa" hidden>
+      <div class="home-results-head"><span class="eyebrow">Resultados</span><strong data-search-summary>Encontre seu modelo</strong></div>
+      <div data-catalog-root></div>
+      <div class="empty" data-empty hidden>Nenhuma impressora encontrada. Confira o nome na etiqueta do equipamento ou tente apenas parte do modelo.</div>
+    </section>
+
+    <section class="section home-brands" id="marcas"><div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">Navegar por fabricante</span><h2>Escolha a marca</h2><p>Se você já sabe o fabricante, abra a lista de modelos e encontre o tutorial correto.</p></div></div>
+      <div class="brand-grid">
+        <a class="brand-card" href="./impressoras-termicas/epson/"><strong>Epson</strong><span>TM-T20, TM-T20X, TM-T88, Mobilink e outras</span><b>Ver modelos →</b></a>
+        <a class="brand-card" href="./impressoras-termicas/bematech/"><strong>Bematech</strong><span>MP-4200 TH, HS, ADV e outras</span><b>Ver modelos →</b></a>
+        <a class="brand-card" href="./impressoras-termicas/elgin/"><strong>Elgin</strong><span>i9, i8, i7 Plus, L42 e outras</span><b>Ver modelos →</b></a>
+        <a class="brand-card" href="./impressoras-termicas/tanca/"><strong>Tanca</strong><span>TP-550, TP-620+, TP-650 e outras</span><b>Ver modelos →</b></a>
+        <a class="brand-card" href="./impressoras-termicas/sweda/"><strong>Sweda</strong><span>SI-150, SI-250, SI-600 e outras</span><b>Ver modelos →</b></a>
+        <a class="brand-card" href="./impressoras-termicas/"><strong>Outras marcas</strong><span>XPrinter, Daruma, DIMEP, Waytec, Control iD…</span><b>Ver catálogo →</b></a>
+      </div>
+    </section>
+
+    <section class="section home-popular"><div class="wrap"><div class="section-head"><div><span class="eyebrow">Acesso rápido</span><h2>Modelos mais procurados</h2><p>Drivers e tutoriais de impressoras muito usadas em automação comercial.</p></div></div><div class="popular-grid">
+      <a class="popular-card" href="./impressoras-termicas/bematech/mp-4200-th/"><span>Bematech</span><strong>MP-4200 TH</strong><small>Driver • USB/COM • Rede/IP</small></a>
+      <a class="popular-card" href="./impressoras-termicas/epson/tm-t20/"><span>Epson</span><strong>TM-T20</strong><small>Windows • USB • Rede</small></a>
+      <a class="popular-card" href="./impressoras-termicas/epson/tm-t20x/"><span>Epson</span><strong>TM-T20X</strong><small>Driver • USB/Serial • Ethernet</small></a>
+      <a class="popular-card" href="./impressoras-termicas/epson/tm-t20ii/"><span>Epson</span><strong>TM-T20II</strong><small>APD • instalação • interfaces</small></a>
+      <a class="popular-card" href="./impressoras-termicas/elgin/i9/"><span>Elgin</span><strong>i9 / i9 Full</strong><small>Windows • USB • Ethernet • Serial</small></a>
+      <a class="popular-card" href="./impressoras-termicas/pos-80/"><span>Genérica / XPrinter</span><strong>POS-80</strong><small>Identificação • driver 80 mm</small></a>
     </div></div></section>
 
-    <section class="wrap catalog-results" aria-label="Resultados da pesquisa">
-      <div data-catalog-root></div>
-      <div class="empty" data-empty hidden>Nenhuma impressora encontrada. Tente pesquisar por outro nome ou modelo.</div>
-    </section>
-
-    <section class="section"><div class="wrap">
-      <div class="section-head"><div><h2>Feito para dois tipos de uso</h2><p>Quem já é técnico chega ao download rapidamente. Quem não sabe instalar continua no passo a passo do mesmo modelo e sistema.</p></div></div>
-      <div class="two-col">
-        <div class="panel"><h3>⚡ Quero só o driver</h3><p>As páginas destacam arquivo oficial, versão, sistema compatível e origem do download.</p></div>
-        <div class="panel"><h3>🧭 Preciso de ajuda</h3><p>Os tutoriais separam sistema operacional e depois USB, rede/IP e outras interfaces quando existirem.</p></div>
+    <section class="section home-help"><div class="wrap">
+      <div class="section-head"><div><span class="eyebrow">Não é só download</span><h2>Resolva o problema sem instalar driver errado</h2><p>Se você já instalou e ainda não imprime, comece pelo sintoma.</p></div></div>
+      <div class="help-grid">
+        <a href="./impressoras-termicas/nao-imprime/"><strong>Não imprime</strong><span>Diagnóstico geral →</span></a>
+        <a href="./impressoras-termicas/offline/"><strong>Fica offline</strong><span>Fila, USB ou IP →</span></a>
+        <a href="./impressoras-termicas/usb-nao-reconhece/"><strong>USB não reconhece</strong><span>Cabo, porta e Windows →</span></a>
+        <a href="./impressoras-termicas/descobrir-ip/"><strong>Preciso descobrir o IP</strong><span>Rede Ethernet →</span></a>
       </div>
     </section>
+
+    <section class="section home-method"><div class="wrap"><div class="home-method-card"><div><span class="eyebrow">Critério técnico</span><h2>Download primeiro. Tutorial logo depois.</h2><p>Quando existe arquivo oficial direto, o botão inicia o download sem mandar você procurar em outra página. Quando o fabricante exige uma etapa de licença ou seleção, mostramos isso claramente.</p></div><div class="method-points"><span><b>1</b> Confirme o modelo</span><span><b>2</b> Baixe o driver</span><span><b>3</b> Instale e teste</span></div></div></div></section>
 
     <section class="section" id="sobre"><div class="wrap"><div class="notice"><strong>Conteúdo técnico com fontes verificadas:</strong> priorizamos suporte, drivers e manuais dos fabricantes. O projeto é mantido pela <a href="https://www.facity.com.br/" target="_blank" rel="noopener">Facity Sistemas</a> e mantém publicidade separada dos links de driver. <a href="./politica-editorial/">Veja nossa política editorial</a>.</div></div></section>
   </main>
