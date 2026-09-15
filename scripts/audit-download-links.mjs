@@ -18,7 +18,7 @@ const officialHosts = {
 };
 
 const directFile = /\.(?:exe|msi|zip|7z|rar|dmg|pkg|deb|rpm|run|tar\.gz)(?:[?#].*)?$/i;
-const candidateText = /\b(?:driver|drivers|download|baixar|software|spooler|instalador|installer|utility|utilitário|utilitario|apd|vcom|com virtual|suporte|support|microsoft)\b/i;
+const candidateText = /\b(?:driver|drivers|download|baixar|software|spooler|instalador|installer|utility|utilitário|utilitario|apd|vcom|com virtual|suporte|support|microsoft|elgindevelopercommunity)\b/i;
 
 function stripTags(s) {
   return s.replace(/<[^>]*>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
@@ -43,10 +43,24 @@ function isOfficial(brand, host) {
   return (officialHosts[brand] || []).some(domain => host === domain || host.endsWith(`.${domain}`));
 }
 
+function isElginDeveloperSource(brand, href) {
+  if (!['elgin', 'bematech'].includes(brand)) return false;
+  try {
+    const url = new URL(href);
+    const host = url.hostname.toLowerCase();
+    const path = decodeURIComponent(url.pathname).toLowerCase();
+    return (host === 'raw.githubusercontent.com' || host === 'github.com') && path.startsWith('/elgindevelopercommunity/');
+  } catch {
+    return false;
+  }
+}
+
 function classify(brand, href) {
   const host = hostOf(href);
   const direct = directFile.test(href);
   if (host === 'catalog.update.microsoft.com' || host.endsWith('.catalog.update.microsoft.com')) return 'trusted-distribution';
+  if (isElginDeveloperSource(brand, href) && direct) return 'official-direct';
+  if (isElginDeveloperSource(brand, href)) return 'official-page';
   if (isOfficial(brand, host) && direct) return 'official-direct';
   if (isOfficial(brand, host)) return 'official-page';
   if (direct) return 'third-party-direct';
