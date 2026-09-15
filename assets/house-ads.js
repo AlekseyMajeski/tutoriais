@@ -51,12 +51,29 @@
     const sources=['data/impressoras.json','data/impressoras-extra.json','data/impressoras-extra2.json'];
     Promise.all(sources.map(file=>fetch(root+file).then(r=>r.ok?r.json():[]).catch(()=>[]))).then(parts=>{
       const items=[...new Map(parts.flat().map(p=>[p.id,p])).values()];
-      const currentPath=location.pathname.replace(/\/+$/,'/') ;
+      const currentPath=location.pathname.replace(/\/+$/,'/');
       const current=items.find(p=>{
         const candidate=siteUrl(p.url).replace(/\/+$/,'/');
         return candidate===currentPath;
       });
       if(!current)return;
+
+      const pageFooter=document.querySelector('.footer');
+      const issueLinks=[
+        ['offline/','Impressora offline','Fila, USB, COM e IP'],
+        ['usb-nao-reconhece/','USB não reconhece','Cabo, porta e Gerenciador de Dispositivos'],
+        ['imprime-em-branco/','Imprime em branco','Bobina, lado térmico e cabeça'],
+        ['impressao-fraca/','Impressão fraca','Papel, limpeza e densidade'],
+        ['nao-corta-papel/','Não corta o papel','Guilhotina, driver e ESC/POS'],
+        ['configurar-rede/','Configurar em rede','Ethernet, IP e Windows']
+      ];
+      if(pageFooter&&!document.querySelector('.problem-guides')){
+        const problems=document.createElement('section');
+        problems.className='section problem-guides';
+        problems.innerHTML=`<div class="wrap"><div class="section-head"><div><span class="eyebrow">Diagnóstico rápido</span><h2>Problemas comuns de impressoras térmicas</h2><p>Antes de trocar driver ou equipamento, identifique se a falha está no papel, USB, rede, Windows ou no mecanismo.</p></div></div><div class="grid">${issueLinks.map(([path,title,text])=>`<article class="panel"><h3><a href="${root}impressoras-termicas/${path}">${title}</a></h3><p>${text}.</p></article>`).join('')}</div></div>`;
+        pageFooter.before(problems);
+      }
+
       const preferred=['bematech-mp-4200-th','epson-tm-t20','epson-tm-t20x','epson-tm-t20x-ii','epson-tm-t20ii','epson-tm-t20iii','bematech-mp-4200-hs','elgin-i9','elgin-i8','elgin-i7-plus'];
       const score=p=>{
         const i=preferred.indexOf(p.id);
@@ -70,8 +87,9 @@
       if(!related.length)return;
       const section=document.createElement('section');
       section.className='section related-guides';
-      section.innerHTML=`<div class="wrap"><div class="section-head"><div><span class="eyebrow">Continue no Guia</span><h2>Outros drivers e tutoriais relacionados</h2><p>Veja modelos da mesma marca e impressoras populares de automação comercial.</p></div></div><div class="grid">${related.map(p=>`<article class="panel related-guide-card"><span class="kicker">${p.marca}</span><h3><a href="${siteUrl(p.url)}">${p.modelo}</a></h3><p>${p.descricao||'Driver, instalação e solução de problemas.'}</p></article>`).join('')}</div></div>`;
-      const pageFooter=document.querySelector('.footer');
+      const hubBrands=['epson','bematech','elgin','sweda','tanca'];
+      const brandHub=hubBrands.includes(current.marcaSlug)?`<p><a href="${root}impressoras-termicas/${current.marcaSlug}/">Ver todos os drivers e tutoriais ${current.marca} →</a></p>`:'';
+      section.innerHTML=`<div class="wrap"><div class="section-head"><div><span class="eyebrow">Continue no Guia</span><h2>Outros drivers e tutoriais relacionados</h2><p>Veja modelos da mesma marca e impressoras populares de automação comercial.</p>${brandHub}</div></div><div class="grid">${related.map(p=>`<article class="panel related-guide-card"><span class="kicker">${p.marca}</span><h3><a href="${siteUrl(p.url)}">${p.modelo}</a></h3><p>${p.descricao||'Driver, instalação e solução de problemas.'}</p></article>`).join('')}</div></div>`;
       if(pageFooter&&!document.querySelector('.related-guides'))pageFooter.before(section);
     });
   }
