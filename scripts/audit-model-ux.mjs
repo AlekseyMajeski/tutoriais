@@ -26,6 +26,10 @@ for (const file of walk(BASE)) {
   if (!/body[^>]+class=["'][^"']*model-page/i.test(html)) continue;
 
   const rel = path.relative(ROOT, file).replaceAll(path.sep, '/');
+  // Modelo real segue impressoras-termicas/<fabricante-ou-familia>/<modelo>/index.html.
+  // Guias genéricos de um nível (ex.: descobrir-ip) têm outro objetivo e não entram neste gate.
+  if (rel.split('/').length < 4) continue;
+
   const downloadAt = index(/id=["']download["']/i, html);
   const installAt = index(/id=["']instalacao["']/i, html);
   const problemsAt = index(/id=["']problemas["']/i, html);
