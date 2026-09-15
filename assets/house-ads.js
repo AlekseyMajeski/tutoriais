@@ -3,9 +3,9 @@
   const root=onGithub?'/tutoriais/':'/';
   const siteUrl=path=>onGithub?path:path.replace(/^\/tutoriais\//,'/');
 
+  const currentSlug=location.pathname.match(/\/impressoras-termicas\/([^/]+)\/?$/)?.[1]||'';
   const supportSlugs=['nao-imprime','offline','usb-nao-reconhece','imprime-em-branco','impressao-fraca','nao-corta-papel','descobrir-ip','configurar-rede','driver-windows-11','58mm-vs-80mm'];
-  const supportMatch=location.pathname.match(/\/impressoras-termicas\/([^/]+)\/?$/);
-  const supportPage=Boolean(supportMatch&&supportSlugs.includes(supportMatch[1]));
+  const supportPage=supportSlugs.includes(currentSlug);
   if(supportPage){
     document.body.classList.add('support-page');
     if(!document.querySelector('link[data-support-v3]')){
@@ -14,6 +14,51 @@
       css.href=root+'assets/support-v3.css';
       css.dataset.supportV3='1';
       document.head.appendChild(css);
+    }
+  }
+
+  const hybridSlugs=['genericas','pos-58','pos-80','xprinter-driver'];
+  const hybridPage=hybridSlugs.includes(currentSlug);
+  if(hybridPage){
+    document.body.classList.add('hybrid-page');
+    if(!document.querySelector('link[data-hybrid-v3]')){
+      const css=document.createElement('link');
+      css.rel='stylesheet';
+      css.href=root+'assets/hybrid-v3.css';
+      css.dataset.hybridV3='1';
+      document.head.appendChild(css);
+    }
+
+    const heroMain=document.querySelector('.guide-hero .guide-grid > div:first-child');
+    const config={
+      'genericas':{primary:'#identificar',primaryLabel:'Identificar minha impressora',secondary:'#guias',secondaryLabel:'Ver POS-58 / POS-80',route:['Etiqueta','Autoteste','VID/PID','Driver correto']},
+      'pos-58':{primary:'#instalar',primaryLabel:'Começar identificação',secondary:'../xprinter-driver/',secondaryLabel:'Se for XPrinter',route:['Identificar','Confirmar fabricante','Baixar','Testar']},
+      'pos-80':{primary:'#instalar',primaryLabel:'Começar identificação',secondary:'../xprinter-driver/',secondaryLabel:'Se for XPrinter',route:['Identificar','Conferir interface','Baixar','Testar']},
+      'xprinter-driver':{primary:'#downloads',primaryLabel:'Ver drivers oficiais',secondary:'#identificar',secondaryLabel:'Confirmar meu modelo',route:['Modelo exato','58 ou 80 mm','Download oficial','Teste']}
+    }[currentSlug];
+    if(heroMain&&config&&!heroMain.querySelector('.hybrid-hero-actions')){
+      const actions=document.createElement('div');
+      actions.className='hybrid-hero-actions';
+      actions.innerHTML=`<a class="btn primary" href="${config.primary}">${config.primaryLabel}</a><a class="btn soft" href="${config.secondary}">${config.secondaryLabel}</a>`;
+      const route=document.createElement('div');
+      route.className='hybrid-route';
+      route.setAttribute('aria-label','Fluxo recomendado');
+      route.innerHTML=config.route.map((label,i)=>`<span>${i+1}. ${label}</span>`).join('');
+      const notice=heroMain.querySelector('.notice');
+      if(notice){notice.after(route);route.before(actions)}else heroMain.append(actions,route);
+    }
+
+    const sections=[...document.querySelectorAll('main section.section')];
+    const downloadSection=currentSlug==='xprinter-driver'?document.getElementById('downloads'):sections.find(s=>/Xprinter POS-(?:58|80)|Xprinter.*(?:58|80) mm/i.test(s.querySelector('h2')?.textContent||''));
+    if(downloadSection)downloadSection.classList.add('hybrid-download-section');
+
+    if(!document.querySelector('.hybrid-mobile-actions')&&config){
+      const mobile=document.createElement('nav');
+      mobile.className='hybrid-mobile-actions';
+      mobile.setAttribute('aria-label','Ações rápidas');
+      mobile.innerHTML=`<a href="${config.primary}">${config.primaryLabel}</a><a href="${currentSlug==='xprinter-driver'?'#identificar':'#problemas'}">${currentSlug==='xprinter-driver'?'Confirmar modelo':'Problemas'}</a>`;
+      const footerNode=document.querySelector('.footer');
+      if(footerNode)footerNode.before(mobile); else document.body.appendChild(mobile);
     }
   }
 
@@ -61,7 +106,7 @@
     slot.innerHTML=`<a class="house-ad ${copy.visual?'house-ad--visual':'house-ad--compact'}" href="${url.toString()}" target="_blank" rel="sponsored noopener" aria-label="${copy.title} — Facity Sistemas"><div class="house-ad__visual" ${copy.visual?'':'hidden'}><img src="${image}" alt="Facity Sistemas — controle mesas, delivery e caixa em um só sistema" loading="lazy" decoding="async"></div><div class="house-ad__content"><span class="house-ad__label">Publicidade</span><div class="house-ad__copy"><strong>${copy.title}</strong><span>${copy.text}</span></div><span class="house-ad__cta">${copy.cta} →</span></div></a>`;
   });
 
-  if(document.body.classList.contains('model-page')&&!supportPage){
+  if(document.body.classList.contains('model-page')&&!supportPage&&!hybridPage){
     if(!document.querySelector('script[data-model-page-ux]')){
       const uxScript=document.createElement('script');
       uxScript.src=root+'assets/model-page.js';
