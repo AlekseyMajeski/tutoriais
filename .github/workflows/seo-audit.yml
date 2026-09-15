@@ -22,5 +22,5 @@ jobs:
           node-version: '24'
       - name: Audit SEO and catalog integrity
         env:
-          STRICT_SEO: '0'
+          STRICT_SEO: '1'
         run: node scripts/audit-seo.mjs
