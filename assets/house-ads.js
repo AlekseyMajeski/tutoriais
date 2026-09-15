@@ -3,6 +3,20 @@
   const root=onGithub?'/tutoriais/':'/';
   const siteUrl=path=>onGithub?path:path.replace(/^\/tutoriais\//,'/');
 
+  const supportSlugs=['nao-imprime','offline','usb-nao-reconhece','imprime-em-branco','impressao-fraca','nao-corta-papel','descobrir-ip','configurar-rede','driver-windows-11','58mm-vs-80mm'];
+  const supportMatch=location.pathname.match(/\/impressoras-termicas\/([^/]+)\/?$/);
+  const supportPage=Boolean(supportMatch&&supportSlugs.includes(supportMatch[1]));
+  if(supportPage){
+    document.body.classList.add('support-page');
+    if(!document.querySelector('link[data-support-v3]')){
+      const css=document.createElement('link');
+      css.rel='stylesheet';
+      css.href=root+'assets/support-v3.css';
+      css.dataset.supportV3='1';
+      document.head.appendChild(css);
+    }
+  }
+
   const footer=document.querySelector('.footer .wrap');
   if(footer&&!footer.querySelector('.legal-footer-links')){
     const links=document.createElement('div');
@@ -47,7 +61,7 @@
     slot.innerHTML=`<a class="house-ad ${copy.visual?'house-ad--visual':'house-ad--compact'}" href="${url.toString()}" target="_blank" rel="sponsored noopener" aria-label="${copy.title} — Facity Sistemas"><div class="house-ad__visual" ${copy.visual?'':'hidden'}><img src="${image}" alt="Facity Sistemas — controle mesas, delivery e caixa em um só sistema" loading="lazy" decoding="async"></div><div class="house-ad__content"><span class="house-ad__label">Publicidade</span><div class="house-ad__copy"><strong>${copy.title}</strong><span>${copy.text}</span></div><span class="house-ad__cta">${copy.cta} →</span></div></a>`;
   });
 
-  if(document.body.classList.contains('model-page')){
+  if(document.body.classList.contains('model-page')&&!supportPage){
     if(!document.querySelector('script[data-model-page-ux]')){
       const uxScript=document.createElement('script');
       uxScript.src=root+'assets/model-page.js';
