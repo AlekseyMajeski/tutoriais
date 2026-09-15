@@ -3,104 +3,20 @@
   "updatedAt": "2026-09-15",
   "policy": "Candidatos so podem virar CTA publico apos responderem como arquivo binario no dominio oficial do fabricante.",
   "candidates": [
-    {
-      "id": "epson-tm-m30-windows",
-      "brand": "Epson",
-      "model": "TM-m30",
-      "os": "Windows",
-      "version": "5.13",
-      "url": "https://ftp.epson.com/drivers/pos/APD_513_m30_EWM.zip",
-      "evidence": "official-support-filename"
-    },
-    {
-      "id": "epson-tm-m30ii-windows",
-      "brand": "Epson",
-      "model": "TM-m30II",
-      "os": "Windows",
-      "version": "6.12",
-      "url": "https://ftp.epson.com/drivers/pos/APD_612_m30II_WM.exe",
-      "evidence": "official-support-filename"
-    },
-    {
-      "id": "epson-tm-p20ii-windows",
-      "brand": "Epson",
-      "model": "TM-P20II",
-      "os": "Windows",
-      "version": "6.12",
-      "url": "https://ftp.epson.com/drivers/pos/APD_612_P20II_WM.exe",
-      "evidence": "official-support-filename"
-    },
-    {
-      "id": "epson-tm-p60ii-windows",
-      "brand": "Epson",
-      "model": "TM-P60II",
-      "os": "Windows",
-      "version": "5.13R1",
-      "url": "https://ftp.epson.com/drivers/pos/APD_513R1_P60II_EWM_e.exe",
-      "evidence": "official-download-link"
-    },
-    {
-      "id": "epson-tm-p80ii-windows",
-      "brand": "Epson",
-      "model": "TM-P80II",
-      "os": "Windows",
-      "version": "6.12",
-      "url": "https://ftp.epson.com/drivers/pos/APD_612_P80II_WM.exe",
-      "evidence": "official-support-filename"
-    },
-    {
-      "id": "epson-tm-t88v-windows",
-      "brand": "Epson",
-      "model": "TM-T88V",
-      "os": "Windows",
-      "version": "5.13",
-      "url": "https://ftp.epson.com/drivers/pos/APD_513_T88V_EWM.zip",
-      "evidence": "official-download-link"
-    },
-    {
-      "id": "epson-tm-t88vii-windows",
-      "brand": "Epson",
-      "model": "TM-T88VII",
-      "os": "Windows",
-      "version": "6.12",
-      "url": "https://ftp.epson.com/drivers/pos/APD_612_T88VII_WM.exe",
-      "evidence": "official-support-filename"
-    },
-    {
-      "id": "epson-tm-m50-windows",
-      "brand": "Epson",
-      "model": "TM-m50",
-      "os": "Windows",
-      "version": "6.10",
-      "url": "https://download3.ebz.epson.net/dsc/f/03/00/17/34/72/b1cc41a4caf05d80d6125bd45b12efaf9e5e7f8d/APD_610_m50_WM.zip",
-      "evidence": "official-setup-navi-download-link"
-    },
-    {
-      "id": "epson-tm-m50ii-windows",
-      "brand": "Epson",
-      "model": "TM-m50II",
-      "os": "Windows",
-      "version": "6.07R2",
-      "url": "https://download3.ebz.epson.net/dsc/f/03/00/15/49/26/c14dade9449c41cd59778c2a7caeb6c6e55f00b4/APD_607R2_m50II_WM_e.zip",
-      "evidence": "official-setup-navi-download-link"
-    },
-    {
-      "id": "epson-tm-t81iii-windows",
-      "brand": "Epson",
-      "model": "TM-T81III",
-      "os": "Windows",
-      "version": "6.04",
-      "url": "https://download3.ebz.epson.net/dsc/f/03/00/15/50/62/e1d1cac3c95db0288cc2a0b8d3bf7e08e57798a1/APD_604_T81III_WM.zip",
-      "evidence": "official-setup-navi-download-link"
-    },
-    {
-      "id": "epson-tm-t82iii-windows",
-      "brand": "Epson",
-      "model": "TM-T82III",
-      "os": "Windows",
-      "version": "6.04",
-      "url": "https://download3.ebz.epson.net/dsc/f/03/00/15/50/72/221873016a4003459505594bf719f6a8284d1ff9/APD_604_T82III_WM_e.zip",
-      "evidence": "official-setup-navi-download-link"
-    }
+    {"id":"epson-tm-m30-windows","brand":"Epson","model":"TM-m30","os":"Windows","version":"5.13","url":"https://ftp.epson.com/drivers/pos/APD_513_m30_EWM.zip","evidence":"official-support-filename"},
+    {"id":"epson-tm-m30ii-windows","brand":"Epson","model":"TM-m30II","os":"Windows","version":"6.12","url":"https://ftp.epson.com/drivers/pos/APD_612_m30II_WM.exe","evidence":"official-support-filename"},
+    {"id":"epson-tm-p20ii-windows","brand":"Epson","model":"TM-P20II","os":"Windows","version":"6.12","url":"https://ftp.epson.com/drivers/pos/APD_612_P20II_WM.exe","evidence":"official-support-filename"},
+    {"id":"epson-tm-p60ii-windows","brand":"Epson","model":"TM-P60II","os":"Windows","version":"5.13R1","url":"https://ftp.epson.com/drivers/pos/APD_513R1_P60II_EWM_e.exe","evidence":"official-download-link"},
+    {"id":"epson-tm-p80ii-windows","brand":"Epson","model":"TM-P80II","os":"Windows","version":"6.12","url":"https://ftp.epson.com/drivers/pos/APD_612_P80II_WM.exe","evidence":"official-support-filename"},
+    {"id":"epson-tm-t88v-windows","brand":"Epson","model":"TM-T88V","os":"Windows","version":"5.13","url":"https://ftp.epson.com/drivers/pos/APD_513_T88V_EWM.zip","evidence":"official-download-link"},
+    {"id":"epson-tm-t88vii-windows","brand":"Epson","model":"TM-T88VII","os":"Windows","version":"6.12","url":"https://ftp.epson.com/drivers/pos/APD_612_T88VII_WM.exe","evidence":"official-support-filename"},
+    {"id":"epson-tm-m50-windows","brand":"Epson","model":"TM-m50","os":"Windows","version":"6.10","url":"https://download3.ebz.epson.net/dsc/f/03/00/17/34/72/b1cc41a4caf05d80d6125bd45b12efaf9e5e7f8d/APD_610_m50_WM.zip","evidence":"official-setup-navi-download-link"},
+    {"id":"epson-tm-m50ii-windows","brand":"Epson","model":"TM-m50II","os":"Windows","version":"6.07R2","url":"https://download3.ebz.epson.net/dsc/f/03/00/15/49/26/c14dade9449c41cd59778c2a7caeb6c6e55f00b4/APD_607R2_m50II_WM_e.zip","evidence":"official-setup-navi-download-link"},
+    {"id":"epson-tm-t81iii-windows","brand":"Epson","model":"TM-T81III","os":"Windows","version":"6.04","url":"https://download3.ebz.epson.net/dsc/f/03/00/15/50/62/e1d1cac3c95db0288cc2a0b8d3bf7e08e57798a1/APD_604_T81III_WM.zip","evidence":"official-setup-navi-download-link"},
+    {"id":"epson-tm-t82iii-windows","brand":"Epson","model":"TM-T82III","os":"Windows","version":"6.04","url":"https://download3.ebz.epson.net/dsc/f/03/00/15/50/72/221873016a4003459505594bf719f6a8284d1ff9/APD_604_T82III_WM_e.zip","evidence":"official-setup-navi-download-link"},
+    {"id":"epson-tm-m10-windows","brand":"Epson","model":"TM-m10","os":"Windows","version":"5.13R1E","url":"https://download-center.epson.com/f/module/c80dac64-d7b4-4e9e-8a14-0037e6634b2d/APD_513R1_m10_EWM.zip","evidence":"official-download-center-api-url"},
+    {"id":"epson-tm-t70ii-windows","brand":"Epson","model":"TM-T70II","os":"Windows","version":"5.13E","url":"https://download-center.epson.com/f/module/6a99a07a-9a0a-48a0-8283-cd3b93397a11/APD_513_T70II_EWM_e.zip","evidence":"official-download-center-api-url"},
+    {"id":"epson-tm-t81-windows","brand":"Epson","model":"TM-T81","os":"Windows","version":"4.59EWM","url":"https://download-center.epson.com/f/module/6742de28-5431-4384-98fd-14d2a25fb0c4/APD_459EWM_T81_e.zip","evidence":"official-download-center-api-url"},
+    {"id":"epson-tm-t20x-ii-windows","brand":"Epson","model":"TM-T20X-II","os":"Windows","version":"6.12","url":"https://download-center.epson.com/f/module/f731efa2-49fa-4c16-8802-2d30d4419140/APD_612_T20X-II_WM.zip","evidence":"official-download-center-api-url"}
   ]
 }
