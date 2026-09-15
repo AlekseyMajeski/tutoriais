@@ -32,6 +32,24 @@
   inferSection('problemas',[/problemas? comuns/i,/solu[cç][aã]o de problemas/i]);
   const primarySetup=document.getElementById('instalacao')||document.getElementById('configuracao');
 
+  if(primarySetup&&!primarySetup.querySelector('.install-fast')){
+    const legacySteps=primarySetup.querySelector('.steps');
+    const rows=legacySteps?[...legacySteps.querySelectorAll(':scope > .step')]:[];
+    if(rows.length&&rows.length<=8){
+      legacySteps.classList.remove('steps');
+      legacySteps.classList.add('panel','install-fast');
+      rows.forEach(row=>{
+        row.classList.remove('step');
+        row.classList.add('fast-row');
+        const number=row.querySelector('.step-num');
+        if(number){
+          number.classList.remove('step-num');
+          number.classList.add('fast-num');
+        }
+      });
+    }
+  }
+
   if(heroMain&&!hero?.querySelector('.btn.primary')){
     const download=document.getElementById('download');
     const source=download?.querySelector('.btn.primary')||download?.querySelector('.btn')||document.querySelector('main .btn.primary');
