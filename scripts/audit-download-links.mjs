@@ -93,10 +93,15 @@ for (const { file, brand, model } of files()) {
 }
 
 const counts = rows.reduce((acc, r) => ((acc[r.status] = (acc[r.status] || 0) + 1), acc), {});
+const officialDirect = counts.OFFICIAL_DIRECT || 0;
+const trustedPath = officialDirect + (counts.TRUSTED_DISTRIBUTION || 0) + (counts.OFFICIAL_PAGE_ONLY || 0);
+const pct = n => rows.length ? ((n / rows.length) * 100).toFixed(1) : '0.0';
 console.log(`Download audit: ${rows.length} páginas de modelo.`);
 for (const key of ['OFFICIAL_DIRECT','TRUSTED_DISTRIBUTION','OFFICIAL_PAGE_ONLY','THIRD_PARTY_DIRECT_ONLY','NO_DRIVER_LINK']) {
   console.log(`${key}: ${counts[key] || 0}`);
 }
+console.log(`Cobertura com download oficial direto: ${officialDirect}/${rows.length} (${pct(officialDirect)}%).`);
+console.log(`Cobertura com caminho oficial/confiável: ${trustedPath}/${rows.length} (${pct(trustedPath)}%).`);
 
 console.log('\nPÁGINAS QUE AINDA NÃO TÊM DOWNLOAD OFICIAL DIRETO:');
 for (const r of rows.filter(r => r.status !== 'OFFICIAL_DIRECT')) {
