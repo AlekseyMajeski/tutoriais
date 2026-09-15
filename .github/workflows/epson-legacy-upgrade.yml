@@ -1,0 +1,41 @@
+name: Epson legacy driver upgrade
+
+on:
+  push:
+    paths:
+      - 'scripts/upgrade-epson-legacy.mjs'
+      - '.github/workflows/epson-legacy-upgrade.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  upgrade:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Upgrade Epson legacy pages
+        run: node scripts/upgrade-epson-legacy.mjs
+      - name: Audit SEO
+        env:
+          STRICT_SEO: '1'
+        run: node scripts/audit-seo.mjs
+      - name: Commit upgrades
+        run: |
+          if git diff --quiet; then
+            echo 'No changes to commit.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add impressoras-termicas/epson/tm-m30/index.html impressoras-termicas/epson/tm-t81/index.html
+          git commit -m 'epson: aponta m30 e T81 para APD específico'
+          git push origin HEAD:main
