@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
-      - name: Upgrade Epson legacy pages
+      - name: Upgrade Epson model pages
         run: node scripts/upgrade-epson-legacy.mjs
       - name: Audit SEO
         env:
@@ -36,6 +36,6 @@ jobs:
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add impressoras-termicas/epson/tm-m30/index.html impressoras-termicas/epson/tm-t81/index.html
-          git commit -m 'epson: aponta m30 e T81 para APD específico'
+          git add impressoras-termicas/epson
+          git commit -m 'epson: aponta modelos para APD específico'
           git push origin HEAD:main
