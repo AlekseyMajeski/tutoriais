@@ -40,9 +40,12 @@ for (const file of walk(BASE)) {
   const staticDownloadAt = index(/id=["']download["']/i, html);
   const legacyDownloadAt = index(/id=["']driver["']/i, html);
   const downloadAt = staticDownloadAt >= 0 ? staticDownloadAt : legacyDownloadAt;
+
   const staticInstallAt = index(/id=["']instalacao["']/i, html);
+  const staticConfigAt = index(/id=["']configuracao["']/i, html);
   const inferredInstallAt = sectionIndexByTitle(html, [/instala[cç][aã]o/i,/como instalar/i,/instalar .*windows/i,/instala[cç][aã]o .*computador/i]);
-  const installAt = staticInstallAt >= 0 ? staticInstallAt : inferredInstallAt;
+  const installAt = staticInstallAt >= 0 ? staticInstallAt : (staticConfigAt >= 0 ? staticConfigAt : inferredInstallAt);
+
   const staticProblemsAt = index(/id=["']problemas["']/i, html);
   const inferredProblemsAt = sectionIndexByTitle(html, [/problemas? comuns/i,/solu[cç][aã]o de problemas/i]);
   const problemsAt = staticProblemsAt >= 0 ? staticProblemsAt : inferredProblemsAt;
@@ -74,7 +77,7 @@ for (const file of walk(BASE)) {
   const critical = ['hero', 'heroPrimaryCta', 'downloadSection', 'installationSection', 'problemsSection', 'mobileActions', 'downloadBeforeInstall', 'installBeforeProblems', 'sharedUxLoader'];
   const issues = critical.filter(k => !checks[k]);
   const enhancements = ['trust', 'connectionNav', 'mobilePrimary', 'fastInstall'].filter(k => !checks[k]);
-  const normalizedAtRuntime = sharedUx && (!staticHeroPrimary || staticDownloadAt < 0 || staticInstallAt < 0 || !has(/class=["'][^"']*mobile-actions/i, html) || !has(/class=["'][^"']*connection-nav/i, html));
+  const normalizedAtRuntime = sharedUx && (!staticHeroPrimary || staticDownloadAt < 0 || (staticInstallAt < 0 && staticConfigAt < 0) || !has(/class=["'][^"']*mobile-actions/i, html) || !has(/class=["'][^"']*connection-nav/i, html));
   pages.push({ path: rel, checks, issues, enhancements, normalizedAtRuntime });
 }
 
@@ -100,10 +103,10 @@ fs.writeFileSync(path.join(OUT, 'model-ux-audit.json'), JSON.stringify(report, n
 
 const labels = {
   h1: 'H1', hero: 'hero', heroPrimaryCta: 'CTA principal no hero', trust: 'bloco de confiança',
-  connectionNav: 'atalhos de conexão', downloadSection: 'seção Download', installationSection: 'seção Instalação',
+  connectionNav: 'atalhos de conexão', downloadSection: 'seção Download', installationSection: 'etapa Instalação/Configuração',
   problemsSection: 'seção Problemas', mobileActions: 'barra mobile', mobilePrimary: 'CTA mobile destacado',
-  fastInstall: 'instalação rápida', downloadBeforeInstall: 'Download antes de Instalação',
-  installBeforeProblems: 'Instalação antes de Problemas', networkAfterInstall: 'Rede depois de Instalação',
+  fastInstall: 'instalação/configuração rápida', downloadBeforeInstall: 'Download antes de Instalação/Configuração',
+  installBeforeProblems: 'Instalação/Configuração antes de Problemas', networkAfterInstall: 'Rede depois da etapa principal',
   sharedUxLoader: 'normalizador compartilhado carregado'
 };
 
