@@ -15,32 +15,50 @@ function stripTags(s) {
   return s.replace(/<[^>]*>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
 }
 
-function modelFiles() {
-  if (!fs.existsSync(BASE)) return [];
-  return fs.readdirSync(BASE, { withFileTypes: true }).flatMap(brand => {
-    if (!brand.isDirectory()) return [];
-    return fs.readdirSync(path.join(BASE, brand.name), { withFileTypes: true }).flatMap(model => {
-      if (!model.isDirectory()) return [];
-      const file = path.join(BASE, brand.name, model.name, 'index.html');
-      return fs.existsSync(file) ? [{ file, brand: brand.name, model: model.name }] : [];
-    });
-  });
+function walkIndexFiles(dir) {
+  if (!fs.existsSync(dir)) return [];
+  const out = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) out.push(...walkIndexFiles(full));
+    else if (entry.isFile() && entry.name === 'index.html') out.push(full);
+  }
+  return out;
+}
+
+function pageInfo(file) {
+  const rel = path.relative(BASE, file).replaceAll(path.sep, '/');
+  const parts = rel.split('/');
+  const slug = parts.at(-2) || 'index';
+  const section = parts.length >= 3 ? parts.at(-3) : 'guias';
+  return { section, slug, rel };
+}
+
+function isDirectLike(href) {
+  if (directFile.test(href)) return true;
+  try {
+    const u = new URL(href);
+    if (u.searchParams.has('wpdmdl')) return true;
+    if (/\/(?:download|downloads|arquivo|file)\//i.test(u.pathname) && /(?:driver|download|baixar)/i.test(href)) return true;
+  } catch {}
+  return false;
 }
 
 function collectLinks() {
   const byUrl = new Map();
-  for (const { file, brand, model } of modelFiles()) {
+  for (const file of walkIndexFiles(BASE)) {
+    const { section, slug, rel } = pageInfo(file);
     const html = fs.readFileSync(file, 'utf8');
-    const title = stripTags(html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || model);
+    const title = stripTags(html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || slug);
     const anchors = [...html.matchAll(/<a\b([^>]*?)href=["']([^"']+)["']([^>]*)>([\s\S]*?)<\/a>/gi)]
       .map(m => ({ href: m[2], text: stripTags(m[4]) }))
       .filter(a => /^https?:\/\//i.test(a.href))
       .filter(a => candidateText.test(`${a.text} ${a.href}`));
 
     for (const a of anchors) {
-      const key = a.href;
-      if (!byUrl.has(key)) byUrl.set(key, { url: a.href, direct: directFile.test(a.href), usedBy: [] });
-      byUrl.get(key).usedBy.push({ brand, model, title, text: a.text });
+      const key = a.href.replaceAll('&amp;', '&');
+      if (!byUrl.has(key)) byUrl.set(key, { url: key, direct: isDirectLike(key), usedBy: [] });
+      byUrl.get(key).usedBy.push({ brand: section, model: slug, page: rel, title, text: a.text });
     }
   }
   return [...byUrl.values()];
@@ -70,7 +88,7 @@ function classify(result, direct) {
   if (result.error) return { level: 'WARN', reason: `erro de rede: ${result.error}` };
   const status = result.status;
   if (status >= 200 && status < 400) {
-    if (direct && /text\/html/i.test(result.contentType || '')) {
+    if (direct && /text\/html/i.test(result.contentType || '') && !/[?&]wpdmdl=/i.test(result.finalUrl || '')) {
       return { level: 'WARN', reason: `arquivo direto respondeu HTML (${status})` };
     }
     return { level: 'OK', reason: `HTTP ${status}` };
@@ -86,7 +104,7 @@ async function checkOne(item) {
   try {
     const head = await request(item.url, 'HEAD');
     attempts.push({ method: 'HEAD', ...head });
-    if (head.status >= 200 && head.status < 400 && !(item.direct && /text\/html/i.test(head.contentType || ''))) {
+    if (head.status >= 200 && head.status < 400 && !(item.direct && /text\/html/i.test(head.contentType || '') && !/[?&]wpdmdl=/i.test(item.url))) {
       const cls = classify(head, item.direct);
       return { ...item, ...cls, attempts, checkedAt: new Date().toISOString() };
     }
@@ -126,7 +144,7 @@ async function mapLimit(items, limit, fn) {
 }
 
 const links = collectLinks();
-console.log(`Verificando ${links.length} URLs de driver/suporte usadas nas páginas de modelo...`);
+console.log(`Verificando ${links.length} URLs de driver/suporte usadas em todos os guias térmicos...`);
 const results = await mapLimit(links, CONCURRENCY, checkOne);
 const counts = results.reduce((acc, r) => ((acc[r.level] = (acc[r.level] || 0) + 1), acc), {});
 const hardFailures = results.filter(r => r.level === 'FAIL');
@@ -134,7 +152,7 @@ const warnings = results.filter(r => r.level === 'WARN');
 
 fs.mkdirSync(OUT_DIR, { recursive: true });
 const report = {
-  schemaVersion: 1,
+  schemaVersion: 2,
   checkedAt: new Date().toISOString(),
   totals: { urls: results.length, ok: counts.OK || 0, warnings: counts.WARN || 0, failures: counts.FAIL || 0 },
   hardFailures,
@@ -144,24 +162,21 @@ const report = {
 fs.writeFileSync(path.join(OUT_DIR, 'latest.json'), JSON.stringify(report, null, 2) + '\n');
 
 const lines = [
-  '# Saúde dos links de drivers',
-  '',
-  `Verificado em: ${report.checkedAt}`,
-  '',
+  '# Saúde dos links de drivers', '',
+  `Verificado em: ${report.checkedAt}`, '',
   `- URLs: ${report.totals.urls}`,
   `- OK: ${report.totals.ok}`,
   `- Avisos: ${report.totals.warnings}`,
-  `- Falhas confirmadas: ${report.totals.failures}`,
-  '',
+  `- Falhas confirmadas: ${report.totals.failures}`, '',
 ];
 if (hardFailures.length) {
   lines.push('## Falhas confirmadas', '');
-  for (const r of hardFailures) lines.push(`- **${r.reason}** — ${r.url} — usado em ${r.usedBy.map(x => `${x.brand}/${x.model}`).join(', ')}`);
+  for (const r of hardFailures) lines.push(`- **${r.reason}** — ${r.url} — usado em ${r.usedBy.map(x => x.page || `${x.brand}/${x.model}`).join(', ')}`);
   lines.push('');
 }
 if (warnings.length) {
   lines.push('## Avisos para acompanhamento', '');
-  for (const r of warnings) lines.push(`- **${r.reason}** — ${r.url} — usado em ${r.usedBy.map(x => `${x.brand}/${x.model}`).join(', ')}`);
+  for (const r of warnings) lines.push(`- **${r.reason}** — ${r.url} — usado em ${r.usedBy.map(x => x.page || `${x.brand}/${x.model}`).join(', ')}`);
   lines.push('');
 }
 if (!hardFailures.length && !warnings.length) lines.push('Todos os links monitorados responderam normalmente.', '');
