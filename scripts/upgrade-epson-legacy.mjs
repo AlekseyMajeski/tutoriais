@@ -66,4 +66,22 @@ changed += replaceChecked('impressoras-termicas/epson/tm-p80ii/index.html', [
   ['<span class="trust-item">✓ Produto oficial Epson</span>', '<span class="trust-item">✓ APD 6.12 confirmado em 09/02/2026</span>'],
 ]);
 
+const m10Support = 'https://epson.com.br/Suporte/Ponto-de-venda/Impressoras-t%C3%A9rmicas/Epson-TM-m10/s/SPT_C31CE74021';
+const m10Downloads = 'https://support.epson.net/setupnavi/?LG2=EN&MKN=TM-m10&OSC=WS&PINF=swlist';
+changed += replaceChecked('impressoras-termicas/epson/tm-m10/index.html', [
+  ['<strong>Drivers por sistema operacional</strong><p>A página oficial seleciona os pacotes compatíveis com Windows e demais plataformas.</p>', '<strong>EPSON Advanced Printer Driver 5 for TM-m10</strong><p>No Windows, a Epson lista o <b>APD 5 para TM-m10</b> no fluxo oficial de downloads. Como há variantes regionais, deixe o Download Center selecionar o pacote correspondente à unidade/sistema.</p>'],
+  [`<a class="btn primary" href="${m10Support}" target="_blank" rel="noopener">Abrir downloads</a>`, `<a class="btn primary" href="${m10Downloads}" target="_blank" rel="noopener">Abrir APD 5 no Download Center</a>`],
+  ['<h3>Baixe o software Epson</h3><p>Escolha o sistema operacional no suporte oficial.</p>', '<h3>No Windows, procure o APD 5 da TM-m10</h3><p>O fluxo oficial da Epson lista o <b>EPSON Advanced Printer Driver 5 for TM-m10</b>. Use o Download Center para escolher o pacote correspondente à sua região e revisão.</p>'],
+  ['<span class="trust-item">✓ Produto e suporte oficiais Epson</span>', '<span class="trust-item">✓ APD 5 listado para TM-m10</span>'],
+]);
+
+const m50iiSupport = 'https://epson.com.br/Suporte/Ponto-de-venda/Impressoras-t%C3%A9rmicas/Epson-TM-m50II-Series/s/SPT_C31CK52001';
+const m50iiDownloads = 'https://support.epson.net/setupnavi/?LG2=EN&MKN=TM-m50II&OSC=WS&PINF=swlist';
+changed += replaceChecked('impressoras-termicas/epson/tm-m50ii/index.html', [
+  ['<strong>Suporte TM-m50II</strong><p>Selecione o sistema operacional para ver drivers e utilitários atuais.</p>', '<strong>EPSON Advanced Printer Driver 6 for TM-m50II</strong><p>A lista oficial Epson aponta o <b>APD 6 específico da TM-m50II</b> para Windows. O fluxo atual redireciona ao novo Download Center da Epson.</p>'],
+  [`<a class="btn primary" target="_blank" rel="noopener" href="${m50iiSupport}">Abrir suporte Epson</a>`, `<a class="btn primary" target="_blank" rel="noopener" href="${m50iiDownloads}">Abrir APD 6 no Download Center</a>`],
+  ['<h3>Baixe pelo suporte Epson</h3><p>Escolha Windows 11/10 e instale o pacote indicado no portal.</p>', '<h3>No Windows, use o APD 6 da TM-m50II</h3><p>Abra o Download Center com a TM-m50II selecionada e escolha o <b>EPSON Advanced Printer Driver 6</b> correspondente ao sistema operacional.</p>'],
+  ['<span class="trust-item">✓ Suporte oficial Epson</span>', '<span class="trust-item">✓ APD 6 específico confirmado pela Epson</span>'],
+]);
+
 console.log(`Epson legacy upgrade: ${changed} página(s) alterada(s).`);
