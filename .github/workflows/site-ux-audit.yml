@@ -1,0 +1,63 @@
+name: Site UX audit
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'index.html'
+      - 'impressoras-termicas/index.html'
+      - 'impressoras-termicas/epson/index.html'
+      - 'impressoras-termicas/bematech/index.html'
+      - 'impressoras-termicas/elgin/index.html'
+      - 'impressoras-termicas/tanca/index.html'
+      - 'impressoras-termicas/sweda/index.html'
+      - 'impressoras-termicas/nao-imprime/index.html'
+      - 'impressoras-termicas/offline/index.html'
+      - 'impressoras-termicas/usb-nao-reconhece/index.html'
+      - 'impressoras-termicas/imprime-em-branco/index.html'
+      - 'impressoras-termicas/impressao-fraca/index.html'
+      - 'impressoras-termicas/nao-corta-papel/index.html'
+      - 'impressoras-termicas/descobrir-ip/index.html'
+      - 'impressoras-termicas/configurar-rede/index.html'
+      - 'impressoras-termicas/driver-windows-11/index.html'
+      - 'impressoras-termicas/58mm-vs-80mm/index.html'
+      - 'impressoras-termicas/genericas/index.html'
+      - 'impressoras-termicas/pos-58/index.html'
+      - 'impressoras-termicas/pos-80/index.html'
+      - 'impressoras-termicas/xprinter-driver/index.html'
+      - 'assets/home-v3.css'
+      - 'assets/hub-v3.css'
+      - 'assets/support-v3.css'
+      - 'assets/hybrid-v3.css'
+      - 'assets/house-ads.js'
+      - 'assets/site.js'
+      - 'scripts/audit-site-ux.mjs'
+      - '.github/workflows/site-ux-audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Audit site UX
+        run: node scripts/audit-site-ux.mjs
+      - name: Add report to summary
+        if: always()
+        run: cat artifacts/site-ux-audit.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-ux-audit
+          path: |
+            artifacts/site-ux-audit.json
+            artifacts/site-ux-audit.md
+          retention-days: 30
