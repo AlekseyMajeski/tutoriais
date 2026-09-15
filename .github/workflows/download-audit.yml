@@ -3,6 +3,7 @@ name: Download link audit
 on:
   push:
     paths:
+      - 'impressoras-termicas/**/index.html'
       - 'scripts/audit-download-links.mjs'
       - '.github/workflows/download-audit.yml'
   workflow_dispatch:
