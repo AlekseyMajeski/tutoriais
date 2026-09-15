@@ -13,6 +13,9 @@
   const search=document.querySelector('[data-search]');
   const filters=[...document.querySelectorAll('[data-filter]')];
   const empty=document.querySelector('[data-empty]');
+  const catalogBlock=document.querySelector('.catalog-results');
+  const summary=document.querySelector('[data-search-summary]');
+  const isHome=document.body.classList.contains('home-page');
   let items=[],active=preset;
 
   const genericGuides=[
@@ -47,13 +50,19 @@
     const publishedText=!q?'Os modelos com maior procura e uso aparecem primeiro.':'Tutoriais completos com driver e instalação.';
     root.innerHTML=group('Disponíveis agora',publishedText,published)+group('Em preparação','Modelos já cadastrados para as próximas publicações.',upcoming);
     if(empty)empty.hidden=Boolean(list.length);
+
+    const engaged=!isHome||Boolean(q.trim())||active!==preset;
+    if(catalogBlock)catalogBlock.hidden=!engaged;
+    if(summary&&engaged){
+      if(q.trim())summary.textContent=`${list.length} resultado${list.length===1?'':'s'} para “${q.trim()}”`;
+      else summary.textContent=`${list.length} modelo${list.length===1?'':'s'} neste filtro`;
+    }
   }
 
   if(preset==='termica'&&!document.querySelector('.generic-printer-guides')){
     const section=document.createElement('section');
     section.className='section generic-printer-guides';
     section.innerHTML=`<div class="wrap"><div class="section-head"><div><span class="eyebrow">POS-58 • POS-80 • Xprinter</span><h2>Impressoras térmicas genéricas</h2><p>Se a impressora só diz POS-58, POS-80, Thermal Printer ou Mini Printer, identifique o hardware antes de baixar qualquer driver.</p></div></div><div class="grid"><article class="panel"><h3><a href="${hrefFor('/tutoriais/impressoras-termicas/genericas/')}">Central de impressoras genéricas</a></h3><p>Etiqueta, autoteste, VID/PID e escolha segura do driver.</p></article><article class="panel"><h3><a href="${hrefFor('/tutoriais/impressoras-termicas/pos-58/')}">Driver POS-58</a></h3><p>Windows 11, USB e identificação do controlador.</p></article><article class="panel"><h3><a href="${hrefFor('/tutoriais/impressoras-termicas/pos-80/')}">Driver POS-80</a></h3><p>Windows 11, USB/rede e teste da fila.</p></article><article class="panel"><h3><a href="${hrefFor('/tutoriais/impressoras-termicas/xprinter-driver/')}">Drivers Xprinter</a></h3><p>Encontre o modelo exato e use os centros oficiais de 58/80 mm.</p></article></div></div>`;
-    const catalogBlock=document.querySelector('.catalog-results');
     if(catalogBlock)catalogBlock.before(section);
   }
 
@@ -61,7 +70,7 @@
   Promise.all([load(source),...extraSources.map(u=>load(u).catch(()=>[]))]).then(parts=>{
     items=[...new Map([...parts.flat(),...genericGuides].map(p=>[p.id,p])).values()];
     render();
-  }).catch(()=>{root.innerHTML='<div class="notice warn">Não foi possível carregar o catálogo agora. Recarregue a página.</div>'});
+  }).catch(()=>{root.innerHTML='<div class="notice warn">Não foi possível carregar o catálogo agora. Recarregue a página.</div>';if(catalogBlock)catalogBlock.hidden=false});
   search?.addEventListener('input',render);
   filters.forEach(btn=>{btn.setAttribute('aria-pressed',String(btn.dataset.filter===active));btn.addEventListener('click',()=>{active=btn.dataset.filter;filters.forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));render()})});
 })();
