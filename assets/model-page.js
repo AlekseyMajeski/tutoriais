@@ -25,8 +25,12 @@
     return section||null;
   };
 
-  inferSection('instalacao',[/instala[cç][aã]o/i,/como instalar/i,/instalar .*windows/i,/instala[cç][aã]o .*computador/i]);
+  const configuration=document.getElementById('configuracao');
+  if(!configuration){
+    inferSection('instalacao',[/instala[cç][aã]o/i,/como instalar/i,/instalar .*windows/i,/instala[cç][aã]o .*computador/i]);
+  }
   inferSection('problemas',[/problemas? comuns/i,/solu[cç][aã]o de problemas/i]);
+  const primarySetup=document.getElementById('instalacao')||document.getElementById('configuracao');
 
   if(heroMain&&!hero?.querySelector('.btn.primary')){
     const download=document.getElementById('download');
@@ -47,23 +51,24 @@
       cta.classList.add('btn','primary');
       cta.classList.remove('soft','disabled');
       buttons.prepend(cta);
-      if(document.getElementById('instalacao')&&!buttons.querySelector('a[href="#instalacao"]')){
+      if(primarySetup&&!buttons.querySelector(`a[href="#${primarySetup.id}"]`)){
         const install=document.createElement('a');
         install.className='btn soft';
-        install.href='#instalacao';
-        install.textContent='Como instalar';
+        install.href=`#${primarySetup.id}`;
+        install.textContent=primarySetup.id==='configuracao'?'Como configurar':'Como instalar';
         buttons.appendChild(install);
       }
     }
   }
 
   if(heroMain&&!heroMain.querySelector('.connection-nav')){
+    const setupDef=primarySetup?[primarySetup.id,primarySetup.id==='configuracao'?'📶':'🔌',primarySetup.id==='configuracao'?'Configurar':'Instalar']:null;
     const defs=[
-      ['instalacao','🔌','Instalar'],
+      setupDef,
       ['rede','🌐','Rede/IP'],
       ['serial','🔗','Serial'],
       ['problemas','⚠','Problemas']
-    ];
+    ].filter(Boolean);
     const available=defs.filter(([id])=>document.getElementById(id)).slice(0,4);
     if(available.length>=2){
       const nav=document.createElement('div');
@@ -82,9 +87,9 @@
   if(!mobile){
     const targets=[
       ['download','⬇ Driver','primary-mobile'],
-      ['instalacao','🔧 Instalar',''],
+      primarySetup?[primarySetup.id,primarySetup.id==='configuracao'?'📶 Configurar':'🔧 Instalar','']:null,
       ['problemas','⚠ Problemas','']
-    ].filter(([id])=>document.getElementById(id));
+    ].filter(Boolean).filter(([id])=>document.getElementById(id));
     if(targets.length>=2){
       mobile=document.createElement('nav');
       mobile.className='mobile-actions';
