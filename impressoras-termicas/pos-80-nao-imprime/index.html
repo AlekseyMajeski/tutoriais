@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>POS-80 não imprime: checklist de driver, porta e Windows</title>
+<meta name="description" content="POS-80 não imprime? Faça autoteste, confira driver, fila do Windows, porta USB/IP, spooler e configuração do PDV em ordem.">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<link rel="canonical" href="https://alekseymajeski.github.io/tutoriais/impressoras-termicas/pos-80-nao-imprime/">
+<link rel="stylesheet" href="../../assets/styles.css"><link rel="stylesheet" href="../../assets/ux-v2.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"POS-80 não imprime: checklist de driver, porta e Windows","dateModified":"2026-09-15","author":{"@type":"Organization","name":"Guia de Impressoras"},"publisher":{"@type":"Organization","name":"Facity Sistemas","url":"https://www.facity.com.br"},"inLanguage":"pt-BR"}</script>
+</head>
+<body>
+<header class="topbar"><div class="wrap"><a class="brand" href="../../">Guia de Impressoras</a><nav class="nav"><a href="../">Térmicas</a><a href="../pos-80/">POS-80</a><a href="#checklist">Checklist</a></nav></div></header>
+<main>
+<div class="wrap breadcrumbs"><a href="../../">Início</a> › <a href="../">Impressoras térmicas</a> › POS-80 não imprime</div>
+<section class="guide-hero"><div class="wrap guide-grid"><div><span class="eyebrow">80 mm • USB • rede • PDV</span><h1>POS-80 não imprime</h1><p class="lead">O objetivo é descobrir em qual camada a falha está: impressora, conexão, Windows/driver ou sistema de PDV.</p></div><div class="hero-card"><div><strong>Teste em camadas</strong><br><small>autoteste → conexão → Windows → PDV</small></div></div></section>
+<section class="section" id="checklist"><div class="wrap"><h2>Checklist rápido</h2><div class="steps"><article class="step"><div class="step-num">1</div><div><h3>Faça o autoteste</h3><p>Se a impressora não imprime sozinha, investigue papel, tampa, fonte, cabeça e hardware antes de mexer no Windows.</p></div></article><article class="step"><div class="step-num">2</div><div><h3>Confirme o modelo real</h3><p>POS-80 é um nome genérico. Veja etiqueta, autoteste e VID/PID para garantir que o driver corresponde ao equipamento.</p></div></article><article class="step"><div class="step-num">3</div><div><h3>Teste a conexão</h3><p>USB: troque cabo/porta. Ethernet: confira IP e ping. Serial: confirme COM e parâmetros.</p></div></article><article class="step"><div class="step-num">4</div><div><h3>Faça página de teste</h3><p>No Windows, abra as propriedades da fila e imprima uma página de teste.</p></div></article><article class="step"><div class="step-num">5</div><div><h3>Confira a porta da fila</h3><p>Uma fila pode existir e apontar para USB, COM ou IP errado. Corrija a porta antes de reinstalar tudo.</p></div></article><article class="step"><div class="step-num">6</div><div><h3>Só então revise o PDV</h3><p>Se o Windows imprime, revise impressora selecionada, modo RAW/ESC-POS, IP/porta e largura de papel no sistema.</p></div></article></div><aside class="ad-slot" data-ad-position="after-installation" aria-label="Publicidade"></aside></div></section>
+<section class="section"><div class="wrap"><h2>Sintomas comuns</h2><div class="faq"><details open><summary>Fila fica “Erro - Imprimindo”</summary><p>Limpe a fila, reinicie o serviço de spooler e confirme se a porta ainda existe. Se o problema voltar, verifique driver e conexão.</p></details><details><summary>Ethernet funcionava e parou</summary><p>O IP pode ter mudado. Descubra o endereço atual e configure um IP estável ou reserva DHCP.</p></details><details><summary>Página de teste funciona, mas cupom não</summary><p>O problema tende a estar no PDV, layout, porta lógica ou modo de envio. Evite trocar driver que já está funcionando no Windows.</p></details><details><summary>Imprime texto estranho</summary><p>Confirme driver, linguagem ESC/POS, code page e se o sistema está mandando dados RAW para um dispositivo compatível.</p></details></div><p><a href="../pos-80/">Voltar ao guia de driver POS-80</a></p><aside class="ad-slot" data-ad-position="after-troubleshooting" aria-label="Publicidade"></aside></div></section>
+</main>
+<footer class="footer"><div class="wrap">Guia de Impressoras • tutorial independente</div></footer>
+<script src="../../assets/house-ads.js" defer></script>
+</body></html>
