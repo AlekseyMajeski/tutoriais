@@ -13,6 +13,33 @@ O site público deve priorizar a melhor experiência possível sem depender de u
 
 O repositório Git público mantém apenas catálogo, URLs, hashes, auditorias e automação. Os binários do arquivo privado devem ficar fora deste repositório.
 
+## Gerar/atualizar o arquivo privado
+
+O script `scripts/archive-official-drivers-private.mjs` percorre as páginas de modelos, encontra os arquivos diretos hospedados em fontes oficiais, baixa tudo para uma pasta externa, calcula SHA-256 e mantém versões antigas quando o conteúdo de uma URL muda.
+
+Execução simples, a partir da raiz do projeto:
+
+```bash
+node scripts/archive-official-drivers-private.mjs
+```
+
+Por padrão, o arquivo é criado ao lado do repositório em `../guia-impressoras-private-drivers`. Também é possível escolher outro disco, NAS ou pasta sincronizada privada:
+
+```bash
+DRIVER_ARCHIVE_DIR=/caminho/privado node scripts/archive-official-drivers-private.mjs
+```
+
+No PowerShell:
+
+```powershell
+$env:DRIVER_ARCHIVE_DIR = "D:\AcervoPrivado\GuiaImpressoras"
+node scripts/archive-official-drivers-private.mjs
+```
+
+A pasta contém `files/` com nomes baseados em SHA-256 e `catalog.json` com origem, hash, tamanho, primeira coleta, última verificação e páginas que usam cada arquivo. Se o fabricante substituir silenciosamente um arquivo mantendo a mesma URL, o novo hash é salvo sem apagar a versão anterior.
+
+O script recusa deliberadamente qualquer `DRIVER_ARCHIVE_DIR` dentro do repositório público.
+
 ## Estados
 
 ### Entrega pública
@@ -39,9 +66,8 @@ O repositório Git público mantém apenas catálogo, URLs, hashes, auditorias e
 O workflow **Driver link health** verifica semanalmente as URLs de driver e suporte usadas nas páginas de modelos. Ele também roda quando essas páginas ou o verificador são alterados.
 
 - `404` e `410` são tratados como falha crítica.
-- erros persistentes de servidor/rede também geram falha.
-- `401`, `403` e `429` entram como aviso porque muitos fabricantes bloqueiam robôs sem que o link esteja realmente fora do ar.
-- quando há falha crítica, o workflow abre ou atualiza automaticamente a issue `[monitor] Links de drivers com falha`.
+- erros de rede, `5xx`, `401`, `403` e `429` entram como aviso para evitar falso positivo causado por anti-bot ou indisponibilidade temporária.
+- quando há falha crítica confirmada, o workflow abre ou atualiza automaticamente a issue `[monitor] Links de drivers com falha`.
 - quando os links voltam ao normal, essa issue é fechada automaticamente.
 
 Arquivos relacionados:
@@ -50,6 +76,7 @@ Arquivos relacionados:
 - `audit/latest.json`: último resultado estruturado da coleta/auditoria de preservação.
 - `audit/latest.md`: resumo humano com tamanho e SHA-256.
 - `../scripts/audit-driver-preservation.mjs`: coleta oficial, hashing e busca de sinais de licença.
+- `../scripts/archive-official-drivers-private.mjs`: cópia privada versionada por SHA-256.
 - `../scripts/check-driver-links.mjs`: monitor de disponibilidade das URLs públicas.
 - `../.github/workflows/driver-preservation-audit.yml`: auditoria reproduzível de candidatos ao arquivo.
 - `../.github/workflows/driver-link-health.yml`: monitor periódico dos links usados no site.
