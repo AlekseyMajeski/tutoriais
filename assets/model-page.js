@@ -61,6 +61,18 @@
     }
   }
 
+  if(heroMain&&!heroMain.querySelector('.model-trust')){
+    const trust=document.createElement('div');
+    trust.className='model-trust';
+    trust.setAttribute('aria-label','Confiança do tutorial');
+    trust.innerHTML='<span class="trust-item">✓ Modelo específico</span><span class="trust-item">✓ Link revisado</span><span class="trust-item">✓ Instalação e teste</span>';
+    const buttons=heroMain.querySelector('.buttons');
+    const chips=heroMain.querySelector('.chips');
+    if(buttons)buttons.after(trust);
+    else if(chips)chips.after(trust);
+    else heroMain.appendChild(trust);
+  }
+
   if(heroMain&&!heroMain.querySelector('.connection-nav')){
     const setupDef=primarySetup?[primarySetup.id,primarySetup.id==='configuracao'?'📶':'🔌',primarySetup.id==='configuracao'?'Configurar':'Instalar']:null;
     const defs=[
@@ -82,6 +94,10 @@
       }
     }
   }
+
+  // Em tutoriais de modelo, dois anúncios são suficientes: após o download e perto do fim.
+  // O slot intermediário, logo após a instalação, ficava repetitivo e quebrava o ritmo de leitura.
+  document.querySelector('.ad-slot[data-ad-position="after-installation"]')?.remove();
 
   let mobile=document.querySelector('.mobile-actions');
   if(!mobile){
