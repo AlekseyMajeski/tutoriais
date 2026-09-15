@@ -1,0 +1,7 @@
+# Arquivos privados de preservação de drivers
+.private-driver-archive/
+drivers/private/
+private-driver-archive/
+
+# Relatórios locais temporários
+/tmp-driver-audit/
