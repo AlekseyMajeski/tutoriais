@@ -1,0 +1,39 @@
+name: Epson Download Center discovery
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/discover-epson-download-center.mjs'
+      - '.github/workflows/epson-download-center-discovery.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  discover:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Query Epson Download Center API
+        run: node scripts/discover-epson-download-center.mjs
+      - name: Add report to summary
+        if: always()
+        run: |
+          if [ -f drivers/audit/epson-download-center-discovery.md ]; then
+            cat drivers/audit/epson-download-center-discovery.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: epson-download-center-discovery
+          path: |
+            drivers/audit/epson-download-center-discovery.json
+            drivers/audit/epson-download-center-discovery.md
+          retention-days: 30
