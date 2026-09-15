@@ -43,4 +43,13 @@ changed += replaceAllChecked('impressoras-termicas/dimep/d-print-dual/index.html
   ['Há também pacote Linux e guia de instalação Linux oficial.', 'Pacote Linux publicado diretamente pela DIMEP; o guia de instalação também está disponível na página oficial do produto.'],
 ]);
 
+const tp550Support = 'https://tanca.com.br/drivers.php';
+const tp550Windows = 'https://www.tanca.com.br/assets/conteudo/drivers/TP-550/Driver_Utilitarios_TP-550.zip';
+changed += replaceAllChecked('impressoras-termicas/tanca/tp-550/index.html', [
+  [`<a class="btn primary" href="${tp550Support}" target="_blank" rel="noopener">Abrir suporte Tanca</a>`, `<a class="btn primary" href="${tp550Windows}" rel="noopener">⬇️ Baixar driver oficial</a>`],
+  ['<strong>Central oficial de drivers</strong><p>Procure TP-550 na central da Tanca e use o pacote correspondente à revisão da sua impressora.</p><a class="btn primary" href="https://tanca.com.br/drivers.php" target="_blank" rel="noopener">Abrir suporte oficial</a>', `<strong>Driver e utilitários TP-550</strong><p>Pacote ZIP publicado diretamente no domínio oficial da Tanca para a TP-550.</p><a class="btn primary" href="${tp550Windows}" rel="noopener">⬇️ Download direto oficial</a>`],
+  ['<strong>Não use driver aleatório</strong><p>Não publicamos um executável direto porque não foi possível validar nesta rodada um URL estável de binário oficial específico da TP-550.</p>', '<strong>Fonte verificada</strong><p>O arquivo acima está hospedado no domínio oficial da Tanca. Evite cópias de terceiros quando este pacote atender sua revisão.</p>'],
+  ['<span class="trust-item">✓ Sem link de binário não verificado</span>', '<span class="trust-item">✓ Download direto no domínio Tanca</span>'],
+]);
+
 console.log(`Official download upgrade: ${changed} página(s) alterada(s).`);
