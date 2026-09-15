@@ -98,3 +98,14 @@ body.model-page{--model-max:1200px;background:#f6f8fb;color:#172033}
   .house-ad--compact .house-ad__copy span{font-size:13px}
 }
 @media(min-width:1440px){.house-ad{max-width:1040px}}
+
+/* House ads — banner v4 (same behavior as Facity blog: preserve artwork) */
+.house-ad--visual{display:block!important;max-width:760px!important;min-height:0!important;margin-left:auto!important;margin-right:auto!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;overflow:visible!important}
+.house-ad--visual:hover{transform:none!important;box-shadow:none!important}
+.house-ad--visual .house-ad__visual{display:block!important;width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:auto!important;background:transparent!important;overflow:visible!important}
+.house-ad--visual .house-ad__visual img{display:block!important;width:100%!important;height:auto!important;max-width:100%!important;object-fit:contain!important;object-position:center!important;border-radius:16px}
+.house-ad--visual .house-ad__content{display:none!important}
+.house-ad-slot--after-download{place-items:center!important}
+@media(min-width:1000px){.house-ad-slot--after-download{margin:34px auto!important}.house-ad--visual{max-width:760px!important}}
+@media(max-width:999px){.house-ad--visual{max-width:720px!important}}
+@media(max-width:620px){.house-ad--visual{width:100%!important;max-width:none!important}.house-ad--visual .house-ad__visual{display:block!important}.house-ad--visual .house-ad__visual img{border-radius:14px}}
