@@ -92,4 +92,34 @@ changed += replaceAllChecked('impressoras-termicas/epson/tm-m30ii/index.html', [
   ['<span class="trust-item">✓ Technical Reference Guide</span>', '<span class="trust-item">✓ APD 6.12 confirmado em 07/05/2026</span>'],
 ]);
 
+const t88viiSetup = 'https://support.epson.net/setupnavi/?LG2=PT&MKN=TM-T88VII&OSC=ARD&PINF=swlist';
+const t88viiApd = 'https://support.epson.net/terms/pos/swinfo.php?id=1960&lang=pt';
+changed += replaceAllChecked('impressoras-termicas/epson/tm-t88vii/index.html', [
+  [`<a class="btn primary" target="_blank" rel="noopener" href="${t88viiSetup}">⬇️ Abrir Setup Navi</a>`, `<a class="btn primary" target="_blank" rel="noopener" href="${t88viiApd}">⬇️ Abrir APD 6 específico</a>`],
+  ['<h3>Baixe o APD 6</h3><p>No Setup Navi, selecione o Advanced Printer Driver 6 para TM-T88VII.</p>', '<h3>Abra o APD 6 específico da TM-T88VII</h3><p>Use o atalho oficial acima para cair diretamente na página de licença/download do EPSON Advanced Printer Driver 6 deste modelo.</p>'],
+]);
+
+const t82Sw = 'https://support.epson.net/setupnavi/?LG2=SW&MKN=TM-T82III&PINF=swlist';
+const t82Pt = 'https://support.epson.net/setupnavi/?LG2=PT&MKN=TM-T82III&PINF=swlist';
+const t82Apd = 'https://support.epson.net/terms/pos/swinfo.php?id=1800&lang=pt';
+changed += replaceAllChecked('impressoras-termicas/epson/tm-t82iii/index.html', [
+  [t82Sw, t82Pt],
+  [`<a class="btn primary" href="${t82Pt}" target="_blank" rel="noopener">Abrir APD 6</a>`, `<a class="btn primary" href="${t82Apd}" target="_blank" rel="noopener">Abrir APD 6 específico</a>`],
+  ['<h3>Abra o Setup Navi</h3><p>Selecione o sistema operacional e aceite a licença.</p>', '<h3>Abra o APD 6 da TM-T82III</h3><p>O botão de Windows acima leva diretamente à página oficial do APD 6 específico; para Mac, Linux e utilitários use o Setup Navi em português.</p>'],
+]);
+
+const t81Sw = 'https://support.epson.net/setupnavi/?LG2=SW&MKN=TM-T81III&PINF=swlist';
+const t81Pt = 'https://support.epson.net/setupnavi/?LG2=PT&MKN=TM-T81III&PINF=swlist';
+changed += replaceAllChecked('impressoras-termicas/epson/tm-t81iii/index.html', [
+  [t81Sw, t81Pt],
+]);
+
+const t70Support = 'https://epson.com.br/Suporte/Ponto-de-venda/Impressoras-t%C3%A9rmicas/Epson-TM-T70II/s/SPT_C31CD38104';
+const t70Apd = 'https://support.epson.net/terms/pos/swinfo.php?id=1810&lang=pt';
+changed += replaceAllChecked('impressoras-termicas/epson/tm-t70ii/index.html', [
+  ['<strong>Advanced Printer Driver</strong><p>Use o driver indicado pela página oficial para seu Windows. A Epson também mantém OPOS, JavaPOS e ePOS SDK.</p>', '<strong>EPSON Advanced Printer Driver 5</strong><p>A lista oficial global da TM-T70II aponta especificamente o <b>APD 5</b> para Windows. Não trate este modelo como APD 6 automaticamente.</p>'],
+  [`<a class="btn primary" href="${t70Support}" target="_blank" rel="noopener">Abrir drivers oficiais</a>`, `<a class="btn primary" href="${t70Apd}" target="_blank" rel="noopener">Abrir APD 5 específico</a>`],
+  ['<h3>Baixe o driver oficial</h3><p>Selecione seu Windows na página Epson.</p>', '<h3>Baixe o APD 5 oficial</h3><p>Use a página específica do EPSON Advanced Printer Driver 5 para TM-T70II e aceite os termos da Epson antes do download.</p>'],
+]);
+
 console.log(`Official download upgrade: ${changed} página(s) alterada(s).`);
