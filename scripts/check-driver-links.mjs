@@ -67,7 +67,7 @@ async function request(url, method) {
 }
 
 function classify(result, direct) {
-  if (result.error) return { level: 'FAIL', reason: result.error };
+  if (result.error) return { level: 'WARN', reason: `erro de rede: ${result.error}` };
   const status = result.status;
   if (status >= 200 && status < 400) {
     if (direct && /text\/html/i.test(result.contentType || '')) {
@@ -77,7 +77,7 @@ function classify(result, direct) {
   }
   if ([401, 403, 429].includes(status)) return { level: 'WARN', reason: `HTTP ${status} (possível bloqueio/anti-bot)` };
   if ([404, 410].includes(status)) return { level: 'FAIL', reason: `HTTP ${status}` };
-  if (status >= 500) return { level: 'FAIL', reason: `HTTP ${status}` };
+  if (status >= 500) return { level: 'WARN', reason: `HTTP ${status} (servidor instável; confirmar em nova execução)` };
   return { level: 'WARN', reason: `HTTP ${status}` };
 }
 
@@ -107,7 +107,7 @@ async function checkOne(item) {
   } catch (err) {
     const error = err?.name === 'AbortError' ? 'timeout' : String(err?.message || err);
     attempts.push({ method: 'GET-range', error });
-    return { ...item, level: 'FAIL', reason: error, attempts, checkedAt: new Date().toISOString() };
+    return { ...item, level: 'WARN', reason: `erro de rede: ${error}`, attempts, checkedAt: new Date().toISOString() };
   }
 }
 
@@ -151,23 +151,23 @@ const lines = [
   `- URLs: ${report.totals.urls}`,
   `- OK: ${report.totals.ok}`,
   `- Avisos: ${report.totals.warnings}`,
-  `- Falhas: ${report.totals.failures}`,
+  `- Falhas confirmadas: ${report.totals.failures}`,
   '',
 ];
 if (hardFailures.length) {
-  lines.push('## Falhas', '');
+  lines.push('## Falhas confirmadas', '');
   for (const r of hardFailures) lines.push(`- **${r.reason}** — ${r.url} — usado em ${r.usedBy.map(x => `${x.brand}/${x.model}`).join(', ')}`);
   lines.push('');
 }
 if (warnings.length) {
-  lines.push('## Avisos', '');
+  lines.push('## Avisos para acompanhamento', '');
   for (const r of warnings) lines.push(`- **${r.reason}** — ${r.url} — usado em ${r.usedBy.map(x => `${x.brand}/${x.model}`).join(', ')}`);
   lines.push('');
 }
 if (!hardFailures.length && !warnings.length) lines.push('Todos os links monitorados responderam normalmente.', '');
 fs.writeFileSync(path.join(OUT_DIR, 'latest.md'), lines.join('\n'));
 
-for (const r of results) console.log(`${r.level.padEnd(4)} ${r.reason.padEnd(32)} ${r.url}`);
-console.log(`\nResumo: ${report.totals.ok} OK, ${report.totals.warnings} avisos, ${report.totals.failures} falhas.`);
+for (const r of results) console.log(`${r.level.padEnd(4)} ${r.reason.padEnd(48)} ${r.url}`);
+console.log(`\nResumo: ${report.totals.ok} OK, ${report.totals.warnings} avisos, ${report.totals.failures} falhas confirmadas.`);
 
 if (hardFailures.length) process.exitCode = 2;
