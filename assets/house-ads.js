@@ -48,6 +48,13 @@
   });
 
   if(document.body.classList.contains('model-page')){
+    if(!document.querySelector('script[data-model-page-ux]')){
+      const uxScript=document.createElement('script');
+      uxScript.src=root+'assets/model-page.js';
+      uxScript.dataset.modelPageUx='1';
+      document.head.appendChild(uxScript);
+    }
+
     const sources=['data/impressoras.json','data/impressoras-extra.json','data/impressoras-extra2.json'];
     Promise.all(sources.map(file=>fetch(root+file).then(r=>r.ok?r.json():[]).catch(()=>[]))).then(parts=>{
       const items=[...new Map(parts.flat().map(p=>[p.id,p])).values()];
