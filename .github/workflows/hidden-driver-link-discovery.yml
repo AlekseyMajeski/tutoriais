@@ -1,0 +1,39 @@
+name: Hidden driver link discovery
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/discover-hidden-driver-links.mjs'
+      - '.github/workflows/hidden-driver-link-discovery.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  discover:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Discover official links
+        run: node scripts/discover-hidden-driver-links.mjs
+      - name: Add report to summary
+        if: always()
+        run: |
+          if [ -f drivers/audit/hidden-driver-link-discovery.md ]; then
+            cat drivers/audit/hidden-driver-link-discovery.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hidden-driver-link-discovery
+          path: |
+            drivers/audit/hidden-driver-link-discovery.json
+            drivers/audit/hidden-driver-link-discovery.md
+          retention-days: 30
