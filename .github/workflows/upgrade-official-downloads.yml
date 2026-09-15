@@ -3,6 +3,7 @@ name: Upgrade official download sources
 on:
   push:
     paths:
+      - 'scripts/upgrade-official-downloads.mjs'
       - '.github/workflows/upgrade-official-downloads.yml'
   workflow_dispatch:
 
@@ -36,5 +37,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add impressoras-termicas
-          git commit -m 'downloads: troca MP-4200 TH por fonte oficial'
+          git commit -m 'downloads: atualiza fontes oficiais verificadas'
           git push origin HEAD:main
