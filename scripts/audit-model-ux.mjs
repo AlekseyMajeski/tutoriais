@@ -55,12 +55,15 @@ for (const file of walk(BASE)) {
   const heroHtml = heroStart >= 0 && heroEnd > heroStart ? html.slice(heroStart, heroEnd) : '';
   const staticHeroPrimary = has(/<a[^>]+class=["'][^"']*btn[^"']*primary[^"']*["'][^>]+href=/i, heroHtml) || has(/<a[^>]+href=["'][^"']+["'][^>]+class=["'][^"']*btn[^"']*primary/i, heroHtml);
   const downloadableButtonExists = downloadAt >= 0 && has(/<a[^>]+class=["'][^"']*btn[^"']*["'][^>]+href=/i, html.slice(downloadAt));
+  const adSlots = (html.match(/data-ad-position=/gi) || []).length;
+  const hasMiddleAd = has(/data-ad-position=["']after-installation["']/i, html);
+  const effectiveAds = sharedUx && hasMiddleAd ? Math.max(0, adSlots - 1) : adSlots;
 
   const checks = {
     h1: has(/<h1>[^<]+<\/h1>/i, html),
     hero: heroStart >= 0,
     heroPrimaryCta: staticHeroPrimary || (sharedUx && downloadableButtonExists),
-    trust: has(/class=["'][^"']*model-trust/i, html),
+    trust: has(/class=["'][^"']*model-trust/i, html) || sharedUx,
     connectionNav: has(/class=["'][^"']*connection-nav/i, html) || (sharedUx && [installAt, networkAt, problemsAt].filter(n => n >= 0).length >= 2),
     downloadSection: downloadAt >= 0,
     installationSection: installAt >= 0,
@@ -71,14 +74,15 @@ for (const file of walk(BASE)) {
     downloadBeforeInstall: downloadAt >= 0 && installAt >= 0 && downloadAt < installAt,
     installBeforeProblems: installAt >= 0 && problemsAt >= 0 && installAt < problemsAt,
     networkAfterInstall: networkAt < 0 || (installAt >= 0 && installAt < networkAt),
+    adDensity: effectiveAds <= 2,
     sharedUxLoader: sharedUx
   };
 
   const critical = ['hero', 'heroPrimaryCta', 'downloadSection', 'installationSection', 'problemsSection', 'mobileActions', 'downloadBeforeInstall', 'installBeforeProblems', 'sharedUxLoader'];
   const issues = critical.filter(k => !checks[k]);
-  const enhancements = ['trust', 'connectionNav', 'mobilePrimary', 'fastInstall'].filter(k => !checks[k]);
-  const normalizedAtRuntime = sharedUx && (!staticHeroPrimary || staticDownloadAt < 0 || (staticInstallAt < 0 && staticConfigAt < 0) || !has(/class=["'][^"']*mobile-actions/i, html) || !has(/class=["'][^"']*connection-nav/i, html));
-  pages.push({ path: rel, checks, issues, enhancements, normalizedAtRuntime });
+  const enhancements = ['trust', 'connectionNav', 'mobilePrimary', 'fastInstall', 'adDensity'].filter(k => !checks[k]);
+  const normalizedAtRuntime = sharedUx && (!staticHeroPrimary || staticDownloadAt < 0 || (staticInstallAt < 0 && staticConfigAt < 0) || !has(/class=["'][^"']*mobile-actions/i, html) || !has(/class=["'][^"']*connection-nav/i, html) || !has(/class=["'][^"']*model-trust/i, html) || hasMiddleAd);
+  pages.push({ path: rel, checks, issues, enhancements, normalizedAtRuntime, adSlots, effectiveAds });
 }
 
 const total = pages.length;
@@ -107,7 +111,7 @@ const labels = {
   problemsSection: 'seção Problemas', mobileActions: 'barra mobile', mobilePrimary: 'CTA mobile destacado',
   fastInstall: 'instalação/configuração rápida', downloadBeforeInstall: 'Download antes de Instalação/Configuração',
   installBeforeProblems: 'Instalação/Configuração antes de Problemas', networkAfterInstall: 'Rede depois da etapa principal',
-  sharedUxLoader: 'normalizador compartilhado carregado'
+  adDensity: 'no máximo 2 anúncios efetivos por tutorial', sharedUxLoader: 'normalizador compartilhado carregado'
 };
 
 const md = ['# Auditoria estrutural de UX — páginas de modelo', '', `Executada em: ${report.checkedAt}`, '',
@@ -124,7 +128,7 @@ if (criticalPages.length) {
 }
 if (runtimePages.length) {
   md.push('', '## HTML legado coberto pelo normalizador', '');
-  for (const p of runtimePages) md.push(`- \`${p.path}\``);
+  for (const p of runtimePages) md.push(`- \`${p.path}\` — anúncios estáticos: ${p.adSlots}; efetivos após normalização: ${p.effectiveAds}`);
 }
 if (enhancementPages.length) {
   md.push('', '## Melhorias estáticas', '');
