@@ -8,6 +8,8 @@ on:
       - 'assets/styles.css'
       - 'assets/ux-v2.css'
       - 'assets/epson-os.css'
+      - 'assets/model-page.js'
+      - 'assets/house-ads.js'
       - 'scripts/audit-model-ux.mjs'
       - '.github/workflows/model-ux-audit.yml'
 
