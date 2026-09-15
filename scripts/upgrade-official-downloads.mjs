@@ -32,4 +32,15 @@ changed += replaceAllChecked('impressoras-termicas/bematech/mp-4200-th/index.htm
   ['Fonte do arquivo: Base G, repositório independente. Prefira sempre o suporte atual da Elgin quando houver pacote oficial equivalente.', 'Fonte do arquivo: repositório técnico oficial ElginDeveloperCommunity (Elgin S/A).'],
 ]);
 
+const dimepProduct = 'https://www.dimep.com.br/produto/automacao-comercial/d-print-dual/';
+const dimepWindows = 'https://www.dimep.com.br/wp-content/uploads/2025/12/D_PrintDual_Windows.zip';
+const dimepLinux = 'https://www.dimep.com.br/wp-content/uploads/2025/12/D_PrintDual_Linux.zip';
+changed += replaceAllChecked('impressoras-termicas/dimep/d-print-dual/index.html', [
+  [`<a class="btn primary" href="${dimepProduct}" target="_blank" rel="noopener">Drivers oficiais DIMEP</a>`, `<a class="btn primary" href="${dimepWindows}" rel="noopener">⬇️ Baixar driver Windows</a>`],
+  [`<a class="btn primary" href="${dimepProduct}" target="_blank" rel="noopener">Abrir download oficial</a>`, `<a class="btn primary" href="${dimepWindows}" rel="noopener">⬇️ Download direto Windows</a>`],
+  [`<a class="btn soft" href="${dimepProduct}" target="_blank" rel="noopener">Abrir suporte DIMEP</a>`, `<a class="btn soft" href="${dimepLinux}" rel="noopener">⬇️ Download direto Linux</a>`],
+  ['A DIMEP disponibiliza o driver Windows na própria página oficial do produto.', 'Driver Windows publicado diretamente pela DIMEP em seu domínio oficial.'],
+  ['Há também pacote Linux e guia de instalação Linux oficial.', 'Pacote Linux publicado diretamente pela DIMEP; o guia de instalação também está disponível na página oficial do produto.'],
+]);
+
 console.log(`Official download upgrade: ${changed} página(s) alterada(s).`);
