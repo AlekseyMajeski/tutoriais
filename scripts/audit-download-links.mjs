@@ -15,6 +15,7 @@ const officialHosts = {
   sweda: ['sweda.com.br'],
   tanca: ['tanca.com.br'],
   waytec: ['waytec.com.br'],
+  xprinter: ['x-printer.cn', 'xprinter.net', 'xprintertech.com'],
 };
 
 const directFile = /\.(?:exe|msi|zip|7z|rar|dmg|pkg|deb|rpm|run|tar\.gz)(?:[?#].*)?$/i;
@@ -43,6 +44,19 @@ function isOfficial(brand, host) {
   return (officialHosts[brand] || []).some(domain => host === domain || host.endsWith(`.${domain}`));
 }
 
+function isXprinterDirectEndpoint(brand, href) {
+  if (brand !== 'xprinter') return false;
+  try {
+    const url = new URL(href.replaceAll('&amp;', '&'));
+    const host = url.hostname.toLowerCase();
+    return (host === 'x-printer.cn' || host.endsWith('.x-printer.cn'))
+      && url.pathname.includes('/download/')
+      && url.searchParams.has('wpdmdl');
+  } catch {
+    return false;
+  }
+}
+
 function isElginDeveloperSource(brand, href) {
   if (!['elgin', 'bematech'].includes(brand)) return false;
   try {
@@ -56,11 +70,12 @@ function isElginDeveloperSource(brand, href) {
 }
 
 function classify(brand, href) {
-  const host = hostOf(href);
-  const direct = directFile.test(href);
+  const normalizedHref = href.replaceAll('&amp;', '&');
+  const host = hostOf(normalizedHref);
+  const direct = directFile.test(normalizedHref) || isXprinterDirectEndpoint(brand, normalizedHref);
   if (host === 'catalog.update.microsoft.com' || host.endsWith('.catalog.update.microsoft.com')) return 'trusted-distribution';
-  if (isElginDeveloperSource(brand, href) && direct) return 'official-direct';
-  if (isElginDeveloperSource(brand, href)) return 'official-page';
+  if (isElginDeveloperSource(brand, normalizedHref) && direct) return 'official-direct';
+  if (isElginDeveloperSource(brand, normalizedHref)) return 'official-page';
   if (isOfficial(brand, host) && direct) return 'official-direct';
   if (isOfficial(brand, host)) return 'official-page';
   if (direct) return 'third-party-direct';
