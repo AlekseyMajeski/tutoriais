@@ -50,7 +50,7 @@ jobs:
           retention-days: 90
 
       - name: Open, update or close monitoring issue
-        if: always()
+        if: always() && github.ref == 'refs/heads/main'
         uses: actions/github-script@v7
         with:
           script: |
