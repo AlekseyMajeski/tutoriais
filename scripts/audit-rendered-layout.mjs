@@ -13,11 +13,17 @@ const pages=[
   {id:'home',path:'/',kind:'home'},
   {id:'termicas',path:'/impressoras-termicas/',kind:'home'},
   {id:'epson',path:'/impressoras-termicas/epson/',kind:'hub'},
+  {id:'xprinter-hub',path:'/impressoras-termicas/xprinter/',kind:'hub'},
   {id:'tm-t20',path:'/impressoras-termicas/epson/tm-t20/',kind:'model'},
   {id:'mp-4200-th',path:'/impressoras-termicas/bematech/mp-4200-th/',kind:'model'},
+  {id:'xp-80t',path:'/impressoras-termicas/xprinter/xp-80t/',kind:'model'},
+  {id:'xp-q200ii',path:'/impressoras-termicas/xprinter/xp-q200ii/',kind:'model'},
+  {id:'xp-n160ii',path:'/impressoras-termicas/xprinter/xp-n160ii/',kind:'model'},
+  {id:'xp-r330h',path:'/impressoras-termicas/xprinter/xp-r330h/',kind:'model'},
+  {id:'xp-58iiht',path:'/impressoras-termicas/xprinter/xp-58iiht/',kind:'model'},
   {id:'nao-imprime',path:'/impressoras-termicas/nao-imprime/',kind:'support'},
   {id:'pos-80',path:'/impressoras-termicas/pos-80/',kind:'hybrid'},
-  {id:'xprinter',path:'/impressoras-termicas/xprinter-driver/',kind:'hybrid'}
+  {id:'xprinter-driver',path:'/impressoras-termicas/xprinter-driver/',kind:'hybrid'}
 ];
 const viewports=[
   {id:'390',width:390,height:844,mobile:true},
