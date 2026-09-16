@@ -1,0 +1,60 @@
+name: Rendered layout audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'impressoras-termicas/**/index.html'
+      - 'assets/*.css'
+      - 'assets/*.js'
+      - 'scripts/audit-rendered-layout.mjs'
+      - '.github/workflows/rendered-layout-audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Install Playwright core
+        run: npm install --no-save playwright-core@1.55.0
+      - name: Wait for GitHub Pages deploy
+        run: sleep 20
+      - name: Find Chrome
+        id: chrome
+        shell: bash
+        run: |
+          CHROME_PATH="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$CHROME_PATH" ]; then
+            echo "Chrome/Chromium não encontrado" >&2
+            exit 1
+          fi
+          echo "path=$CHROME_PATH" >> "$GITHUB_OUTPUT"
+      - name: Run rendered QA
+        env:
+          CHROME_PATH: ${{ steps.chrome.outputs.path }}
+          QA_BASE_URL: https://alekseymajeski.github.io/tutoriais
+        run: node scripts/audit-rendered-layout.mjs
+      - name: Add report to summary
+        if: always()
+        run: |
+          if [ -f artifacts/rendered-qa/report.md ]; then
+            cat artifacts/rendered-qa/report.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Upload screenshots and report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rendered-layout-qa
+          path: artifacts/rendered-qa/
+          retention-days: 30
