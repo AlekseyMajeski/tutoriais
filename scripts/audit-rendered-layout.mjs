@@ -2,12 +2,21 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { chromium } from 'playwright-core';
 
+const ROOT=process.cwd();
 const BASE=(process.env.QA_BASE_URL||'https://alekseymajeski.github.io/tutoriais').replace(/\/$/,'');
 const CHROME=process.env.CHROME_PATH;
 if(!CHROME)throw new Error('CHROME_PATH não definido');
 
-const outDir=path.join(process.cwd(),'artifacts','rendered-qa');
+const outDir=path.join(ROOT,'artifacts','rendered-qa');
 fs.mkdirSync(outDir,{recursive:true});
+
+const xprinterCatalog=JSON.parse(fs.readFileSync(path.join(ROOT,'data','impressoras-xprinter.json'),'utf8'))
+  .filter(item=>item.status==='publicado')
+  .map(item=>{
+    const relative=item.url.replace(/^\/tutoriais/,'');
+    const slug=relative.split('/').filter(Boolean).at(-1);
+    return {id:slug,path:relative,kind:'model'};
+  });
 
 const pages=[
   {id:'home',path:'/',kind:'home'},
@@ -16,14 +25,7 @@ const pages=[
   {id:'xprinter-hub',path:'/impressoras-termicas/xprinter/',kind:'hub'},
   {id:'tm-t20',path:'/impressoras-termicas/epson/tm-t20/',kind:'model'},
   {id:'mp-4200-th',path:'/impressoras-termicas/bematech/mp-4200-th/',kind:'model'},
-  {id:'xp-80t',path:'/impressoras-termicas/xprinter/xp-80t/',kind:'model'},
-  {id:'xp-t80q',path:'/impressoras-termicas/xprinter/xp-t80q/',kind:'model'},
-  {id:'xp-t890h',path:'/impressoras-termicas/xprinter/xp-t890h/',kind:'model'},
-  {id:'xp-q200ii',path:'/impressoras-termicas/xprinter/xp-q200ii/',kind:'model'},
-  {id:'xp-n160ii',path:'/impressoras-termicas/xprinter/xp-n160ii/',kind:'model'},
-  {id:'xp-r330h',path:'/impressoras-termicas/xprinter/xp-r330h/',kind:'model'},
-  {id:'xp-58iih',path:'/impressoras-termicas/xprinter/xp-58iih/',kind:'model'},
-  {id:'xp-58iiht',path:'/impressoras-termicas/xprinter/xp-58iiht/',kind:'model'},
+  ...xprinterCatalog,
   {id:'nao-imprime',path:'/impressoras-termicas/nao-imprime/',kind:'support'},
   {id:'pos-80',path:'/impressoras-termicas/pos-80/',kind:'hybrid'},
   {id:'xprinter-driver',path:'/impressoras-termicas/xprinter-driver/',kind:'hybrid'}
@@ -158,7 +160,7 @@ await browser.close();
 
 const failed=checks.filter(c=>!c.ok);
 const critical=failed.filter(c=>!['banner Facity carrega'].includes(c.name));
-const lines=['# QA renderizado multi-viewport','',`Base: ${BASE}`,`Executado em: ${new Date().toISOString()}`,'',`- Verificações: **${checks.length}**`,`- Falhas: **${failed.length}**`,`- Falhas críticas: **${critical.length}**`,''];
+const lines=['# QA renderizado multi-viewport','',`Base: ${BASE}`,`Executado em: ${new Date().toISOString()}`,'',`- Páginas testadas por viewport: **${pages.length}**`,`- Modelos XPrinter descobertos no catálogo: **${xprinterCatalog.length}**`,`- Verificações: **${checks.length}**`,`- Falhas: **${failed.length}**`,`- Falhas críticas: **${critical.length}**`,''];
 for(const vp of viewports){
   lines.push(`## ${vp.width}×${vp.height}`,'');
   for(const def of pages){
@@ -169,7 +171,7 @@ for(const vp of viewports){
   lines.push('');
 }
 if(failed.length){lines.push('## Falhas detalhadas','');for(const c of failed)lines.push(`- ${c.page} @ ${c.viewport}: ${c.name}${c.detail?` — ${c.detail}`:''}`)}
-fs.writeFileSync(path.join(outDir,'report.json'),JSON.stringify({base:BASE,checkedAt:new Date().toISOString(),checks,failed,critical},null,2)+'\n');
+fs.writeFileSync(path.join(outDir,'report.json'),JSON.stringify({base:BASE,checkedAt:new Date().toISOString(),pages:pages.length,xprinterModels:xprinterCatalog.length,checks,failed,critical},null,2)+'\n');
 fs.writeFileSync(path.join(outDir,'report.md'),lines.join('\n')+'\n');
 console.log(lines.join('\n'));
 if(critical.length)process.exitCode=2;
