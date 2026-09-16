@@ -21,7 +21,7 @@ add('termicas','genéricas destacadas',/generic-printer-guides/.test(thermal));
 add('termicas','problemas por sintoma',/id="problemas"/.test(thermal));
 add('termicas','CSS v3',/assets\/home-v3\.css/.test(thermal));
 
-for(const brand of ['epson','bematech','elgin','tanca','sweda']){
+for(const brand of ['epson','bematech','elgin','tanca','sweda','xprinter']){
   const p=`impressoras-termicas/${brand}/index.html`,html=read(p);
   add(`hub:${brand}`,'classe hub-page',/class="hub-page"/.test(html));
   add(`hub:${brand}`,'CSS compartilhado',/assets\/hub-v3\.css/.test(html));
