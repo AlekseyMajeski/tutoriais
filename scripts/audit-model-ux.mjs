@@ -36,7 +36,12 @@ for (const file of walk(BASE)) {
   const rel = path.relative(ROOT, file).replaceAll(path.sep, '/');
   if (rel.split('/').length < 4) continue;
 
-  const sharedUx = /assets\/house-ads\.js/i.test(html) && fs.existsSync(path.join(ROOT, 'assets', 'model-page.js'));
+  // O normalizador só existe para esta página se o HTML realmente carregar os dois assets.
+  // Antes, bastava o arquivo model-page.js existir no repositório, o que mascarava páginas sem loader.
+  const hasHouseAds = /<script[^>]+src=["'][^"']*assets\/house-ads\.js[^"']*["']/i.test(html);
+  const hasModelPageLoader = /<script[^>]+src=["'][^"']*assets\/model-page\.js[^"']*["']/i.test(html);
+  const sharedUx = hasHouseAds && hasModelPageLoader;
+
   const staticDownloadAt = index(/id=["']download["']/i, html);
   const legacyDownloadAt = index(/id=["']driver["']/i, html);
   const downloadAt = staticDownloadAt >= 0 ? staticDownloadAt : legacyDownloadAt;
@@ -84,7 +89,7 @@ for (const file of walk(BASE)) {
   const issues = critical.filter(k => !checks[k]);
   const enhancements = ['trust', 'connectionNav', 'mobilePrimary', 'fastInstall', 'adDensity'].filter(k => !checks[k]);
   const normalizedAtRuntime = sharedUx && (!staticHeroPrimary || staticDownloadAt < 0 || (staticInstallAt < 0 && staticConfigAt < 0) || !has(/class=["'][^"']*mobile-actions/i, html) || !has(/class=["'][^"']*connection-nav/i, html) || !has(/class=["'][^"']*model-trust/i, html) || !staticFastInstall || hasMiddleAd);
-  pages.push({ path: rel, checks, issues, enhancements, normalizedAtRuntime, adSlots, effectiveAds });
+  pages.push({ path: rel, checks, issues, enhancements, normalizedAtRuntime, adSlots, effectiveAds, hasHouseAds, hasModelPageLoader });
 }
 
 const total = pages.length;
