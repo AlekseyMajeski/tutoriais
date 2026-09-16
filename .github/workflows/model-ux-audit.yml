@@ -9,8 +9,10 @@ on:
       - 'assets/ux-v2.css'
       - 'assets/epson-os.css'
       - 'assets/model-page.js'
+      - 'assets/model-page-fixes.css'
       - 'assets/house-ads.js'
       - 'scripts/audit-model-ux.mjs'
+      - 'scripts/normalize-model-ux.mjs'
       - '.github/workflows/model-ux-audit.yml'
 
 permissions:
