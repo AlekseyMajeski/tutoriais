@@ -71,8 +71,9 @@ add('responsive','híbridas mantêm navegação essencial no mobile',/@media\(ma
 add('responsive','modelos desktop amplo',/@media\(min-width:1440px\)[\s\S]*?\.model-page/.test(uxCss));
 add('responsive','modelos mobile',/@media\(max-width:700px\)[\s\S]*?\.model-page/.test(uxCss));
 
+const adImageRule=uxCss.match(/\.house-ad--visual \.house-ad__visual img\{([^}]*)\}/g)?.at(-1)||'';
 add('publicidade','arte inteira visível',/\.house-ad--visual \.house-ad__visual\{display:block/.test(uxCss));
-add('publicidade','imagem sem corte',/\.house-ad--visual \.house-ad__visual img\{width:100%;height:auto;object-fit:contain/.test(uxCss));
+add('publicidade','imagem sem corte',/width:100%/.test(adImageRule)&&/height:auto/.test(adImageRule)&&/object-fit:contain/.test(adImageRule));
 add('publicidade','sem texto duplicado ao lado',/\.house-ad--visual \.house-ad__content\{display:none/.test(uxCss));
 add('publicidade','banner contido como no blog',/\.house-ad--visual\{max-width:760px/.test(uxCss));
 add('modelos','remove oferta desativada em runtime',/querySelectorAll\('\.buy-box'\)[\s\S]*?querySelector\('\.btn\.disabled'\)/.test(modelJs));
