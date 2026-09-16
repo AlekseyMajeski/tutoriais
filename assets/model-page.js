@@ -3,6 +3,15 @@
   if(!body||!body.classList.contains('model-page')||body.dataset.modelUxReady==='1')return;
   body.dataset.modelUxReady='1';
 
+  if(!document.querySelector('link[data-model-page-fixes]')){
+    const current=document.currentScript?.src;
+    const css=document.createElement('link');
+    css.rel='stylesheet';
+    css.href=current?new URL('model-page-fixes.css',current).toString():'../../../assets/model-page-fixes.css';
+    css.dataset.modelPageFixes='1';
+    document.head.appendChild(css);
+  }
+
   const hero=document.querySelector('.guide-hero');
   const heroMain=hero?.querySelector('.guide-grid > div:first-child')||hero;
 
@@ -113,12 +122,8 @@
     }
   }
 
-  // Em tutoriais de modelo, dois anúncios são suficientes: após o download e perto do fim.
-  // O slot intermediário, logo após a instalação, ficava repetitivo e quebrava o ritmo de leitura.
   document.querySelector('.ad-slot[data-ad-position="after-installation"]')?.remove();
 
-  // Não mostre blocos comerciais sem uma oferta real. Um botão desativado “em breve”
-  // cria um beco sem saída e faz o tutorial parecer inacabado.
   document.querySelectorAll('.buy-box').forEach(box=>{
     const disabled=box.querySelector('.btn.disabled');
     const text=box.textContent||'';
