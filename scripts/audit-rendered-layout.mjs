@@ -47,14 +47,31 @@ for(const vp of viewports){
     add(def.id,vp.id,'carrega a página',response?.ok(),`HTTP ${response?.status()}`);
     await page.waitForTimeout(250);
 
-    const basic=await page.evaluate(()=>({
-      scrollWidth:document.documentElement.scrollWidth,
-      clientWidth:document.documentElement.clientWidth,
-      headerHeight:document.querySelector('.topbar')?.getBoundingClientRect().height||0,
-      h1:document.querySelector('h1')?.textContent?.trim()||'',
-      visibleDisabledOffer:[...document.querySelectorAll('.buy-box .btn.disabled')].some(el=>el.getClientRects().length>0)
-    }));
-    add(def.id,vp.id,'sem overflow horizontal',basic.scrollWidth<=basic.clientWidth+2,`${basic.scrollWidth}/${basic.clientWidth}px`);
+    const basic=await page.evaluate(()=>{
+      const viewportWidth=document.documentElement.clientWidth;
+      const overflowers=[...document.querySelectorAll('body *')].map(el=>{
+        const r=el.getBoundingClientRect();
+        const s=getComputedStyle(el);
+        return {
+          tag:el.tagName.toLowerCase(),
+          id:el.id||'',
+          cls:typeof el.className==='string'?el.className.trim().replace(/\s+/g,'.').slice(0,100):'',
+          text:(el.textContent||'').trim().replace(/\s+/g,' ').slice(0,70),
+          left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width),
+          overflowX:s.overflowX,position:s.position
+        };
+      }).filter(x=>x.width>0&&(x.right>viewportWidth+2||x.left<-2)).sort((a,b)=>(b.right-viewportWidth)-(a.right-viewportWidth)).slice(0,12);
+      return {
+        scrollWidth:document.documentElement.scrollWidth,
+        clientWidth:viewportWidth,
+        headerHeight:document.querySelector('.topbar')?.getBoundingClientRect().height||0,
+        h1:document.querySelector('h1')?.textContent?.trim()||'',
+        visibleDisabledOffer:[...document.querySelectorAll('.buy-box .btn.disabled')].some(el=>el.getClientRects().length>0),
+        overflowers
+      };
+    });
+    const overflowDetail=basic.overflowers.length?`${basic.scrollWidth}/${basic.clientWidth}px | ${basic.overflowers.map(x=>`${x.tag}${x.id?`#${x.id}`:''}${x.cls?`.`+x.cls:''}[${x.left}..${x.right};w${x.width};${x.overflowX}]`).join(' | ')}`:`${basic.scrollWidth}/${basic.clientWidth}px`;
+    add(def.id,vp.id,'sem overflow horizontal',basic.scrollWidth<=basic.clientWidth+2,overflowDetail);
     add(def.id,vp.id,'H1 presente',Boolean(basic.h1),basic.h1);
     add(def.id,vp.id,'cabeçalho compacto',basic.headerHeight>0&&basic.headerHeight<=82,`${basic.headerHeight.toFixed(1)}px`);
     if(def.kind==='model')add(def.id,vp.id,'sem oferta desativada visível',!basic.visibleDisabledOffer);
@@ -89,6 +106,9 @@ for(const vp of viewports){
       add(def.id,vp.id,'tem caminho de navegação no topo',nav>=1,`${nav} link(s) visível(is)`);
     }
 
+    // Screenshot inicial: representa exatamente o que o visitante vê antes de rolar.
+    await page.screenshot({path:path.join(outDir,`${def.id}-${vp.id}-top.png`),fullPage:false});
+
     const ad=page.locator('.house-ad--visual').first();
     if(await ad.count()){
       await ad.scrollIntoViewIfNeeded();
@@ -113,6 +133,7 @@ for(const vp of viewports){
         const drift=Math.abs(adState.naturalRatio-adState.renderedRatio)/adState.naturalRatio;
         add(def.id,vp.id,'proporção da arte preservada',drift<.03,`desvio ${(drift*100).toFixed(1)}%`);
       }
+      await page.screenshot({path:path.join(outDir,`${def.id}-${vp.id}-ad.png`),fullPage:false});
     }
 
     if(vp.mobile){
@@ -121,7 +142,6 @@ for(const vp of viewports){
       add(def.id,vp.id,'alvos principais com altura utilizável',tooSmall.length===0,tooSmall.map(t=>`${t.text}:${t.h.toFixed(0)}`).join(', '));
     }
 
-    await page.screenshot({path:path.join(outDir,`${def.id}-${vp.id}.png`),fullPage:false});
     await page.close();
   }
   await context.close();
