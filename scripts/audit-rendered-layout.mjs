@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { chromium } from 'playwright-core';
 
-const BASE=process.env.QA_BASE_URL||'https://alekseymajeski.github.io/tutoriais';
+const BASE=(process.env.QA_BASE_URL||'https://alekseymajeski.github.io/tutoriais').replace(/\/$/,'');
 const CHROME=process.env.CHROME_PATH;
 if(!CHROME)throw new Error('CHROME_PATH não definido');
 
@@ -28,13 +28,14 @@ const viewports=[
 
 const checks=[];
 const add=(page,viewport,name,ok,detail='')=>checks.push({page,viewport,name,ok:Boolean(ok),detail});
+const getBox=async(locator)=>await locator.count()?locator.first().boundingBox():null;
 const browser=await chromium.launch({headless:true,executablePath:CHROME,args:['--no-sandbox','--disable-dev-shm-usage']});
 
 for(const vp of viewports){
   const context=await browser.newContext({viewport:{width:vp.width,height:vp.height},deviceScaleFactor:1});
   for(const def of pages){
     const page=await context.newPage();
-    const url=new URL(def.path,BASE).toString()+`?qa=${Date.now()}`;
+    const url=`${BASE}${def.path}?qa=${Date.now()}`;
     let response;
     try{
       response=await page.goto(url,{waitUntil:'networkidle',timeout:45000});
@@ -59,23 +60,23 @@ for(const vp of viewports){
     if(def.kind==='model')add(def.id,vp.id,'sem oferta desativada visível',!basic.visibleDisabledOffer);
 
     if(def.kind==='home'){
-      const search=await page.locator('[data-search]').first().boundingBox();
+      const search=await getBox(page.locator('[data-search]'));
       add(def.id,vp.id,'busca visível',Boolean(search));
       if(search)add(def.id,vp.id,'busca perto do topo',search.y<vp.height*.78,`y=${search.y.toFixed(0)}px`);
     }
 
     if(def.kind==='hub'){
-      const search=await page.locator('.hub-search-field input').first().boundingBox();
+      const search=await getBox(page.locator('.hub-search-field input'));
       add(def.id,vp.id,'busca da marca visível',Boolean(search));
       if(search)add(def.id,vp.id,'busca da marca perto do topo',search.y<vp.height*.8,`y=${search.y.toFixed(0)}px`);
     }
 
     if(def.kind==='model'){
-      const cta=await page.locator('.guide-hero .btn.primary').first().boundingBox();
+      const cta=await getBox(page.locator('.guide-hero .btn.primary'));
       add(def.id,vp.id,'CTA principal visível',Boolean(cta));
       if(cta)add(def.id,vp.id,'CTA principal acima da dobra',cta.y<vp.height*.92,`y=${cta.y.toFixed(0)}px`);
       if(vp.mobile){
-        const mobile=await page.locator('.mobile-actions').first().boundingBox();
+        const mobile=await getBox(page.locator('.mobile-actions'));
         add(def.id,vp.id,'barra mobile presente',Boolean(mobile));
         if(mobile)add(def.id,vp.id,'barra mobile dentro da viewport',mobile.y+mobile.height<=vp.height+2,`bottom=${(mobile.y+mobile.height).toFixed(0)}px`);
       }
