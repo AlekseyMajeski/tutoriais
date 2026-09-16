@@ -53,7 +53,8 @@ for (const file of htmlFiles) {
 const catalogPaths = [
   'data/impressoras.json',
   'data/impressoras-extra.json',
-  'data/impressoras-extra2.json'
+  'data/impressoras-extra2.json',
+  'data/impressoras-xprinter.json'
 ];
 
 let catalog = [];
