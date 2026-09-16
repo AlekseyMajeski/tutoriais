@@ -11,6 +11,7 @@ on:
       - 'impressoras-termicas/elgin/index.html'
       - 'impressoras-termicas/tanca/index.html'
       - 'impressoras-termicas/sweda/index.html'
+      - 'impressoras-termicas/xprinter/index.html'
       - 'impressoras-termicas/nao-imprime/index.html'
       - 'impressoras-termicas/offline/index.html'
       - 'impressoras-termicas/usb-nao-reconhece/index.html'
