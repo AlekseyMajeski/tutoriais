@@ -7,7 +7,8 @@
   const source=document.body.dataset.catalog;
   const extraSources=source&&source.includes('impressoras.json')?[
     source.replace('impressoras.json','impressoras-extra.json'),
-    source.replace('impressoras.json','impressoras-extra2.json')
+    source.replace('impressoras.json','impressoras-extra2.json'),
+    source.replace('impressoras.json','impressoras-xprinter.json')
   ]:[];
   const preset=document.body.dataset.category||'todos';
   const search=document.querySelector('[data-search]');
