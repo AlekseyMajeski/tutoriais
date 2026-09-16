@@ -17,9 +17,12 @@ const pages=[
   {id:'tm-t20',path:'/impressoras-termicas/epson/tm-t20/',kind:'model'},
   {id:'mp-4200-th',path:'/impressoras-termicas/bematech/mp-4200-th/',kind:'model'},
   {id:'xp-80t',path:'/impressoras-termicas/xprinter/xp-80t/',kind:'model'},
+  {id:'xp-t80q',path:'/impressoras-termicas/xprinter/xp-t80q/',kind:'model'},
+  {id:'xp-t890h',path:'/impressoras-termicas/xprinter/xp-t890h/',kind:'model'},
   {id:'xp-q200ii',path:'/impressoras-termicas/xprinter/xp-q200ii/',kind:'model'},
   {id:'xp-n160ii',path:'/impressoras-termicas/xprinter/xp-n160ii/',kind:'model'},
   {id:'xp-r330h',path:'/impressoras-termicas/xprinter/xp-r330h/',kind:'model'},
+  {id:'xp-58iih',path:'/impressoras-termicas/xprinter/xp-58iih/',kind:'model'},
   {id:'xp-58iiht',path:'/impressoras-termicas/xprinter/xp-58iiht/',kind:'model'},
   {id:'nao-imprime',path:'/impressoras-termicas/nao-imprime/',kind:'support'},
   {id:'pos-80',path:'/impressoras-termicas/pos-80/',kind:'hybrid'},
@@ -112,7 +115,6 @@ for(const vp of viewports){
       add(def.id,vp.id,'tem caminho de navegação no topo',nav>=1,`${nav} link(s) visível(is)`);
     }
 
-    // Screenshot inicial: representa exatamente o que o visitante vê antes de rolar.
     await page.screenshot({path:path.join(outDir,`${def.id}-${vp.id}-top.png`),fullPage:false});
 
     const ad=page.locator('.house-ad--visual').first();
