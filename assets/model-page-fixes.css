@@ -1,0 +1,7 @@
+/* Correções responsivas específicas das páginas de modelo. */
+@media(max-width:700px){
+  .model-page .guide-grid>*{min-width:0}
+  .model-page .guide-grid>div:first-child{width:100%;max-width:100%;min-width:0}
+  .model-page .chips{width:100%;max-width:100%;min-width:0;margin-right:0;padding-right:0;overflow-x:auto;overscroll-behavior-inline:contain}
+  .model-page .chips .chip{flex:0 0 auto}
+}
