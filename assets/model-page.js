@@ -117,6 +117,16 @@
   // O slot intermediário, logo após a instalação, ficava repetitivo e quebrava o ritmo de leitura.
   document.querySelector('.ad-slot[data-ad-position="after-installation"]')?.remove();
 
+  // Não mostre blocos comerciais sem uma oferta real. Um botão desativado “em breve”
+  // cria um beco sem saída e faz o tutorial parecer inacabado.
+  document.querySelectorAll('.buy-box').forEach(box=>{
+    const disabled=box.querySelector('.btn.disabled');
+    const text=box.textContent||'';
+    if(disabled&&/(em breve|reservad[ao]|afiliad[oa])/i.test(text)){
+      box.closest('section.section')?.remove();
+    }
+  });
+
   let mobile=document.querySelector('.mobile-actions');
   if(!mobile){
     const targets=[
