@@ -11,7 +11,7 @@ const officialHosts = {
   daruma: ['daruma.com.br'],
   dimep: ['dimep.com.br'],
   elgin: ['elgin.com.br'],
-  epson: ['epson.com.br', 'epson.com', 'epson-biz.com', 'epson.net'],
+  epson: ['epson.com.br', 'epson.com', 'epson-biz.com', 'epson.net', 'epson.jp'],
   sweda: ['sweda.com.br'],
   tanca: ['tanca.com.br'],
   waytec: ['waytec.com.br'],
