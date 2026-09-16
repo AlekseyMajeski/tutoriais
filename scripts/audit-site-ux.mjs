@@ -48,13 +48,14 @@ for(const slug of ['genericas','pos-58','pos-80','xprinter-driver']){
   add(`hybrid:${slug}`,'publicidade contida',(html.match(/data-ad-position=/g)||[]).length<=2);
 }
 
-for(const asset of ['assets/home-v3.css','assets/hub-v3.css','assets/support-v3.css','assets/hybrid-v3.css','assets/model-page.js','assets/ux-v2.css']) add('assets',asset,exists(asset));
+for(const asset of ['assets/home-v3.css','assets/hub-v3.css','assets/support-v3.css','assets/hybrid-v3.css','assets/model-page.js','assets/model-page-fixes.css','assets/ux-v2.css']) add('assets',asset,exists(asset));
 
 const homeCss=read('assets/home-v3.css');
 const hubCss=read('assets/hub-v3.css');
 const supportCss=read('assets/support-v3.css');
 const hybridCss=read('assets/hybrid-v3.css');
 const uxCss=read('assets/ux-v2.css');
+const modelFixCss=read('assets/model-page-fixes.css');
 const modelJs=read('assets/model-page.js');
 add('responsive','home tablet',/@media\(max-width:900px\)/.test(homeCss));
 add('responsive','home mobile',/@media\(max-width:620px\)/.test(homeCss));
@@ -70,10 +71,13 @@ add('responsive','híbridas mobile',/@media\(max-width:700px\)/.test(hybridCss))
 add('responsive','híbridas mantêm navegação essencial no mobile',/@media\(max-width:700px\)[\s\S]*?hybrid-page \.topbar \.nav a:first-child\{display:inline-flex/.test(hybridCss));
 add('responsive','modelos desktop amplo',/@media\(min-width:1440px\)[\s\S]*?\.model-page/.test(uxCss));
 add('responsive','modelos mobile',/@media\(max-width:700px\)[\s\S]*?\.model-page/.test(uxCss));
+add('responsive','modelos evitam min-content overflow',/\.model-page \.guide-grid>\*\{min-width:0\}/.test(modelFixCss)&&/\.model-page \.chips\{[^}]*max-width:100%[^}]*overflow-x:auto/.test(modelFixCss));
+add('responsive','correção mobile carregada pelo normalizador',/model-page-fixes\.css/.test(modelJs));
 
-const adImageRule=uxCss.match(/\.house-ad--visual \.house-ad__visual img\{([^}]*)\}/g)?.at(-1)||'';
+const adImageRules=uxCss.match(/\.house-ad--visual \.house-ad__visual img\{([^}]*)\}/g)||[];
+const hasSafeAdImageRule=adImageRules.some(rule=>/width:100%/.test(rule)&&/height:auto/.test(rule)&&/object-fit:contain/.test(rule));
 add('publicidade','arte inteira visível',/\.house-ad--visual \.house-ad__visual\{display:block/.test(uxCss));
-add('publicidade','imagem sem corte',/width:100%/.test(adImageRule)&&/height:auto/.test(adImageRule)&&/object-fit:contain/.test(adImageRule));
+add('publicidade','imagem sem corte',hasSafeAdImageRule);
 add('publicidade','sem texto duplicado ao lado',/\.house-ad--visual \.house-ad__content\{display:none/.test(uxCss));
 add('publicidade','banner contido como no blog',/\.house-ad--visual\{max-width:760px/.test(uxCss));
 add('modelos','remove oferta desativada em runtime',/querySelectorAll\('\.buy-box'\)[\s\S]*?querySelector\('\.btn\.disabled'\)/.test(modelJs));
