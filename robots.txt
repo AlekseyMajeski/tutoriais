@@ -5,3 +5,4 @@ Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap.xml
 Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap-guides.xml
 Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap-zebra.xml
 Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap-brother.xml
+Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap-honeywell.xml
