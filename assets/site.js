@@ -15,7 +15,8 @@
     source.replace('impressoras.json','impressoras-tsc.json'),
     source.replace('impressoras.json','impressoras-tsc-healthcare.json'),
     source.replace('impressoras.json','impressoras-tsc-rfid.json'),
-    source.replace('impressoras.json','impressoras-tsc-mobile.json')
+    source.replace('impressoras.json','impressoras-tsc-mobile.json'),
+    source.replace('impressoras.json','impressoras-tsc-current.json')
   ]:[];
   const preset=document.body.dataset.category||'todos';
   const search=document.querySelector('[data-search]');
