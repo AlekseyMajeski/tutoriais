@@ -56,7 +56,8 @@ const catalogPaths = [
   'data/impressoras-extra2.json',
   'data/impressoras-xprinter.json',
   'data/impressoras-zebra.json',
-  'data/impressoras-brother.json'
+  'data/impressoras-brother.json',
+  'data/impressoras-honeywell.json'
 ];
 
 let catalog = [];
@@ -90,7 +91,7 @@ for (const item of catalog) {
   }
 }
 
-const sitemapFiles = ['sitemap.xml', 'sitemap-guides.xml', 'sitemap-zebra.xml', 'sitemap-brother.xml']
+const sitemapFiles = ['sitemap.xml', 'sitemap-guides.xml', 'sitemap-zebra.xml', 'sitemap-brother.xml', 'sitemap-honeywell.xml']
   .map(p => path.join(ROOT, p))
   .filter(fs.existsSync);
 const sitemapText = sitemapFiles.map(read).join('\n');
