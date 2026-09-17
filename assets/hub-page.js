@@ -37,11 +37,11 @@
     const head=document.createElement('div');
     head.className='section-head';
     head.dataset.tscMobile='';
-    head.innerHTML='<div><h2>Alpha Series — impressoras móveis</h2><p>Modelos móveis de 203 dpi com USB-C e conectividade sem fio, para etiquetas e recibos em campo.</p></div>';
+    head.innerHTML='<div><h2>Alpha Series — impressoras móveis</h2><p>Modelos móveis de 203 dpi com USB e conectividade sem fio, para etiquetas e recibos em campo.</p></div>';
     const grid=document.createElement('div');
     grid.className='grid';
     grid.dataset.tscMobile='';
-    grid.innerHTML='<article class="panel"><h3><a href="./alpha-30l/">TSC Alpha-30L</a></h3><p>3 polegadas, 203 dpi, até 5 ips, largura de impressão de 72 mm e wireless.</p></article><article class="panel"><h3><a href="./alpha-40l/">TSC Alpha-40L</a></h3><p>4 polegadas, 203 dpi, até 5 ips, largura de impressão de 104 mm e wireless.</p></article>';
+    grid.innerHTML='<article class="panel"><h3><a href="./alpha-2r/">TSC Alpha-2R</a></h3><p>2 polegadas, 203 dpi, até 4 ips, largura de impressão de 48 mm e wireless.</p></article><article class="panel"><h3><a href="./alpha-30l/">TSC Alpha-30L</a></h3><p>3 polegadas, 203 dpi, até 5 ips, largura de impressão de 72 mm e wireless.</p></article><article class="panel"><h3><a href="./alpha-40l/">TSC Alpha-40L</a></h3><p>4 polegadas, 203 dpi, até 5 ips, largura de impressão de 104 mm e wireless.</p></article>';
     const firstIndustrial=[...wrap.querySelectorAll('.section-head')].find(el=>/^MB Series/i.test(el.textContent));
     if(firstIndustrial){wrap.insertBefore(head,firstIndustrial);wrap.insertBefore(grid,firstIndustrial)}
     else{wrap.append(head,grid)}
