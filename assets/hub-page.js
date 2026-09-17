@@ -5,47 +5,39 @@
   if(!wrap||document.querySelector('.hub-search'))return;
 
   const isTscHub=/\/impressoras-termicas\/tsc\/?$/.test(location.pathname);
-  if(isTscHub&&!wrap.querySelector('[data-tsc-healthcare]')){
+  const injectGroup=({key,title,text,cards})=>{
+    if(!isTscHub||wrap.querySelector(`[data-tsc-${key}]`))return;
     const head=document.createElement('div');
     head.className='section-head';
-    head.dataset.tscHealthcare='';
-    head.innerHTML='<div><h2>TH/DH Healthcare — ambientes de saúde</h2><p>Variantes com gabinete antimicrobiano/easy-to-disinfect e fonte conforme IEC 60601-1, mantendo o driver Seagull documentado pela TSC.</p></div>';
+    head.dataset[`tsc${key[0].toUpperCase()}${key.slice(1)}`]='';
+    head.innerHTML=`<div><h2>${title}</h2><p>${text}</p></div>`;
     const grid=document.createElement('div');
     grid.className='grid';
-    grid.dataset.tscHealthcare='';
-    grid.innerHTML='<article class="panel"><h3><a href="./th240thc/">TSC TH240THC</a></h3><p>203 dpi, até 8 ips, direta/transferência, touchscreen e versão Healthcare.</p></article><article class="panel"><h3><a href="./th340thc/">TSC TH340THC</a></h3><p>300 dpi, até 6 ips, direta/transferência, touchscreen e versão Healthcare.</p></article><article class="panel"><h3><a href="./dh240thc/">TSC DH240THC</a></h3><p>203 dpi, até 8 ips, térmica direta, touchscreen e versão Healthcare.</p></article><article class="panel"><h3><a href="./dh340thc/">TSC DH340THC</a></h3><p>300 dpi, até 6 ips, térmica direta, touchscreen e versão Healthcare.</p></article>';
+    grid.dataset[`tsc${key[0].toUpperCase()}${key.slice(1)}`]='';
+    grid.innerHTML=cards.join('');
     const firstIndustrial=[...wrap.querySelectorAll('.section-head')].find(el=>/^MB Series/i.test(el.textContent));
     if(firstIndustrial){wrap.insertBefore(head,firstIndustrial);wrap.insertBefore(grid,firstIndustrial)}
     else{wrap.append(head,grid)}
-  }
+  };
 
-  if(isTscHub&&!wrap.querySelector('[data-tsc-rfid]')){
-    const head=document.createElement('div');
-    head.className='section-head';
-    head.dataset.tscRfid='';
-    head.innerHTML='<div><h2>TH Healthcare RFID — UHF / RAIN</h2><p>Variantes RFID explicitamente nomeadas pela TSC, com calibração RFID e driver Seagull documentados na Série TH.</p></div>';
-    const grid=document.createElement('div');
-    grid.className='grid';
-    grid.dataset.tscRfid='';
-    grid.innerHTML='<article class="panel"><h3><a href="./th240trchc/">TSC TH240TRCHC</a></h3><p>203 dpi, até 8 ips, RFID UHF, Healthcare, touchscreen e cartucho de ribbon.</p></article><article class="panel"><h3><a href="./th340trchc/">TSC TH340TRCHC</a></h3><p>300 dpi, até 6 ips, RFID UHF, Healthcare, touchscreen e cartucho de ribbon.</p></article>';
-    const firstIndustrial=[...wrap.querySelectorAll('.section-head')].find(el=>/^MB Series/i.test(el.textContent));
-    if(firstIndustrial){wrap.insertBefore(head,firstIndustrial);wrap.insertBefore(grid,firstIndustrial)}
-    else{wrap.append(head,grid)}
-  }
+  injectGroup({key:'healthcare',title:'TH/DH Healthcare — ambientes de saúde',text:'Variantes com gabinete antimicrobiano/easy-to-disinfect e fonte conforme IEC 60601-1, mantendo o driver Seagull documentado pela TSC.',cards:[
+    '<article class="panel"><h3><a href="./th240thc/">TSC TH240THC</a></h3><p>203 dpi, até 8 ips, direta/transferência, touchscreen e versão Healthcare.</p></article>',
+    '<article class="panel"><h3><a href="./th340thc/">TSC TH340THC</a></h3><p>300 dpi, até 6 ips, direta/transferência, touchscreen e versão Healthcare.</p></article>',
+    '<article class="panel"><h3><a href="./dh240thc/">TSC DH240THC</a></h3><p>203 dpi, até 8 ips, térmica direta, touchscreen e versão Healthcare.</p></article>',
+    '<article class="panel"><h3><a href="./dh340thc/">TSC DH340THC</a></h3><p>300 dpi, até 6 ips, térmica direta, touchscreen e versão Healthcare.</p></article>'
+  ]});
 
-  if(isTscHub&&!wrap.querySelector('[data-tsc-mobile]')){
-    const head=document.createElement('div');
-    head.className='section-head';
-    head.dataset.tscMobile='';
-    head.innerHTML='<div><h2>Alpha Series — impressoras móveis</h2><p>Modelos móveis de 203 dpi com USB e conectividade sem fio, para etiquetas e recibos em campo.</p></div>';
-    const grid=document.createElement('div');
-    grid.className='grid';
-    grid.dataset.tscMobile='';
-    grid.innerHTML='<article class="panel"><h3><a href="./alpha-2r/">TSC Alpha-2R</a></h3><p>2 polegadas, 203 dpi, até 4 ips, largura de impressão de 48 mm e wireless.</p></article><article class="panel"><h3><a href="./alpha-30l/">TSC Alpha-30L</a></h3><p>3 polegadas, 203 dpi, até 5 ips, largura de impressão de 72 mm e wireless.</p></article><article class="panel"><h3><a href="./alpha-40l/">TSC Alpha-40L</a></h3><p>4 polegadas, 203 dpi, até 5 ips, largura de impressão de 104 mm e wireless.</p></article>';
-    const firstIndustrial=[...wrap.querySelectorAll('.section-head')].find(el=>/^MB Series/i.test(el.textContent));
-    if(firstIndustrial){wrap.insertBefore(head,firstIndustrial);wrap.insertBefore(grid,firstIndustrial)}
-    else{wrap.append(head,grid)}
-  }
+  injectGroup({key:'rfid',title:'TH Healthcare RFID — UHF / RAIN',text:'Variantes RFID explicitamente nomeadas pela TSC, com calibração RFID e driver Seagull documentados na Série TH.',cards:[
+    '<article class="panel"><h3><a href="./th240trchc/">TSC TH240TRCHC</a></h3><p>203 dpi, até 8 ips, RFID UHF, Healthcare, touchscreen e cartucho de ribbon.</p></article>',
+    '<article class="panel"><h3><a href="./th340trchc/">TSC TH340TRCHC</a></h3><p>300 dpi, até 6 ips, RFID UHF, Healthcare, touchscreen e cartucho de ribbon.</p></article>'
+  ]});
+
+  injectGroup({key:'mobile',title:'Alpha Series — impressoras móveis',text:'Modelos móveis de 203 dpi com USB e conectividade sem fio, para etiquetas e recibos em campo.',cards:[
+    '<article class="panel"><h3><a href="./alpha-2r/">TSC Alpha-2R</a></h3><p>2 polegadas, 203 dpi, até 4 ips, largura de impressão de 48 mm e wireless.</p></article>',
+    '<article class="panel"><h3><a href="./alpha-30r/">TSC Alpha-30R</a></h3><p>3 polegadas, 203 dpi, Basic até 5 ips e Premium até 6 ips, largura de 72 mm.</p></article>',
+    '<article class="panel"><h3><a href="./alpha-30l/">TSC Alpha-30L</a></h3><p>3 polegadas, 203 dpi, até 5 ips, largura de impressão de 72 mm e wireless.</p></article>',
+    '<article class="panel"><h3><a href="./alpha-40l/">TSC Alpha-40L</a></h3><p>4 polegadas, 203 dpi, até 5 ips, largura de impressão de 104 mm e wireless.</p></article>'
+  ]});
 
   const title=document.querySelector('.home-hero h1')?.textContent||'Modelos';
   const brand=(title.match(/(?:Drivers\s+)?([A-Za-zÀ-ÿ0-9 ]+?)(?:\s+(?:para|TM-|MP-|i9|SI-|TP-)|$)/i)?.[1]||'').trim();
