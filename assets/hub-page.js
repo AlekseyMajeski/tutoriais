@@ -39,7 +39,9 @@
     '<article class="panel"><h3><a href="./alpha-30r/">TSC Alpha-30R</a></h3><p>3 polegadas, 203 dpi, Basic até 5 ips e Premium até 6 ips, largura de 72 mm.</p></article>',
     '<article class="panel"><h3><a href="./alpha-30l/">TSC Alpha-30L</a></h3><p>3 polegadas, 203 dpi, até 5 ips, largura de impressão de 72 mm e wireless.</p></article>',
     '<article class="panel"><h3><a href="./alpha-40l/">TSC Alpha-40L</a></h3><p>4 polegadas, 203 dpi, até 5 ips, largura de impressão de 104 mm e wireless.</p></article>',
-    '<article class="panel"><h3><a href="./re310/">TSC RE310</a></h3><p>3 polegadas, 203 dpi, até 4 ips, largura de impressão de 72 mm, mídia 20–80 mm e wireless.</p></article>'
+    '<article class="panel"><h3><a href="./re310/">TSC RE310</a></h3><p>3 polegadas, 203 dpi, até 4 ips, largura de impressão de 72 mm, mídia 20–80 mm e wireless.</p></article>',
+    '<article class="panel"><h3><a href="./tdm-20/">TSC TDM-20</a></h3><p>2 polegadas, 203 dpi, até 4 ips, 48 mm de impressão e mídia até 58 mm.</p></article>',
+    '<article class="panel"><h3><a href="./tdm-30/">TSC TDM-30</a></h3><p>3 polegadas, 203 dpi, até 4 ips, 72 mm de impressão e mídia até 80 mm.</p></article>'
   ]});
 
   injectGroup({key:'current',title:'TH Series — desktop 2 polegadas',text:'Modelos compactos de 2 polegadas com touchscreen, 203/300 dpi e driver Seagull documentado para as séries TH220 e TH320.',cards:[
