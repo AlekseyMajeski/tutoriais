@@ -19,6 +19,20 @@
     else{wrap.append(head,grid)}
   }
 
+  if(isTscHub&&!wrap.querySelector('[data-tsc-rfid]')){
+    const head=document.createElement('div');
+    head.className='section-head';
+    head.dataset.tscRfid='';
+    head.innerHTML='<div><h2>TH Healthcare RFID — UHF / RAIN</h2><p>Variantes RFID explicitamente nomeadas pela TSC, com calibração RFID e driver Seagull documentados na Série TH.</p></div>';
+    const grid=document.createElement('div');
+    grid.className='grid';
+    grid.dataset.tscRfid='';
+    grid.innerHTML='<article class="panel"><h3><a href="./th240trchc/">TSC TH240TRCHC</a></h3><p>203 dpi, até 8 ips, RFID UHF, Healthcare, touchscreen e cartucho de ribbon.</p></article><article class="panel"><h3><a href="./th340trchc/">TSC TH340TRCHC</a></h3><p>300 dpi, até 6 ips, RFID UHF, Healthcare, touchscreen e cartucho de ribbon.</p></article>';
+    const firstIndustrial=[...wrap.querySelectorAll('.section-head')].find(el=>/^MB Series/i.test(el.textContent));
+    if(firstIndustrial){wrap.insertBefore(head,firstIndustrial);wrap.insertBefore(grid,firstIndustrial)}
+    else{wrap.append(head,grid)}
+  }
+
   const title=document.querySelector('.home-hero h1')?.textContent||'Modelos';
   const brand=(title.match(/(?:Drivers\s+)?([A-Za-zÀ-ÿ0-9 ]+?)(?:\s+(?:para|TM-|MP-|i9|SI-|TP-)|$)/i)?.[1]||'').trim();
   const cards=[...wrap.querySelectorAll('.grid .panel')];
