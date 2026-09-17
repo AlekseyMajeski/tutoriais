@@ -40,6 +40,11 @@
     '<article class="panel"><h3><a href="./alpha-40l/">TSC Alpha-40L</a></h3><p>4 polegadas, 203 dpi, até 5 ips, largura de impressão de 104 mm e wireless.</p></article>'
   ]});
 
+  injectGroup({key:'current',title:'TH Series — desktop 2 polegadas',text:'Modelos compactos de 2 polegadas com touchscreen, 203/300 dpi e driver Seagull documentado para as séries TH220 e TH320.',cards:[
+    '<article class="panel"><h3><a href="./th220t/">TSC TH220T</a></h3><p>203 dpi, até 8 ips, direta/transferência, touchscreen, mídia até 60 mm e ribbon até 90 m.</p></article>',
+    '<article class="panel"><h3><a href="./th320t/">TSC TH320T</a></h3><p>300 dpi, até 6 ips, direta/transferência, touchscreen, mídia até 60 mm e ribbon até 90 m.</p></article>'
+  ]});
+
   const title=document.querySelector('.home-hero h1')?.textContent||'Modelos';
   const brand=(title.match(/(?:Drivers\s+)?([A-Za-zÀ-ÿ0-9 ]+?)(?:\s+(?:para|TM-|MP-|i9|SI-|TP-)|$)/i)?.[1]||'').trim();
   const cards=[...wrap.querySelectorAll('.grid .panel')];
