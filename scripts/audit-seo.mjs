@@ -61,7 +61,8 @@ const catalogPaths = [
   'data/impressoras-tsc.json',
   'data/impressoras-tsc-healthcare.json',
   'data/impressoras-tsc-rfid.json',
-  'data/impressoras-tsc-mobile.json'
+  'data/impressoras-tsc-mobile.json',
+  'data/impressoras-tsc-current.json'
 ];
 
 let catalog = [];
@@ -104,7 +105,8 @@ const sitemapFiles = [
   'sitemap-tsc.xml',
   'sitemap-tsc-healthcare.xml',
   'sitemap-tsc-rfid.xml',
-  'sitemap-tsc-mobile.xml'
+  'sitemap-tsc-mobile.xml',
+  'sitemap-tsc-current.xml'
 ]
   .map(p => path.join(ROOT, p))
   .filter(fs.existsSync);
