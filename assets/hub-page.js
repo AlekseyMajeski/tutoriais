@@ -35,6 +35,7 @@
 
   injectGroup({key:'mobile',title:'Alpha Series — impressoras móveis',text:'Modelos móveis de 203 dpi com USB e conectividade sem fio, para etiquetas e recibos em campo.',cards:[
     '<article class="panel"><h3><a href="./alpha-2r/">TSC Alpha-2R</a></h3><p>2 polegadas, 203 dpi, até 4 ips, largura de impressão de 48 mm e wireless.</p></article>',
+    '<article class="panel"><h3><a href="./alpha-3r/">TSC Alpha-3R</a></h3><p>Legacy/descontinuada, 203 dpi, até 4 ips, largura de 72 mm, USB, Bluetooth MFi e Wi-Fi.</p></article>',
     '<article class="panel"><h3><a href="./alpha-30r/">TSC Alpha-30R</a></h3><p>3 polegadas, 203 dpi, Basic até 5 ips e Premium até 6 ips, largura de 72 mm.</p></article>',
     '<article class="panel"><h3><a href="./alpha-30l/">TSC Alpha-30L</a></h3><p>3 polegadas, 203 dpi, até 5 ips, largura de impressão de 72 mm e wireless.</p></article>',
     '<article class="panel"><h3><a href="./alpha-40l/">TSC Alpha-40L</a></h3><p>4 polegadas, 203 dpi, até 5 ips, largura de impressão de 104 mm e wireless.</p></article>',
