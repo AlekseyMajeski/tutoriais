@@ -27,7 +27,8 @@
     '<article class="panel"><h3><a href="./dh340thc/">TSC DH340THC</a></h3><p>300 dpi, até 6 ips, térmica direta, touchscreen e versão Healthcare.</p></article>'
   ]});
 
-  injectGroup({key:'rfid',title:'TH Healthcare RFID — UHF / RAIN',text:'Variantes RFID explicitamente nomeadas pela TSC, com calibração RFID e driver Seagull documentados na Série TH.',cards:[
+  injectGroup({key:'rfid',title:'RFID — UHF / RAIN',text:'Modelos RFID explicitamente identificados pela TSC e presentes nos Drivers by Seagull ou no suporte oficial da mesma família.',cards:[
+    '<article class="panel"><h3><a href="./alpha-40l-rfid/">TSC Alpha-40L RFID</a></h3><p>Móvel de 203 dpi e até 5 ips, RAIN UHF, largura de 104 mm e driver Alpha-40L (R).</p></article>',
     '<article class="panel"><h3><a href="./th240trchc/">TSC TH240TRCHC</a></h3><p>203 dpi, até 8 ips, RFID UHF, Healthcare, touchscreen e cartucho de ribbon.</p></article>',
     '<article class="panel"><h3><a href="./th340trchc/">TSC TH340TRCHC</a></h3><p>300 dpi, até 6 ips, RFID UHF, Healthcare, touchscreen e cartucho de ribbon.</p></article>'
   ]});
