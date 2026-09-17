@@ -3,3 +3,4 @@ Allow: /
 
 Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap.xml
 Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap-guides.xml
+Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap-zebra.xml
