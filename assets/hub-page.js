@@ -4,7 +4,21 @@
   const wrap=modelSection?.querySelector(':scope > .wrap');
   if(!wrap||document.querySelector('.hub-search'))return;
 
-  const breadcrumb=[...document.querySelectorAll('.breadcrumbs a, .breadcrumbs')].pop();
+  const isTscHub=/\/impressoras-termicas\/tsc\/?$/.test(location.pathname);
+  if(isTscHub&&!wrap.querySelector('[data-tsc-healthcare]')){
+    const head=document.createElement('div');
+    head.className='section-head';
+    head.dataset.tscHealthcare='';
+    head.innerHTML='<div><h2>TH/DH Healthcare — ambientes de saúde</h2><p>Variantes com gabinete antimicrobiano/easy-to-disinfect e fonte conforme IEC 60601-1, mantendo o driver Seagull documentado pela TSC.</p></div>';
+    const grid=document.createElement('div');
+    grid.className='grid';
+    grid.dataset.tscHealthcare='';
+    grid.innerHTML='<article class="panel"><h3><a href="./th240thc/">TSC TH240THC</a></h3><p>203 dpi, até 8 ips, direta/transferência, touchscreen e versão Healthcare.</p></article><article class="panel"><h3><a href="./th340thc/">TSC TH340THC</a></h3><p>300 dpi, até 6 ips, direta/transferência, touchscreen e versão Healthcare.</p></article><article class="panel"><h3><a href="./dh240thc/">TSC DH240THC</a></h3><p>203 dpi, até 8 ips, térmica direta, touchscreen e versão Healthcare.</p></article><article class="panel"><h3><a href="./dh340thc/">TSC DH340THC</a></h3><p>300 dpi, até 6 ips, térmica direta, touchscreen e versão Healthcare.</p></article>';
+    const firstIndustrial=[...wrap.querySelectorAll('.section-head')].find(el=>/^MB Series/i.test(el.textContent));
+    if(firstIndustrial){wrap.insertBefore(head,firstIndustrial);wrap.insertBefore(grid,firstIndustrial)}
+    else{wrap.append(head,grid)}
+  }
+
   const title=document.querySelector('.home-hero h1')?.textContent||'Modelos';
   const brand=(title.match(/(?:Drivers\s+)?([A-Za-zÀ-ÿ0-9 ]+?)(?:\s+(?:para|TM-|MP-|i9|SI-|TP-)|$)/i)?.[1]||'').trim();
   const cards=[...wrap.querySelectorAll('.grid .panel')];
