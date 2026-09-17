@@ -10,7 +10,8 @@
     source.replace('impressoras.json','impressoras-extra2.json'),
     source.replace('impressoras.json','impressoras-xprinter.json'),
     source.replace('impressoras.json','impressoras-zebra.json'),
-    source.replace('impressoras.json','impressoras-brother.json')
+    source.replace('impressoras.json','impressoras-brother.json'),
+    source.replace('impressoras.json','impressoras-honeywell.json')
   ]:[];
   const preset=document.body.dataset.category||'todos';
   const search=document.querySelector('[data-search]');
@@ -27,7 +28,7 @@
     {id:'xprinter-driver',marca:'Xprinter',marcaSlug:'xprinter',modelo:'Drivers Xprinter',aliases:['X printer','Xprinter POS58','Xprinter POS80','XP 58','XP 80','芯烨'],categoria:'termica',categoriaLabel:'Térmica',papel:['58 mm','80 mm'],interfaces:['USB','Ethernet/Serial em modelos'],sistemas:['Windows','Linux conforme modelo'],status:'publicado',url:'/tutoriais/impressoras-termicas/xprinter-driver/',descricao:'Como identificar o modelo Xprinter e escolher o driver oficial correto para as famílias de 58 mm e 80 mm.'}
   ];
 
-  const popularThermal=['bematech-mp-4200-th','epson-tm-t20','epson-tm-t20x','epson-tm-t20x-ii','epson-tm-t20ii','epson-tm-t20iii','bematech-mp-4200-hs','bematech-mp-4200-th-adv','elgin-i9','elgin-i9-full-2','elgin-i8','elgin-i7-plus','tanca-tp-650','xprinter-xp-80t','xprinter-xp-t80q','xprinter-xp-t890h','xprinter-xp-58iih','zebra-zd220','zebra-zd230','zebra-zd421','zebra-gk420d','zebra-gk420t','brother-ql-800','brother-ql-810w'];
+  const popularThermal=['bematech-mp-4200-th','epson-tm-t20','epson-tm-t20x','epson-tm-t20x-ii','epson-tm-t20ii','epson-tm-t20iii','bematech-mp-4200-hs','bematech-mp-4200-th-adv','elgin-i9','elgin-i9-full-2','elgin-i8','elgin-i7-plus','tanca-tp-650','xprinter-xp-80t','xprinter-xp-t80q','xprinter-xp-t890h','xprinter-xp-58iih','zebra-zd220','zebra-zd230','zebra-zd421','zebra-gk420d','zebra-gk420t','brother-ql-800','brother-ql-810w','honeywell-pc42e-t','honeywell-pc42t'];
   const popularRank=p=>{const i=popularThermal.indexOf(p.id);return i<0?9999:i};
   const norm=s=>(s||'').toString().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
   const compact=s=>norm(s).replace(/\s+/g,'');
