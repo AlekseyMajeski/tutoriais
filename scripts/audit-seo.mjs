@@ -58,7 +58,9 @@ const catalogPaths = [
   'data/impressoras-zebra.json',
   'data/impressoras-brother.json',
   'data/impressoras-honeywell.json',
-  'data/impressoras-tsc.json'
+  'data/impressoras-tsc.json',
+  'data/impressoras-tsc-healthcare.json',
+  'data/impressoras-tsc-rfid.json'
 ];
 
 let catalog = [];
@@ -92,7 +94,16 @@ for (const item of catalog) {
   }
 }
 
-const sitemapFiles = ['sitemap.xml', 'sitemap-guides.xml', 'sitemap-zebra.xml', 'sitemap-brother.xml', 'sitemap-honeywell.xml', 'sitemap-tsc.xml']
+const sitemapFiles = [
+  'sitemap.xml',
+  'sitemap-guides.xml',
+  'sitemap-zebra.xml',
+  'sitemap-brother.xml',
+  'sitemap-honeywell.xml',
+  'sitemap-tsc.xml',
+  'sitemap-tsc-healthcare.xml',
+  'sitemap-tsc-rfid.xml'
+]
   .map(p => path.join(ROOT, p))
   .filter(fs.existsSync);
 const sitemapText = sitemapFiles.map(read).join('\n');
