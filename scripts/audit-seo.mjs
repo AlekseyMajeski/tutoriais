@@ -60,7 +60,8 @@ const catalogPaths = [
   'data/impressoras-honeywell.json',
   'data/impressoras-tsc.json',
   'data/impressoras-tsc-healthcare.json',
-  'data/impressoras-tsc-rfid.json'
+  'data/impressoras-tsc-rfid.json',
+  'data/impressoras-tsc-mobile.json'
 ];
 
 let catalog = [];
@@ -102,7 +103,8 @@ const sitemapFiles = [
   'sitemap-honeywell.xml',
   'sitemap-tsc.xml',
   'sitemap-tsc-healthcare.xml',
-  'sitemap-tsc-rfid.xml'
+  'sitemap-tsc-rfid.xml',
+  'sitemap-tsc-mobile.xml'
 ]
   .map(p => path.join(ROOT, p))
   .filter(fs.existsSync);
