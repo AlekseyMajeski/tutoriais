@@ -9,3 +9,4 @@ Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap-honeywell.xml
 Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap-tsc.xml
 Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap-tsc-healthcare.xml
 Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap-tsc-rfid.xml
+Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap-tsc-mobile.xml
