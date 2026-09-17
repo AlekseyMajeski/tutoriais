@@ -12,7 +12,8 @@
     source.replace('impressoras.json','impressoras-zebra.json'),
     source.replace('impressoras.json','impressoras-brother.json'),
     source.replace('impressoras.json','impressoras-honeywell.json'),
-    source.replace('impressoras.json','impressoras-tsc.json')
+    source.replace('impressoras.json','impressoras-tsc.json'),
+    source.replace('impressoras.json','impressoras-tsc-healthcare.json')
   ]:[];
   const preset=document.body.dataset.category||'todos';
   const search=document.querySelector('[data-search]');
