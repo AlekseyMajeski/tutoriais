@@ -207,5 +207,173 @@
     "afiliados": {
       "mercadoLivre": null
     }
+  },
+  {
+    "id": "star-tsp100iii",
+    "marca": "Star Micronics",
+    "marcaSlug": "star",
+    "modelo": "TSP100III",
+    "aliases": [
+      "TSP100III",
+      "TSP143III",
+      "TSP 100 III",
+      "TSP 143 III",
+      "Star TSP100III",
+      "Star TSP143III"
+    ],
+    "categoria": "termica",
+    "categoriaLabel": "Térmica POS 80 mm",
+    "papel": [
+      "80 mm",
+      "58 mm com guia",
+      "térmica direta"
+    ],
+    "interfaces": [
+      "USB",
+      "Ethernet",
+      "WLAN",
+      "Bluetooth conforme variante"
+    ],
+    "sistemas": [
+      "Windows 11",
+      "Windows 10",
+      "Linux",
+      "macOS",
+      "Android",
+      "iOS"
+    ],
+    "status": "em_preparacao",
+    "url": "/tutoriais/impressoras-termicas/star/tsp100iii/",
+    "descricao": "POS 203 dpi e até 250 mm/s; o futurePRNT oficial suporta toda a série TSP100 e a página TSP100III oferece driver para Windows 11.",
+    "ultimaVerificacao": "2026-09-18",
+    "afiliados": {
+      "mercadoLivre": null
+    }
+  },
+  {
+    "id": "star-mpop",
+    "marca": "Star Micronics",
+    "marcaSlug": "star",
+    "modelo": "mPOP",
+    "aliases": [
+      "mPOP",
+      "POP10",
+      "POP10CI",
+      "POP10CBI",
+      "Star mPOP",
+      "Star POP10"
+    ],
+    "categoria": "termica",
+    "categoriaLabel": "Sistema POS térmico 58 mm",
+    "papel": [
+      "58 mm",
+      "térmica direta"
+    ],
+    "interfaces": [
+      "USB-C",
+      "USB-B",
+      "USB-A",
+      "Bluetooth em variantes CBi"
+    ],
+    "sistemas": [
+      "Windows 11",
+      "Windows 10",
+      "Linux",
+      "macOS",
+      "Android",
+      "iOS"
+    ],
+    "status": "em_preparacao",
+    "url": "/tutoriais/impressoras-termicas/star/mpop/",
+    "descricao": "Sistema POS com impressora térmica de 58 mm e gaveta; Star Windows Software 3.11.0 lista POP10, POP10CI e POP10CBI nominalmente.",
+    "ultimaVerificacao": "2026-09-18",
+    "afiliados": {
+      "mercadoLivre": null
+    }
+  },
+  {
+    "id": "star-tsp743ii",
+    "marca": "Star Micronics",
+    "marcaSlug": "star",
+    "modelo": "TSP743II",
+    "aliases": [
+      "TSP743II",
+      "TSP700II",
+      "TSP 743 II",
+      "TSP 700 II",
+      "Star TSP743II",
+      "Star TSP700II"
+    ],
+    "categoria": "termica",
+    "categoriaLabel": "Térmica POS/etiquetas 80 mm",
+    "papel": [
+      "80 mm",
+      "82,5 mm",
+      "58 mm com guia",
+      "térmica direta"
+    ],
+    "interfaces": [
+      "USB",
+      "Ethernet",
+      "Serial",
+      "Paralela",
+      "WLAN/Bluetooth conforme interface"
+    ],
+    "sistemas": [
+      "Windows 11",
+      "Windows 10",
+      "Linux",
+      "macOS",
+      "Android",
+      "iOS"
+    ],
+    "status": "em_preparacao",
+    "url": "/tutoriais/impressoras-termicas/star/tsp743ii/",
+    "descricao": "Térmica direta 203 dpi, até 250 mm/s e suporte a recibos/etiquetas; integra a série TSP700II suportada nominalmente pelo StarPRNT Intelligence 3.8.1.",
+    "ultimaVerificacao": "2026-09-18",
+    "afiliados": {
+      "mercadoLivre": null
+    }
+  },
+  {
+    "id": "star-tsp847ii",
+    "marca": "Star Micronics",
+    "marcaSlug": "star",
+    "modelo": "TSP847II",
+    "aliases": [
+      "TSP847II",
+      "TSP800II",
+      "TSP 847 II",
+      "TSP 800 II",
+      "Star TSP847II",
+      "Star TSP800II"
+    ],
+    "categoria": "termica",
+    "categoriaLabel": "Térmica wide-format 4 polegadas",
+    "papel": [
+      "até 112 mm",
+      "térmica direta"
+    ],
+    "interfaces": [
+      "USB",
+      "Ethernet",
+      "Serial",
+      "Paralela",
+      "Bluetooth/AirPrint conforme variante"
+    ],
+    "sistemas": [
+      "Windows 11",
+      "Windows 10",
+      "Linux",
+      "macOS",
+      "iOS"
+    ],
+    "status": "em_preparacao",
+    "url": "/tutoriais/impressoras-termicas/star/tsp847ii/",
+    "descricao": "Wide-format 203 dpi, até 180 mm/s e mídia de até 112 mm; integra a série TSP800II suportada nominalmente pelo StarPRNT Intelligence 3.8.1.",
+    "ultimaVerificacao": "2026-09-18",
+    "afiliados": {
+      "mercadoLivre": null
+    }
   }
 ]
