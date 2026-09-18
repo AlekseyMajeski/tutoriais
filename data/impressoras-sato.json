@@ -389,5 +389,81 @@
     "afiliados": {
       "mercadoLivre": null
     }
+  },
+  {
+    "id": "sato-s84nx",
+    "marca": "SATO",
+    "marcaSlug": "sato",
+    "modelo": "S84NX",
+    "aliases": [
+      "S84NX",
+      "S84 NX",
+      "SATO S84NX"
+    ],
+    "categoria": "termica",
+    "categoriaLabel": "Print engine industrial",
+    "papel": [
+      "13–131 mm",
+      "térmica direta",
+      "transferência térmica",
+      "ribbon até 600 m"
+    ],
+    "interfaces": [
+      "USB",
+      "Ethernet",
+      "RS-232C",
+      "Wi-Fi opcional"
+    ],
+    "sistemas": [
+      "Windows 11",
+      "Windows 10",
+      "Linux",
+      "macOS"
+    ],
+    "status": "em_preparacao",
+    "url": "/tutoriais/impressoras-termicas/sato/s84nx/",
+    "descricao": "Print engine industrial de 4 polegadas, 203/305/609 dpi, até 16/14/6 ips e 104 mm de impressão; driver SATO lista S84NX explicitamente.",
+    "ultimaVerificacao": "2026-09-17",
+    "afiliados": {
+      "mercadoLivre": null
+    }
+  },
+  {
+    "id": "sato-s86nx",
+    "marca": "SATO",
+    "marcaSlug": "sato",
+    "modelo": "S86NX",
+    "aliases": [
+      "S86NX",
+      "S86 NX",
+      "SATO S86NX"
+    ],
+    "categoria": "termica",
+    "categoriaLabel": "Print engine industrial largo",
+    "papel": [
+      "54–180 mm",
+      "térmica direta",
+      "transferência térmica",
+      "ribbon até 600 m"
+    ],
+    "interfaces": [
+      "USB",
+      "Ethernet",
+      "RS-232C",
+      "Wi-Fi opcional"
+    ],
+    "sistemas": [
+      "Windows 11",
+      "Windows 10",
+      "Linux",
+      "macOS"
+    ],
+    "status": "em_preparacao",
+    "url": "/tutoriais/impressoras-termicas/sato/s86nx/",
+    "descricao": "Print engine industrial de 6 polegadas, 203/305 dpi, até 14/12 ips e 167,5 mm de impressão; driver SATO lista S86NX explicitamente.",
+    "ultimaVerificacao": "2026-09-17",
+    "afiliados": {
+      "mercadoLivre": null
+    }
   }
 ]
