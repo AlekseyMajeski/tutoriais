@@ -1,0 +1,211 @@
+[
+  {
+    "id": "star-tsp100iv",
+    "marca": "Star Micronics",
+    "marcaSlug": "star",
+    "modelo": "TSP100IV",
+    "aliases": [
+      "TSP100IV",
+      "TSP143IV",
+      "TSP 100 IV",
+      "Star TSP100IV",
+      "Star TSP143IV"
+    ],
+    "categoria": "termica",
+    "categoriaLabel": "Térmica POS 80 mm",
+    "papel": [
+      "80 mm",
+      "58 mm com guia",
+      "térmica direta"
+    ],
+    "interfaces": [
+      "USB-C",
+      "Ethernet",
+      "WLAN/Bluetooth em X4"
+    ],
+    "sistemas": [
+      "Windows 11",
+      "Windows 10",
+      "Linux",
+      "macOS",
+      "Android",
+      "iOS"
+    ],
+    "status": "em_preparacao",
+    "url": "/tutoriais/impressoras-termicas/star/tsp100iv/",
+    "descricao": "POS atual 203 dpi, até 250 mm/s e 72 mm de impressão; Star Windows Software 3.11.0 lista TSP143IV-UE/X4 nominalmente.",
+    "ultimaVerificacao": "2026-09-17",
+    "afiliados": {
+      "mercadoLivre": null
+    }
+  },
+  {
+    "id": "star-mc-print2",
+    "marca": "Star Micronics",
+    "marcaSlug": "star",
+    "modelo": "mC-Print2",
+    "aliases": [
+      "mC-Print2",
+      "MC Print2",
+      "mCPrint2",
+      "MCP20",
+      "MCP21LB",
+      "Star mC-Print2"
+    ],
+    "categoria": "termica",
+    "categoriaLabel": "Térmica POS compacta 58 mm",
+    "papel": [
+      "58 mm",
+      "térmica direta"
+    ],
+    "interfaces": [
+      "USB",
+      "Ethernet",
+      "Lightning/Bluetooth/WLAN conforme variante"
+    ],
+    "sistemas": [
+      "Windows 11",
+      "Windows 10",
+      "Linux",
+      "macOS",
+      "Android",
+      "iOS"
+    ],
+    "status": "em_preparacao",
+    "url": "/tutoriais/impressoras-termicas/star/mc-print2/",
+    "descricao": "POS compacta de 2 polegadas, 203 dpi, até 100 mm/s e 50,8 mm de impressão; driver Star lista MCP20/MCP21LB nominalmente.",
+    "ultimaVerificacao": "2026-09-17",
+    "afiliados": {
+      "mercadoLivre": null
+    }
+  },
+  {
+    "id": "star-mc-print3",
+    "marca": "Star Micronics",
+    "marcaSlug": "star",
+    "modelo": "mC-Print3",
+    "aliases": [
+      "mC-Print3",
+      "MC Print3",
+      "mCPrint3",
+      "MCP30",
+      "MCP31",
+      "Star mC-Print3"
+    ],
+    "categoria": "termica",
+    "categoriaLabel": "Térmica POS 80 mm",
+    "papel": [
+      "80 mm",
+      "58 mm",
+      "térmica direta"
+    ],
+    "interfaces": [
+      "USB",
+      "Ethernet",
+      "USB-C/Bluetooth/WLAN conforme variante"
+    ],
+    "sistemas": [
+      "Windows 11",
+      "Windows 10",
+      "Linux",
+      "macOS",
+      "Android",
+      "iOS"
+    ],
+    "status": "em_preparacao",
+    "url": "/tutoriais/impressoras-termicas/star/mc-print3/",
+    "descricao": "POS compacta 203 dpi, até 250 mm/s (MCP30) ou 400 mm/s (MCP31), com múltiplas interfaces; driver Star lista MCP30/MCP31 nominalmente.",
+    "ultimaVerificacao": "2026-09-17",
+    "afiliados": {
+      "mercadoLivre": null
+    }
+  },
+  {
+    "id": "star-mc-label2",
+    "marca": "Star Micronics",
+    "marcaSlug": "star",
+    "modelo": "mC-Label2",
+    "aliases": [
+      "mC-Label2",
+      "MC Label2",
+      "mCLabel2",
+      "MCL21CI",
+      "MCL21CWBI",
+      "Star mC-Label2"
+    ],
+    "categoria": "termica",
+    "categoriaLabel": "Etiquetas multifuncionais 2 polegadas",
+    "papel": [
+      "25–60 mm",
+      "linerless",
+      "die-cut",
+      "contínua",
+      "recibo térmico"
+    ],
+    "interfaces": [
+      "USB-C",
+      "USB-A",
+      "Ethernet",
+      "WLAN/Bluetooth em X4"
+    ],
+    "sistemas": [
+      "Windows 11",
+      "Windows 10",
+      "Linux",
+      "macOS",
+      "Android",
+      "iOS"
+    ],
+    "status": "em_preparacao",
+    "url": "/tutoriais/impressoras-termicas/star/mc-label2/",
+    "descricao": "Multifuncional 2 polegadas, 300 dpi, até 180 mm/s e 56,9 mm de impressão; Star Windows Software lista MCL21CI/MCL21CWBI nominalmente.",
+    "ultimaVerificacao": "2026-09-17",
+    "afiliados": {
+      "mercadoLivre": null
+    }
+  },
+  {
+    "id": "star-mc-label3",
+    "marca": "Star Micronics",
+    "marcaSlug": "star",
+    "modelo": "mC-Label3",
+    "aliases": [
+      "mC-Label3",
+      "MC Label3",
+      "mCLabel3",
+      "MCL32CI",
+      "MCL32CBI",
+      "Star mC-Label3"
+    ],
+    "categoria": "termica",
+    "categoriaLabel": "Etiquetas multifuncionais 3 polegadas",
+    "papel": [
+      "25–80 mm",
+      "linerless",
+      "die-cut",
+      "contínua",
+      "recibo térmico"
+    ],
+    "interfaces": [
+      "USB-C",
+      "USB-A",
+      "Ethernet",
+      "WLAN/Bluetooth conforme variante"
+    ],
+    "sistemas": [
+      "Windows 11",
+      "Windows 10",
+      "Linux",
+      "macOS",
+      "Android",
+      "iOS"
+    ],
+    "status": "em_preparacao",
+    "url": "/tutoriais/impressoras-termicas/star/mc-label3/",
+    "descricao": "Multifuncional 3 polegadas, 203 dpi, até 180 mm/s e mídia de até 80 mm; Star Windows Software lista MCL32CI/MCL32CBI nominalmente.",
+    "ultimaVerificacao": "2026-09-17",
+    "afiliados": {
+      "mercadoLivre": null
+    }
+  }
+]
