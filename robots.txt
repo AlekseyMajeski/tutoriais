@@ -14,3 +14,4 @@ Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap-tsc-current.xml
 Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap-argox.xml
 Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap-sato.xml
 Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap-bixolon.xml
+Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap-star.xml
