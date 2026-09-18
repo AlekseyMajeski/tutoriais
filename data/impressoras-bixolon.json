@@ -225,7 +225,7 @@
       "Android",
       "iOS"
     ],
-    "status": "em_preparacao",
+    "status": "publicado",
     "url": "/tutoriais/impressoras-termicas/bixolon/srp-q300ii/",
     "descricao": "POS compacta 80 mm, 203 dpi e até 250 mm/s, USB-C, Ethernet e wireless opcional; suporte específico lista POS Windows Driver 5.2.1 para Windows 11.",
     "ultimaVerificacao": "2026-09-17",
@@ -263,7 +263,7 @@
       "Android",
       "iOS"
     ],
-    "status": "em_preparacao",
+    "status": "publicado",
     "url": "/tutoriais/impressoras-termicas/bixolon/srp-350v/",
     "descricao": "POS 80 mm atual, 180 dpi e até 300 mm/s, USB padrão e rede opcional; suporte específico lista POS Windows Driver 5.2.2 para Windows 11.",
     "ultimaVerificacao": "2026-09-17",
@@ -298,7 +298,7 @@
       "Linux",
       "macOS"
     ],
-    "status": "em_preparacao",
+    "status": "publicado",
     "url": "/tutoriais/impressoras-termicas/bixolon/xd3-40d/",
     "descricao": "Desktop de entrada 4 polegadas, 203 dpi, até 5 ips e 104 mm de impressão; suporte específico oferece Seagull Windows Driver 11.4.0.",
     "ultimaVerificacao": "2026-09-17",
@@ -335,7 +335,7 @@
       "Linux",
       "macOS"
     ],
-    "status": "em_preparacao",
+    "status": "publicado",
     "url": "/tutoriais/impressoras-termicas/bixolon/xd3-40t/",
     "descricao": "Desktop de entrada 4 polegadas, 203 dpi, até 5 ips, 104 mm e ribbon até 300 m; suporte específico oferece Seagull Windows Driver 11.4.0.",
     "ultimaVerificacao": "2026-09-17",
