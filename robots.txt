@@ -11,3 +11,4 @@ Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap-tsc-healthcare.xml
 Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap-tsc-rfid.xml
 Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap-tsc-mobile.xml
 Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap-tsc-current.xml
+Sitemap: https://alekseymajeski.github.io/tutoriais/sitemap-argox.xml
