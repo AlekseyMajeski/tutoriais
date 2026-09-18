@@ -497,7 +497,7 @@
       "Linux",
       "macOS"
     ],
-    "status": "em_preparacao",
+    "status": "publicado",
     "url": "/tutoriais/impressoras-termicas/sato/ct4-lx-hc/",
     "descricao": "Desktop healthcare de 203/305 dpi, até 8/6 ips e 104 mm de impressão; driver SATO lista CT4-LX-HC 203/305 dpi explicitamente.",
     "ultimaVerificacao": "2026-09-17",
@@ -532,7 +532,7 @@
       "iOS",
       "Android"
     ],
-    "status": "em_preparacao",
+    "status": "publicado",
     "url": "/tutoriais/impressoras-termicas/sato/pv3/",
     "descricao": "Móvel de 3 polegadas, 203 dpi, até 5 ips e 72 mm de impressão; suporte oficial lista PV Series Printer Driver 5.3.03.7342.",
     "ultimaVerificacao": "2026-09-17",
@@ -567,7 +567,7 @@
       "iOS",
       "Android"
     ],
-    "status": "em_preparacao",
+    "status": "publicado",
     "url": "/tutoriais/impressoras-termicas/sato/pv4/",
     "descricao": "Móvel de 4 polegadas, 203 dpi, até 5 ips e 104 mm de impressão; driver oficial PV3/PV4 5.3.03.7342 cita PV4 explicitamente.",
     "ultimaVerificacao": "2026-09-17",
