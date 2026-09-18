@@ -242,7 +242,7 @@
       "Android",
       "iOS"
     ],
-    "status": "em_preparacao",
+    "status": "publicado",
     "url": "/tutoriais/impressoras-termicas/star/tsp100iii/",
     "descricao": "POS 203 dpi e até 250 mm/s; o futurePRNT oficial suporta toda a série TSP100 e a página TSP100III oferece driver para Windows 11.",
     "ultimaVerificacao": "2026-09-18",
@@ -283,7 +283,7 @@
       "Android",
       "iOS"
     ],
-    "status": "em_preparacao",
+    "status": "publicado",
     "url": "/tutoriais/impressoras-termicas/star/mpop/",
     "descricao": "Sistema POS com impressora térmica de 58 mm e gaveta; Star Windows Software 3.11.0 lista POP10, POP10CI e POP10CBI nominalmente.",
     "ultimaVerificacao": "2026-09-18",
@@ -327,7 +327,7 @@
       "Android",
       "iOS"
     ],
-    "status": "em_preparacao",
+    "status": "publicado",
     "url": "/tutoriais/impressoras-termicas/star/tsp743ii/",
     "descricao": "Térmica direta 203 dpi, até 250 mm/s e suporte a recibos/etiquetas; integra a série TSP700II suportada nominalmente pelo StarPRNT Intelligence 3.8.1.",
     "ultimaVerificacao": "2026-09-18",
@@ -368,7 +368,7 @@
       "macOS",
       "iOS"
     ],
-    "status": "em_preparacao",
+    "status": "publicado",
     "url": "/tutoriais/impressoras-termicas/star/tsp847ii/",
     "descricao": "Wide-format 203 dpi, até 180 mm/s e mídia de até 112 mm; integra a série TSP800II suportada nominalmente pelo StarPRNT Intelligence 3.8.1.",
     "ultimaVerificacao": "2026-09-18",
