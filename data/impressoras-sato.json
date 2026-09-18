@@ -574,5 +574,81 @@
     "afiliados": {
       "mercadoLivre": null
     }
+  },
+  {
+    "id": "sato-ws208",
+    "marca": "SATO",
+    "marcaSlug": "sato",
+    "modelo": "WS208",
+    "aliases": [
+      "WS208",
+      "WS 208",
+      "WS2 203 dpi",
+      "SATO WS208"
+    ],
+    "categoria": "termica",
+    "categoriaLabel": "Etiquetas healthcare 2 polegadas",
+    "papel": [
+      "12–60 mm",
+      "térmica direta",
+      "pulseiras",
+      "etiquetas"
+    ],
+    "interfaces": [
+      "USB Host",
+      "USB Device",
+      "Ethernet",
+      "Wi-Fi/Bluetooth opcional"
+    ],
+    "sistemas": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "status": "em_preparacao",
+    "url": "/tutoriais/impressoras-termicas/sato/ws208/",
+    "descricao": "Desktop healthcare WS2 de 203 dpi, até 7 ips e até 60 mm de largura; suporte oficial WS2 e driver Windows 5.7.0.",
+    "ultimaVerificacao": "2026-09-17",
+    "afiliados": {
+      "mercadoLivre": null
+    }
+  },
+  {
+    "id": "sato-ws212",
+    "marca": "SATO",
+    "marcaSlug": "sato",
+    "modelo": "WS212",
+    "aliases": [
+      "WS212",
+      "WS 212",
+      "WS2 300 dpi",
+      "SATO WS212"
+    ],
+    "categoria": "termica",
+    "categoriaLabel": "Etiquetas healthcare 2 polegadas",
+    "papel": [
+      "12–60 mm",
+      "térmica direta",
+      "pulseiras",
+      "etiquetas"
+    ],
+    "interfaces": [
+      "USB Host",
+      "USB Device",
+      "Ethernet",
+      "Wi-Fi/Bluetooth opcional"
+    ],
+    "sistemas": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "status": "em_preparacao",
+    "url": "/tutoriais/impressoras-termicas/sato/ws212/",
+    "descricao": "Desktop healthcare WS2 de 300 dpi, até 5 ips e até 60 mm de largura; suporte oficial WS2 e driver Windows 5.7.0.",
+    "ultimaVerificacao": "2026-09-17",
+    "afiliados": {
+      "mercadoLivre": null
+    }
   }
 ]
