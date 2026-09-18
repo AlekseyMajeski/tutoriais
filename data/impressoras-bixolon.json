@@ -191,5 +191,156 @@
     "afiliados": {
       "mercadoLivre": null
     }
+  },
+  {
+    "id": "bixolon-srp-q300ii",
+    "marca": "BIXOLON",
+    "marcaSlug": "bixolon",
+    "modelo": "SRP-Q300II",
+    "aliases": [
+      "SRPQ300II",
+      "SRP Q300 II",
+      "SRP-Q300II",
+      "BIXOLON SRP-Q300II"
+    ],
+    "categoria": "termica",
+    "categoriaLabel": "Térmica POS compacta 80 mm",
+    "papel": [
+      "80 mm",
+      "58 mm",
+      "térmica direta"
+    ],
+    "interfaces": [
+      "USB Type-B",
+      "USB Type-C",
+      "3x USB Host",
+      "Ethernet",
+      "WLAN/Bluetooth opcionais"
+    ],
+    "sistemas": [
+      "Windows 11",
+      "Windows 10",
+      "Linux",
+      "macOS",
+      "Android",
+      "iOS"
+    ],
+    "status": "em_preparacao",
+    "url": "/tutoriais/impressoras-termicas/bixolon/srp-q300ii/",
+    "descricao": "POS compacta 80 mm, 203 dpi e até 250 mm/s, USB-C, Ethernet e wireless opcional; suporte específico lista POS Windows Driver 5.2.1 para Windows 11.",
+    "ultimaVerificacao": "2026-09-17",
+    "afiliados": {
+      "mercadoLivre": null
+    }
+  },
+  {
+    "id": "bixolon-srp-350v",
+    "marca": "BIXOLON",
+    "marcaSlug": "bixolon",
+    "modelo": "SRP-350V",
+    "aliases": [
+      "SRP350V",
+      "SRP 350V",
+      "SRP-350V",
+      "BIXOLON SRP-350V"
+    ],
+    "categoria": "termica",
+    "categoriaLabel": "Térmica POS 80 mm",
+    "papel": [
+      "80 mm",
+      "58 mm opcional",
+      "térmica direta"
+    ],
+    "interfaces": [
+      "USB 2.0",
+      "Serial/Parallel/Ethernet opcionais"
+    ],
+    "sistemas": [
+      "Windows 11",
+      "Windows 10",
+      "Linux",
+      "macOS",
+      "Android",
+      "iOS"
+    ],
+    "status": "em_preparacao",
+    "url": "/tutoriais/impressoras-termicas/bixolon/srp-350v/",
+    "descricao": "POS 80 mm atual, 180 dpi e até 300 mm/s, USB padrão e rede opcional; suporte específico lista POS Windows Driver 5.2.2 para Windows 11.",
+    "ultimaVerificacao": "2026-09-17",
+    "afiliados": {
+      "mercadoLivre": null
+    }
+  },
+  {
+    "id": "bixolon-xd3-40d",
+    "marca": "BIXOLON",
+    "marcaSlug": "bixolon",
+    "modelo": "XD3-40d",
+    "aliases": [
+      "XD340d",
+      "XD3 40d",
+      "XD3-40d",
+      "BIXOLON XD3-40d"
+    ],
+    "categoria": "termica",
+    "categoriaLabel": "Etiquetas desktop térmica direta",
+    "papel": [
+      "15–118 mm",
+      "térmica direta"
+    ],
+    "interfaces": [
+      "USB",
+      "Serial/Ethernet opcionais"
+    ],
+    "sistemas": [
+      "Windows 11",
+      "Windows 10",
+      "Linux",
+      "macOS"
+    ],
+    "status": "em_preparacao",
+    "url": "/tutoriais/impressoras-termicas/bixolon/xd3-40d/",
+    "descricao": "Desktop de entrada 4 polegadas, 203 dpi, até 5 ips e 104 mm de impressão; suporte específico oferece Seagull Windows Driver 11.4.0.",
+    "ultimaVerificacao": "2026-09-17",
+    "afiliados": {
+      "mercadoLivre": null
+    }
+  },
+  {
+    "id": "bixolon-xd3-40t",
+    "marca": "BIXOLON",
+    "marcaSlug": "bixolon",
+    "modelo": "XD3-40t",
+    "aliases": [
+      "XD340t",
+      "XD3 40t",
+      "XD3-40t",
+      "BIXOLON XD3-40t"
+    ],
+    "categoria": "termica",
+    "categoriaLabel": "Etiquetas desktop por transferência",
+    "papel": [
+      "15–118 mm",
+      "térmica direta",
+      "transferência térmica",
+      "ribbon 74–300 m"
+    ],
+    "interfaces": [
+      "USB",
+      "Serial/Ethernet opcionais"
+    ],
+    "sistemas": [
+      "Windows 11",
+      "Windows 10",
+      "Linux",
+      "macOS"
+    ],
+    "status": "em_preparacao",
+    "url": "/tutoriais/impressoras-termicas/bixolon/xd3-40t/",
+    "descricao": "Desktop de entrada 4 polegadas, 203 dpi, até 5 ips, 104 mm e ribbon até 300 m; suporte específico oferece Seagull Windows Driver 11.4.0.",
+    "ultimaVerificacao": "2026-09-17",
+    "afiliados": {
+      "mercadoLivre": null
+    }
   }
 ]
