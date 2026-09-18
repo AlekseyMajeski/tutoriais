@@ -31,7 +31,7 @@
       "Android",
       "iOS"
     ],
-    "status": "em_preparacao",
+    "status": "publicado",
     "url": "/tutoriais/impressoras-termicas/star/tsp100iv/",
     "descricao": "POS atual 203 dpi, até 250 mm/s e 72 mm de impressão; Star Windows Software 3.11.0 lista TSP143IV-UE/X4 nominalmente.",
     "ultimaVerificacao": "2026-09-17",
@@ -71,7 +71,7 @@
       "Android",
       "iOS"
     ],
-    "status": "em_preparacao",
+    "status": "publicado",
     "url": "/tutoriais/impressoras-termicas/star/mc-print2/",
     "descricao": "POS compacta de 2 polegadas, 203 dpi, até 100 mm/s e 50,8 mm de impressão; driver Star lista MCP20/MCP21LB nominalmente.",
     "ultimaVerificacao": "2026-09-17",
@@ -112,7 +112,7 @@
       "Android",
       "iOS"
     ],
-    "status": "em_preparacao",
+    "status": "publicado",
     "url": "/tutoriais/impressoras-termicas/star/mc-print3/",
     "descricao": "POS compacta 203 dpi, até 250 mm/s (MCP30) ou 400 mm/s (MCP31), com múltiplas interfaces; driver Star lista MCP30/MCP31 nominalmente.",
     "ultimaVerificacao": "2026-09-17",
@@ -156,7 +156,7 @@
       "Android",
       "iOS"
     ],
-    "status": "em_preparacao",
+    "status": "publicado",
     "url": "/tutoriais/impressoras-termicas/star/mc-label2/",
     "descricao": "Multifuncional 2 polegadas, 300 dpi, até 180 mm/s e 56,9 mm de impressão; Star Windows Software lista MCL21CI/MCL21CWBI nominalmente.",
     "ultimaVerificacao": "2026-09-17",
@@ -200,7 +200,7 @@
       "Android",
       "iOS"
     ],
-    "status": "em_preparacao",
+    "status": "publicado",
     "url": "/tutoriais/impressoras-termicas/star/mc-label3/",
     "descricao": "Multifuncional 3 polegadas, 203 dpi, até 180 mm/s e mídia de até 80 mm; Star Windows Software lista MCL32CI/MCL32CBI nominalmente.",
     "ultimaVerificacao": "2026-09-17",
