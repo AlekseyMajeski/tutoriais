@@ -12,6 +12,7 @@
     source.replace('impressoras.json','impressoras-zebra.json'),
     source.replace('impressoras.json','impressoras-brother.json'),
     source.replace('impressoras.json','impressoras-honeywell.json'),
+    source.replace('impressoras.json','impressoras-sato.json'),
     source.replace('impressoras.json','impressoras-tsc.json'),
     source.replace('impressoras.json','impressoras-tsc-healthcare.json'),
     source.replace('impressoras.json','impressoras-tsc-rfid.json'),
