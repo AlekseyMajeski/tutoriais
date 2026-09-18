@@ -32,7 +32,7 @@
       "Linux",
       "macOS"
     ],
-    "status": "em_preparacao",
+    "status": "publicado",
     "url": "/tutoriais/impressoras-termicas/sato/cl4nx-plus/",
     "descricao": "Industrial de 4 polegadas, 203/305/609 dpi, até 14 ips e 104 mm de impressão; driver Windows SATO lista CL4NX Plus explicitamente.",
     "ultimaVerificacao": "2026-09-17",
@@ -73,7 +73,7 @@
       "Linux",
       "macOS"
     ],
-    "status": "em_preparacao",
+    "status": "publicado",
     "url": "/tutoriais/impressoras-termicas/sato/cl6nx-plus/",
     "descricao": "Industrial de 6 polegadas, 203/305 dpi, até 10/8 ips e 168 mm de impressão; driver Windows SATO lista CL6NX Plus explicitamente.",
     "ultimaVerificacao": "2026-09-17",
@@ -112,7 +112,7 @@
       "Linux",
       "macOS"
     ],
-    "status": "em_preparacao",
+    "status": "publicado",
     "url": "/tutoriais/impressoras-termicas/sato/ct4-lx/",
     "descricao": "Desktop de 203/305 dpi, até 8/6 ips e 104 mm de impressão; driver Windows SATO lista CT4-LX explicitamente.",
     "ultimaVerificacao": "2026-09-17",
@@ -149,7 +149,7 @@
       "Linux",
       "macOS"
     ],
-    "status": "em_preparacao",
+    "status": "publicado",
     "url": "/tutoriais/impressoras-termicas/sato/fx3-lx/",
     "descricao": "Desktop flexível de 305 dpi, até 6 ips no adaptador AC e 80 mm de impressão; driver Windows SATO lista FX3-LX explicitamente.",
     "ultimaVerificacao": "2026-09-17",
@@ -188,7 +188,7 @@
       "iOS",
       "Android"
     ],
-    "status": "em_preparacao",
+    "status": "publicado",
     "url": "/tutoriais/impressoras-termicas/sato/pw4nx/",
     "descricao": "Móvel de 4 polegadas, 203 dpi, até 6 ips e 104 mm de impressão, com USB, Bluetooth, NFC e Wi-Fi; driver SATO lista PW4NX explicitamente.",
     "ultimaVerificacao": "2026-09-17",
