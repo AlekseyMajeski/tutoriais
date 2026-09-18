@@ -102,6 +102,7 @@ const sitemapFiles = [
   'sitemap-zebra.xml',
   'sitemap-brother.xml',
   'sitemap-honeywell.xml',
+  'sitemap-argox.xml',
   'sitemap-tsc.xml',
   'sitemap-tsc-healthcare.xml',
   'sitemap-tsc-rfid.xml',
