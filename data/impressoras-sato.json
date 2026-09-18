@@ -195,5 +195,199 @@
     "afiliados": {
       "mercadoLivre": null
     }
+  },
+  {
+    "id": "sato-cl4-sxr",
+    "marca": "SATO",
+    "marcaSlug": "sato",
+    "modelo": "CL4-SXR",
+    "aliases": [
+      "CL4SXR",
+      "CL4 SXR",
+      "CL4-SXR",
+      "SATO CL4-SXR"
+    ],
+    "categoria": "termica",
+    "categoriaLabel": "Etiquetas industriais",
+    "papel": [
+      "até 4 polegadas",
+      "térmica direta",
+      "transferência térmica"
+    ],
+    "interfaces": [
+      "USB 2.0",
+      "Ethernet gigabit",
+      "NFC",
+      "RS-232C",
+      "Wi-Fi/Bluetooth opcional"
+    ],
+    "sistemas": [
+      "Windows 11",
+      "Windows 10",
+      "Linux",
+      "macOS"
+    ],
+    "status": "em_preparacao",
+    "url": "/tutoriais/impressoras-termicas/sato/cl4-sxr/",
+    "descricao": "Nova geração industrial de 4 polegadas, 203/305/609 dpi, até 18/16/6 ips e 104 mm de impressão; driver SATO lista CL4-SXR explicitamente.",
+    "ultimaVerificacao": "2026-09-17",
+    "afiliados": {
+      "mercadoLivre": null
+    }
+  },
+  {
+    "id": "sato-cl6-sxr",
+    "marca": "SATO",
+    "marcaSlug": "sato",
+    "modelo": "CL6-SXR",
+    "aliases": [
+      "CL6SXR",
+      "CL6 SXR",
+      "CL6-SXR",
+      "SATO CL6-SXR"
+    ],
+    "categoria": "termica",
+    "categoriaLabel": "Etiquetas industriais largas",
+    "papel": [
+      "até 6 polegadas",
+      "térmica direta",
+      "transferência térmica"
+    ],
+    "interfaces": [
+      "USB 2.0",
+      "Ethernet gigabit",
+      "NFC",
+      "RS-232C",
+      "Wi-Fi/Bluetooth opcional"
+    ],
+    "sistemas": [
+      "Windows 11",
+      "Windows 10",
+      "Linux",
+      "macOS"
+    ],
+    "status": "em_preparacao",
+    "url": "/tutoriais/impressoras-termicas/sato/cl6-sxr/",
+    "descricao": "Nova geração industrial de 6 polegadas, 203/305 dpi, até 14 ips e 167,5 mm de impressão; driver SATO lista CL6-SXR explicitamente.",
+    "ultimaVerificacao": "2026-09-17",
+    "afiliados": {
+      "mercadoLivre": null
+    }
+  },
+  {
+    "id": "sato-pw2nx",
+    "marca": "SATO",
+    "marcaSlug": "sato",
+    "modelo": "PW2NX",
+    "aliases": [
+      "PW2NX",
+      "PW 2NX",
+      "PW208NX",
+      "PW208mNX",
+      "SATO PW2NX"
+    ],
+    "categoria": "termica",
+    "categoriaLabel": "Impressora térmica móvel",
+    "papel": [
+      "2 polegadas",
+      "térmica direta"
+    ],
+    "interfaces": [
+      "USB",
+      "Bluetooth",
+      "NFC",
+      "Wi-Fi conforme variante"
+    ],
+    "sistemas": [
+      "Windows 11",
+      "Windows 10",
+      "iOS",
+      "Android"
+    ],
+    "status": "em_preparacao",
+    "url": "/tutoriais/impressoras-termicas/sato/pw2nx/",
+    "descricao": "Móvel compacta de 2 polegadas, 203 dpi, até 6 ips e 54,8 mm de impressão; driver SATO lista PW2NX (PW208NX/PW208mNX) explicitamente.",
+    "ultimaVerificacao": "2026-09-17",
+    "afiliados": {
+      "mercadoLivre": null
+    }
+  },
+  {
+    "id": "sato-ws408",
+    "marca": "SATO",
+    "marcaSlug": "sato",
+    "modelo": "WS408",
+    "aliases": [
+      "WS408",
+      "WS 408",
+      "WS4 203 dpi",
+      "SATO WS408"
+    ],
+    "categoria": "termica",
+    "categoriaLabel": "Etiquetas desktop",
+    "papel": [
+      "até 4 polegadas",
+      "térmica direta",
+      "transferência térmica",
+      "ribbon até 300 m"
+    ],
+    "interfaces": [
+      "USB",
+      "RS-232",
+      "Ethernet",
+      "Wi-Fi/Bluetooth opcional"
+    ],
+    "sistemas": [
+      "Windows 11",
+      "Windows 10",
+      "Linux",
+      "macOS"
+    ],
+    "status": "em_preparacao",
+    "url": "/tutoriais/impressoras-termicas/sato/ws408/",
+    "descricao": "Desktop WS4 de 203 dpi, até 6 ips e 104 mm de impressão, com USB/Serial/Ethernet; driver SATO lista WS4 (WS408/WS412).",
+    "ultimaVerificacao": "2026-09-17",
+    "afiliados": {
+      "mercadoLivre": null
+    }
+  },
+  {
+    "id": "sato-ws412",
+    "marca": "SATO",
+    "marcaSlug": "sato",
+    "modelo": "WS412",
+    "aliases": [
+      "WS412",
+      "WS 412",
+      "WS4 300 dpi",
+      "SATO WS412"
+    ],
+    "categoria": "termica",
+    "categoriaLabel": "Etiquetas desktop",
+    "papel": [
+      "até 4 polegadas",
+      "térmica direta",
+      "transferência térmica",
+      "ribbon até 300 m"
+    ],
+    "interfaces": [
+      "USB",
+      "RS-232",
+      "Ethernet",
+      "Wi-Fi/Bluetooth opcional"
+    ],
+    "sistemas": [
+      "Windows 11",
+      "Windows 10",
+      "Linux",
+      "macOS"
+    ],
+    "status": "em_preparacao",
+    "url": "/tutoriais/impressoras-termicas/sato/ws412/",
+    "descricao": "Desktop WS4 de 300 dpi, até 4 ips e 104 mm de impressão, com USB/Serial/Ethernet; driver SATO lista WS4 (WS408/WS412).",
+    "ultimaVerificacao": "2026-09-17",
+    "afiliados": {
+      "mercadoLivre": null
+    }
   }
 ]
